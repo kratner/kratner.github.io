@@ -198,10 +198,13 @@ a:hover {
 		/* margin-top: -18em; */
 		margin-top: -50%;
 	}
+	.splash h3 {
+		margin-bottom: 28px;
+	}
 	.splash a {
 		border-radius: 5px;
 		background: rgba(5, 38, 51, 0.76);
-		box-shadow: 1px 1px 2px rgba(0, 0, 0, 1)
+		box-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 		margin-top: 2vh; /* decrease spacing between links on splash page */
 		width: 60%;
 	}
