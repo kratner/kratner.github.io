@@ -124,7 +124,8 @@ module.exports = function(grunt) {
     },
     watch: {
         includes: {
-          files: ['includes/*.*'],
+          files: ['source/includes/*.*'],
+          tasks: ['bake'],
           options: {
             livereload: true
           }
