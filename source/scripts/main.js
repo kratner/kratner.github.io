@@ -1,5 +1,7 @@
-// main app
-var init = () => {
+'use strict';
+(function(window, document) {
+    var init = () => {
 	//alert('doc test ready');
-};
-$(document).ready(init);
+    };
+    $(document).ready(init);
+})(window, document);

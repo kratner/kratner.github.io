@@ -18,7 +18,8 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          "js/main.js": ["source/scripts/main.js"]
+          "js/main.js": ["source/scripts/main.js"],
+          "js/wprest.js": ["source/scripts/wprest.js"]
         }
       }
     },
@@ -32,7 +33,8 @@ module.exports = function(grunt) {
                 // files go here, like so:
 
                 "index_test.html": "source/bake/index_test.html",
-                "index.html": "source/bake/index_test.html"
+                "index.html": "source/bake/index_test.html",
+                "wprest_test.html": "source/bake/wprest_test.html"
 
                 // etc ...
             }
@@ -118,7 +120,11 @@ module.exports = function(grunt) {
     uglify: {
       my_target: {
         files: {
-          'js/main.min.js': ['js/main.js']
+          'js/main.min.js': ['js/main.js'],
+          'js/wprest.min.js': ['js/wprest.js']
+        },
+        options: {
+          quoteStyle: 1
         }
       }
     },

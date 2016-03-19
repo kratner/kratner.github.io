@@ -1,9 +1,11 @@
 'use strict';
 
 (function (window, document) {
+    'use strict';
+
     var init = function init() {
-        //alert('doc test ready');
+        //alert('wprest testing');
     };
     $(document).ready(init);
 })(window, document);
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=wprest.js.map
