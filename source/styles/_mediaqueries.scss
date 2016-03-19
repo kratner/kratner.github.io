@@ -1,0 +1,27 @@
+@mixin media($size) {
+    @if ($size == medium) {
+        @media screen and (min-width: $screen-medium-min) {
+            @content;
+        }
+    }
+    @else if ($size == large) {
+        @media screen and (min-width: $screen-large-min) {
+            @content;
+        }
+    }
+    @else if ($size == small-only) {
+        @media screen and (max-width: $screen-small-max) {
+            @content;
+        }
+    }
+    @else if ($size == medium-only) {
+        @media screen and (min-width: $screen-medium-min) and (max-width: $screen-medium-max) {
+            @content;
+        }
+    }
+    @else {
+        @media screen and (max-width: $size) {
+            @content;
+        }
+    }
+}

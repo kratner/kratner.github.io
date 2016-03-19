@@ -1,0 +1,1 @@
+{"version":3,"sources":["../source/scripts/main.js"],"names":[],"mappings":";;;AACA,IAAI,OAAO,SAAP,IAAO,GAAM;;CAAN;AAGX,EAAE,QAAF,EAAY,KAAZ,CAAkB,IAAlB","file":"main.js","sourcesContent":["// main app\nvar init = () => {\n\t//alert('doc test ready');\n};\n$(document).ready(init);\n"]}

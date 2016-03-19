@@ -1,0 +1,60 @@
+@import 'variables',
+        'mediaqueries',
+        'fonts',
+        'layout',
+        'animation';
+
+body:before {
+	animation: rotate $duration linear infinite;
+	margin-left: -50vh;
+	margin-top: -50vh;
+	height: 100vh;
+	width: 100vh;
+	left: 50%;
+	top: 50%;
+}
+/*
+@media (orientation: landscape) {
+	body:before {
+		margin-left: -50vw;
+		margin-top: -50vw;
+		height: 100vw;
+		width: 100vw;
+	}
+}
+*/
+
+@include media(991px) {
+	body {
+		margin-top: -27%;
+	}
+	.splash{
+		a {
+			margin-top: 6vh;
+		}
+	}	
+}
+
+@media (max-width: 542px) {
+	body {
+		/* margin-top: -18em; */
+		margin-top: -50%;
+	}
+	.splash {
+		h3 {
+			margin-bottom: 28px;
+		}
+		a {
+			border-radius: 5px;
+			background: rgba(5, 38, 51, 0.76);
+			box-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+			margin-top: 2vh; /* decrease spacing between links on splash page */
+			width: 60%;
+			&:hover {
+				background: rgba(144, 224, 255, 0.95);
+				color: rgba(5, 38, 51, 0.76);
+				text-shadow: none;
+			}
+		}
+	}
+}
