@@ -39,6 +39,15 @@ module.exports = function(grunt) {
                 // etc ...
             }
         },
+    },    
+    concat: {
+      options: {
+        separator: '',
+      },
+      dist: {
+        src: ['source/scripts/main/*.js'],
+        dest: 'scripts/concat.js'
+      }
     },
     cssmin: {
       target: {
@@ -144,7 +153,7 @@ module.exports = function(grunt) {
         },
         scripts: {
           files: ['source/**/*.js'],
-          tasks: ['babel', 'uglify', 'bake'],
+          tasks: ['babel', 'uglify', 'bake', 'concat'],
           options: {
             livereload: true
             //spawn: false
@@ -171,8 +180,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-http-server');
   grunt.loadNpmTasks('grunt-bake');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
   // Default task.
-  grunt.registerTask('default', ['babel', 'sass', 'autoprefixer', 'cssmin', 'uglify', 'bake', 'http-server', 'watch']);
+  grunt.registerTask('default', ['babel', 'sass', 'autoprefixer', 'cssmin', 'uglify', 'concat', 'bake', 'http-server', 'watch']);
 
 };
