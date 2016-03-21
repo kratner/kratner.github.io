@@ -14,13 +14,12 @@
     "grunt-bake": "^1.6.3",
     "grunt-contrib-concat": "^1.0.0",
     "grunt-contrib-cssmin": "^1.0.1",
-    "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-eslint": "^18.0.0",
     "grunt-http-server": "^1.14.0",
-    "load-grunt-tasks": "^3.4.1",
-    "node-sass": "^3.4.2"
+    "grunt-sass": "^1.1.0",
+    "load-grunt-tasks": "^3.4.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
