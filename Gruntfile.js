@@ -7,7 +7,8 @@ module.exports = function(grunt) {
     autoprefixer: {
       compile: {
         files: {
-          'css/styles.css': 'css/styles.css'
+          'css/styles.css': 'css/styles.css',
+          'css/wprest_main.css': 'css/wprest_main.css'
         },
       },
     },
@@ -177,7 +178,7 @@ module.exports = function(grunt) {
   // grunt.loadNpmTasks('grunt-contrib-qunit');
   // grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt--sass');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-http-server');
   grunt.loadNpmTasks('grunt-bake');
   grunt.loadNpmTasks('grunt-contrib-concat');
