@@ -1,0 +1,11 @@
+$swatch-1: #00FFE0;
+$swatch-2: #F7FF08;
+$swatch-3: #ffffff; // white
+$swatch-4: #2F802B;
+$swatch-5: rgba(0,255,224,0.75);
+$swatch-6: #000000;
+$gradient-1: linear-gradient(to right, rgba(0,255,224,0) 0%,rgba(0,255,224,0.5) 100%);
+$link_color: $swatch-1;
+$link_hover_color: $swatch-6;
+//$nav_background_color: rgba(255, 255, 255, 0.25);
+$nav_background_color: $gradient-1;

@@ -1,6 +1,4 @@
 $duration: 720s;
-$link_color: #B8F4FF;
-$link_hover_color: rgba(5, 248, 248, 1);
 
 // Medium screen
 $screen-medium-min: 768px !default;
@@ -12,4 +10,3 @@ $screen-large-min: 960px !default;
 $screen-small-max: ($screen-medium-min - 1) !default;
 $screen-medium-max: ($screen-large-min - 1) !default;
 $screen-large-max: ($screen-large-min - 1) !default;
-

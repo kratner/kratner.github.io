@@ -1,3 +1,8 @@
+@charset "UTF-8";
+html {
+  font-size: 62.5%;
+  /* 1 */ }
+
 /* FONTS */
 @font-face {
   font-family: 'arial_blackregular';
@@ -201,3 +206,32 @@ h2 {
   100% {
     -webkit-transform: rotate(360deg) scale(1.25);
             transform: rotate(360deg) scale(1.25); } }
+
+.wp-container {
+  font-size: 2rem;
+  font-family: saucerbb; }
+  .wp-container .navigation {
+    background: -webkit-linear-gradient(left, rgba(0, 255, 224, 0) 0%, rgba(0, 255, 224, 0.5) 100%);
+    background: linear-gradient(to right, rgba(0, 255, 224, 0) 0%, rgba(0, 255, 224, 0.5) 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; }
+    .wp-container .navigation ul {
+      margin: 0; }
+      .wp-container .navigation ul li {
+        list-style: none;
+        display: inline; }
+    .wp-container .navigation--link {
+      -webkit-transition: all .5s;
+              transition: all .5s; }
+      .wp-container .navigation--link:hover {
+        background-color: #00FFE0; }
+      .wp-container .navigation--link:focus, .wp-container .navigation--link:hover  {
+        text-decoration: none; }
+      .wp-container .navigation--link a {
+        color: #00FFE0;
+        padding: 3rem;
+        text-decoration: none; }
+        .wp-container .navigation--link a:hover {
+          color: #000000; }
