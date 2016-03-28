@@ -1,10 +1,19 @@
+/*global $*/
 'use strict';
 
 (function (window, document) {
     'use strict';
 
     var init = function init() {
-        //alert('wprest testing');
+        // stored elements
+        var $el = {
+            footer: {
+                copyright: $('.copyright')
+            }
+        };
+        $el.footer.copyright.html('&copy;' + function () {
+            return new Date();
+        }().getFullYear());
     };
     $(document).ready(init);
 })(window, document);

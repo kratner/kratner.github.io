@@ -9,6 +9,16 @@
 .wp-container {
 	font-size: 2rem;
 	font-family: saucerbb;
+	.footer {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		text-align: right;
+		.copyright {
+			padding: 1rem;
+			color: $link_color;
+		}
+	}
 	.navigation {
 		background: $nav_background_color;
 		position: fixed;

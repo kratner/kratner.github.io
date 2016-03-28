@@ -10,7 +10,8 @@ html, body {
 }
 
 body {
-	font: 14px 'Arial', sans-serif;
+	//font: 14px 'Arial', sans-serif; //saucerbb
+	font-family: saucerbb;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 	transition: all .3s ease-in-out;
@@ -61,7 +62,7 @@ h2 {
 		text-transform: uppercase;
 	}
 	h1, h2, h3 {
-		font-family: 'arial_blackregular', 'Arial Black', 'Arial', sans-serif;
+		//font-family: 'arial_blackregular', 'Arial Black', 'Arial', sans-serif;
 		text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 	}
 	a {
@@ -91,8 +92,6 @@ h2 {
 	}
 }
 
-
-
 @include media(991px) {
 	body {
 		margin-top: -27%;
@@ -102,6 +101,28 @@ h2 {
 			margin-top: 6vh;
 		}
 	}	
+}
+
+@include media(736px) {
+	.splash {
+		a {
+			margin-top: 1vh;
+		}
+	} 
+	.header {
+		margin-bottom: 2rem;
+	}
+}
+
+@include media(667px) {
+	.splash {
+		p {
+			margin: 0;
+			a {
+				margin-top: 0;
+			}
+		}
+	}
 }
 
 @include media(542px) {
@@ -124,6 +145,43 @@ h2 {
 				color: rgba(5, 38, 51, 0.76);
 				text-shadow: none;
 			}
+		}
+	}
+}
+
+@include media(480px) {
+	body {
+		margin-top: -32%;
+	}
+	.splash {
+		h3 {
+			margin: 1rem 0;
+		}
+		a {
+			line-height: 2rem;
+			margin-bottom: 1rem;
+		}
+	}
+}
+
+@include media(414px) {
+	body {
+		margin-top: -22rem;
+	}
+}
+
+@include media(375px) {
+	.splash {
+		p {
+			margin: 2rem;
+		}
+	}
+}
+
+@include media(320px) {
+	.splash {
+		p {
+			margin: 0 0 1.5rem 0;
 		}
 	}
 }

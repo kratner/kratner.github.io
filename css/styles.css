@@ -23,7 +23,7 @@ html, body {
   margin: 0; }
 
 body {
-  font: 14px 'Arial', sans-serif;
+  font-family: saucerbb;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-transition: all .3s ease-in-out;
@@ -72,7 +72,6 @@ h2 {
   text-transform: uppercase; }
 
 .splash h1, .splash h2, .splash h3 {
-  font-family: 'arial_blackregular', 'Arial Black', 'Arial', sans-serif;
   text-shadow: 1px 1px 2px black; }
 
 .splash a {
@@ -102,6 +101,18 @@ h2 {
   .splash a {
     margin-top: 6vh; } }
 
+@media screen and (max-width: 736px) {
+  .splash a {
+    margin-top: 1vh; }
+  .header {
+    margin-bottom: 2rem; } }
+
+@media screen and (max-width: 667px) {
+  .splash p {
+    margin: 0; }
+    .splash p a {
+      margin-top: 0; } }
+
 @media screen and (max-width: 542px) {
   body {
     /* margin-top: -18em; */
@@ -119,6 +130,27 @@ h2 {
       background: rgba(144, 224, 255, 0.95);
       color: rgba(5, 38, 51, 0.76);
       text-shadow: none; } }
+
+@media screen and (max-width: 480px) {
+  body {
+    margin-top: -32%; }
+  .splash h3 {
+    margin: 1rem 0; }
+  .splash a {
+    line-height: 2rem;
+    margin-bottom: 1rem; } }
+
+@media screen and (max-width: 414px) {
+  body {
+    margin-top: -22rem; } }
+
+@media screen and (max-width: 375px) {
+  .splash p {
+    margin: 2rem; } }
+
+@media screen and (max-width: 320px) {
+  .splash p {
+    margin: 0 0 1.5rem 0; } }
 
 @-webkit-keyframes rotate {
   0% {
