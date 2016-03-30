@@ -9,6 +9,7 @@
                 copyright: $('.copyright')
             }
         };
+
         $el.footer.copyright.html('&copy;' + (function(){return new Date();})().getFullYear());
     };
     $(document).ready(init);
