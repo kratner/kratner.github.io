@@ -90,8 +90,8 @@
             $.ajax({
                 crossDomain: true,
                 type: 'GET',
-                headers: { 'Access-Control-Allow-Origin': '*' },
-                jsonpCallback: 'jsonhandler',
+                //headers: {'Access-Control-Allow-Origin': '*'},
+                //jsonpCallback: 'jsonhandler',
                 //contentType: 'application/json; charset=utf-8',
                 async: false,
                 //jsonp: 'callback',
@@ -145,7 +145,7 @@
         //     .catch((data) => {
         //         console.log(data);
         //     });
-        //getPostId(2063);
+        getPostId(2063);
         // $.ajax({
         //     type: 'GET',
         //     url: 'https://graph.facebook.com/10150232496792613',
