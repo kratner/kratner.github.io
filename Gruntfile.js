@@ -19,8 +19,9 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          "js/main.js": ["source/scripts/main.js"],
-          "js/wprest.js": ["source/scripts/wprest.js"]
+          "js/main/main.js": "source/scripts/main/main.js",
+          "js/main/core.js": "source/scripts/main/core.js",
+          "js/wprest.js": "source/scripts/wprest.js"
         }
       }
     },
@@ -34,7 +35,7 @@ module.exports = function(grunt) {
                 // files go here, like so:
 
                 "index_test.html": "source/bake/index_test.html",
-                "index.html": "source/bake/index_test.html",
+                "index.html": "source/bake/index.html",
                 "wprest_test.html": "source/bake/wprest_test.html"
 
                 // etc ...
@@ -46,7 +47,7 @@ module.exports = function(grunt) {
         separator: '',
       },
       dist: {
-        src: ['source/scripts/main/*.js'],
+        src: ['js/main/*.js'],
         dest: 'scripts/concat.js'
       }
     },
@@ -130,7 +131,8 @@ module.exports = function(grunt) {
     uglify: {
       my_target: {
         files: {
-          'js/main.min.js': ['js/main.js'],
+          //'js/main.min.js': ['js/main.js'],
+          'js/main.min.js': ['scripts/concat.js'],
           'js/wprest.min.js': ['js/wprest.js']
         },
         options: {
@@ -184,6 +186,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
 
   // Default task.
-  grunt.registerTask('default', ['babel', 'sass', 'autoprefixer', 'cssmin', 'uglify', 'concat', 'bake', 'http-server', 'watch']);
+  grunt.registerTask('default', ['babel', 'sass', 'autoprefixer', 'cssmin', 'concat', 'uglify', 'bake', 'http-server', 'watch']);
 
 };

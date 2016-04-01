@@ -21,7 +21,7 @@ body {
 	width: 100%;
 	background-color: transparent;
 	color: #fff;
-	top: 50%;
+	top: 25%;
 	&:before {
 		animation: rotate $duration linear infinite;
 		background: url(../img/stars3.jpg);
@@ -36,6 +36,14 @@ body {
 		width: 300%;
 		left: 50%;
 		top: 50%;
+	}
+}
+@include media-height(640px) {
+	body {
+		top: 5%;
+		&:before {
+			margin-top: 0;
+		}
 	}
 }
 h1, h2 {
@@ -94,7 +102,8 @@ h2 {
 
 @include media(991px) {
 	body {
-		margin-top: -27%;
+		//margin-top: -27%;
+		margin-top: 0;
 	}
 	.splash{
 		a {
@@ -106,7 +115,12 @@ h2 {
 @include media(736px) {
 	.splash {
 		a {
-			margin-top: 1vh;
+			line-height: 5rem;
+			//margin-top: 1vh;
+			margin-top: 0;
+		}
+		p {
+			margin: 0;
 		}
 	} 
 	.header {
@@ -151,7 +165,8 @@ h2 {
 
 @include media(480px) {
 	body {
-		margin-top: -42%;
+		//margin-top: -42%;
+		margin-top: 0;
 	}
 	.splash {
 		h3 {
@@ -166,7 +181,8 @@ h2 {
 
 @include media(414px) {
 	body {
-		margin-top: -22rem;
+		//margin-top: -22rem;
+
 	}
 }
 
