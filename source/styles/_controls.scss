@@ -4,19 +4,29 @@
     right: 1rem;
     .underlay, .overlay {
       position: fixed;
-      left: 0;
-      top: 0;
     }
     .underlay {
-      background-color: transparent;
-      transition: all 2s;
-      display: none;
+      transition: color 5s;
       height: 100%;
       width: 100%;
+      left: 0;
+      top: 0;
+      z-index: -1;
+    }
+    .overlay {
+      transition: opacity .5s;
+      opacity: 0;
+      left: 20%;
+      top: 20%;
+      width: 60%;
+      height: 60%;
     }
     #nav-toggle { 
       cursor: pointer;
       padding: 10px 35px 16px 0px;
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
       span {
         &, &:before, &:after {
           transition: all 500ms ease-in-out;
@@ -38,9 +48,9 @@
       }
     }
     &.active {
-      .underlay {
-        display: block;
-        background-color: $overlay_color;
+        z-index: 3;
+      .overlay {
+        opacity: 1;
       }
       #nav-toggle {
         span {
@@ -58,28 +68,3 @@
       }
     }
 }
-  // #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
-  // }
-
-  // #nav-toggle span:before {
-  //   top: -10px; 
-  // }
-  // #nav-toggle span:after {
-  //   bottom: -10px;
-  // }
-  // #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
-  //   transition: all 500ms ease-in-out;
-  // }
-  // #nav-toggle.active span {
-  //   background-color: transparent;
-  // }
-  // #nav-toggle.active span:before, #nav-toggle.active span:after {
-  //   top: 0;
-  // }
-//   #nav-toggle.active span:before {
-//     transform: rotate(45deg);
-//   }
-//   #nav-toggle.active span:after {
-//     transform: rotate(-45deg);
-//   }
-// }

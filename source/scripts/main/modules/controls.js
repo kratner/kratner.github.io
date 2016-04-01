@@ -4,8 +4,13 @@
 	// http://codepen.io/elijahmanor/pen/Igpoe
 	// animated hamburger control
     Controls.initializeNavControl = () => {
-        $('#nav-toggle').on('click', 'span', (event) => {
-            $(event.target).parents('.controls').toggleClass('active');
+        let $el = {
+            controls: $('.controls'),
+            splash: $('.splash')
+        };
+        $('#nav-toggle').on('click', () => {
+            $el.controls.toggleClass('active');
+            $el.splash.toggleClass('active');
         });
     };
 })(window, document, window.Controls = window.Controls || {});

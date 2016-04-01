@@ -116,8 +116,13 @@
     // http://codepen.io/elijahmanor/pen/Igpoe
     // animated hamburger control
     Controls.initializeNavControl = function () {
-        $('#nav-toggle').on('click', 'span', function (event) {
-            $(event.target).parents('.controls').toggleClass('active');
+        var $el = {
+            controls: $('.controls'),
+            splash: $('.splash')
+        };
+        $('#nav-toggle').on('click', function () {
+            $el.controls.toggleClass('active');
+            $el.splash.toggleClass('active');
         });
     };
 })(window, document, window.Controls = window.Controls || {});
