@@ -271,8 +271,8 @@ h2 {
     top: 1rem;
     right: 1rem; }
     .controls #nav-toggle span, .controls #nav-toggle span:before, .controls #nav-toggle span:after {
-      -webkit-transition: all 500ms ease-in-out;
-              transition: all 500ms ease-in-out;
+      -webkit-transition: all .25s ease-in-out;
+              transition: all .25s ease-in-out;
       cursor: pointer;
       border-radius: 1px;
       height: 5px;

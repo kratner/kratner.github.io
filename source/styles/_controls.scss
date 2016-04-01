@@ -29,7 +29,7 @@
       right: 1rem;
       span {
         &, &:before, &:after {
-          transition: all 500ms ease-in-out;
+          transition: all .25s ease-in-out;
           cursor: pointer;
           border-radius: 1px;
           height: 5px;
