@@ -38,7 +38,7 @@ body {
   width: 100%;
   background-color: transparent;
   color: #fff;
-  top: 50%; }
+  top: 25%; }
   body:before {
     -webkit-animation: rotate 720s linear infinite;
             animation: rotate 720s linear infinite;
@@ -55,6 +55,12 @@ body {
     width: 300%;
     left: 50%;
     top: 50%; }
+
+@media screen and (max-height: 640px) {
+  body {
+    top: 5%; }
+    body:before {
+      margin-top: 0; } }
 
 h1, h2 {
   -webkit-transition: opacity .9s ease-in-out;
@@ -102,13 +108,16 @@ h2 {
 
 @media screen and (max-width: 991px) {
   body {
-    margin-top: -27%; }
+    margin-top: 0; }
   .splash a {
     margin-top: 6vh; } }
 
 @media screen and (max-width: 736px) {
   .splash a {
-    margin-top: 1vh; }
+    line-height: 5rem;
+    margin-top: 0; }
+  .splash p {
+    margin: 0; }
   .header {
     margin-bottom: 2rem; } }
 
@@ -136,16 +145,12 @@ h2 {
 
 @media screen and (max-width: 480px) {
   body {
-    margin-top: -42%; }
+    margin-top: 0; }
   .splash h3 {
     margin: 1rem 0; }
   .splash a {
     line-height: 2rem;
     margin-bottom: 1rem; } }
-
-@media screen and (max-width: 414px) {
-  body {
-    margin-top: -22rem; } }
 
 @media screen and (max-width: 375px) {
   .splash p {
