@@ -14,13 +14,15 @@ module.exports = function(grunt) {
     },
     babel: {
       options: {
-        sourceMap: true,
+        //sourceMap: true,
         presets: ['es2015']
       },
       dist: {
         files: {
-          "js/main/main.js": "source/scripts/main/main.js",
-          "js/main/core.js": "source/scripts/main/core.js",
+          // "js/main/modules/*.js": "source/scripts/main/modules/*.js",
+          // "js/main/main.js": "source/scripts/main/main.js",
+          // "js/main/core.js": "source/scripts/main/core.js",
+          "js/main/main.js": "scripts/concat.js",
           "js/wprest.js": "source/scripts/wprest.js"
         }
       }
@@ -47,7 +49,8 @@ module.exports = function(grunt) {
         separator: '',
       },
       dist: {
-        src: ['js/main/*.js'],
+        //src: ['js/main/**/*.js'],
+        src: ['source/scripts/main/**/*.js'],
         dest: 'scripts/concat.js'
       }
     },
@@ -132,7 +135,7 @@ module.exports = function(grunt) {
       my_target: {
         files: {
           //'js/main.min.js': ['js/main.js'],
-          'js/main.min.js': ['scripts/concat.js'],
+          'js/main.min.js': ['js/main/main.js'],
           'js/wprest.min.js': ['js/wprest.js']
         },
         options: {
@@ -156,7 +159,7 @@ module.exports = function(grunt) {
         },
         scripts: {
           files: ['source/**/*.js'],
-          tasks: ['babel', 'uglify', 'bake', 'concat'],
+          tasks: ['concat', 'babel', 'uglify'],
           options: {
             livereload: true
             //spawn: false
@@ -186,6 +189,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
 
   // Default task.
-  grunt.registerTask('default', ['babel', 'sass', 'autoprefixer', 'cssmin', 'concat', 'uglify', 'bake', 'http-server', 'watch']);
+  grunt.registerTask('default', ['concat', 'babel', 'sass', 'autoprefixer', 'cssmin', 'uglify', 'bake', 'http-server', 'watch']);
 
 };

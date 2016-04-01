@@ -8,47 +8,47 @@
             // private function for ajax call
 
             // Creating a promise
-            var promise = new Promise(function (resolve, reject) {
+                var promise = new Promise(function (resolve, reject) {
 
                 // Instantiates the XMLHttpRequest
-                var client = new XMLHttpRequest(),
-                    uri = url,
-                    argcount = 0,
-                    key;
-                //key = undefined;
+                    var client = new XMLHttpRequest(),
+                        uri = url,
+                        argcount = 0,
+                        key;
+                        //key = undefined;
 
-                if (args && (method === 'POST' || method === 'PUT')) {
-                    uri += '?';
-                    for (key in args) {
-                        if (args.hasOwnProperty(key)) {
-                            if (argcount++) {
-                                uri += '&';
+                    if (args && (method === 'POST' || method === 'PUT')) {
+                        uri += '?';
+                        for (key in args) {
+                            if (args.hasOwnProperty(key)) {
+                                if (argcount++) {
+                                    uri += '&';
+                                }
+                                uri += encodeURIComponent(key) + '=' + encodeURIComponent(args[key]);
                             }
-                            uri += encodeURIComponent(key) + '=' + encodeURIComponent(args[key]);
                         }
                     }
-                }
 
-                client.open(method, uri);
-                client.send();
+                    client.open(method, uri);
+                    client.send();
 
-                client.onload = function () {
-                    if (this.status >= 200 && this.status < 300) {
-                        // Performs the function "resolve" when this.status is equal to 2xx
-                        resolve(this.response);
-                    } else {
-                        // Performs the function "reject" when this.status is different than 2xx
+                    client.onload = function () {
+                        if (this.status >= 200 && this.status < 300) {
+                            // Performs the function "resolve" when this.status is equal to 2xx
+                            resolve(this.response);
+                        } else {
+                            // Performs the function "reject" when this.status is different than 2xx
+                            reject(this.statusText);
+                        }
+                    };
+                    client.onerror = function () {
                         reject(this.statusText);
-                    }
-                };
-                client.onerror = function () {
-                    reject(this.statusText);
-                };
-            });
+                    };
+                });
 
-            // Return the promise
-            return promise;
-        };
+                // Return the promise
+                return promise;
+            };
         model.httpRequest = function (url) {
             return {
                 'get': function get(args) {
@@ -68,49 +68,55 @@
         return model;
     };
 })(window, document, window.Core = window.Core || {});
-//# sourceMappingURL=core.js.map
 'use strict';
-
-(function (window, document) {
-    var init = function init() {
-        //alert('doc test ready');
-        // http://keithratner.com/wp-json/posts
-        // http://www.keithratner.com/?wpapi=get_posts&dev=1&id=2063
-        var api = {
-            //dataType: 'jsonp',
-            uri: 'http://www.keithratner.com/?wpapi=get_posts&dev=1&id=2063',
-            root: 'http://www.keithratner.com',
-            pageid: '2063'
-        },
-
-        //model = window.Core.Model(),
-        renderPost = function renderPost(post) {
-            console.log(post);
-        },
-            getPageById = function getPageById(id) {
-            var url = api.root + '/wp-json/wp/v2/pages/' + api.pageid;
-            console.log(url);
-            $.ajax({
-                crossDomain: true,
-                type: 'GET',
-                //headers: {'Access-Control-Allow-Origin': '*'},
-                //jsonpCallback: 'jsonhandler',
-                //contentType: 'application/json; charset=utf-8',
-                async: false,
-                //jsonp: 'callback',
-                //url: api.root + '?wpapi=get_posts&dev=1&id=' + id,
-                url: url,
-                dataType: 'json'
-                // jsonp: 'jsonp'
-                // success: function(data) {
-                //     console.log(data);
-                // }
-            }).then(function (post, textStatus, jqXHR) {
-                renderPost(post);
-            });
-        };
+/*global Controls*/
+((window, document) => {
+    let init = () => {
+        Controls.initializeNavControl();
+        let api = {
+                //dataType: 'jsonp',
+                uri: 'http://www.keithratner.com/?wpapi=get_posts&dev=1&id=2063',
+                root: 'http://www.keithratner.com',
+                pageid: '2063'
+            },
+            //model = window.Core.Model(),
+            renderPost = (post) => {
+                console.log(post);
+            },
+            getPageById = id => {
+                let url = api.root + '/wp-json/wp/v2/pages/' + api.pageid;
+                console.log(url);
+                $.ajax({
+                    crossDomain: true,
+                    type: 'GET',
+                    //headers: {'Access-Control-Allow-Origin': '*'},
+                    //jsonpCallback: 'jsonhandler',
+                    //contentType: 'application/json; charset=utf-8',
+                    async: false,
+                    //jsonp: 'callback',
+                    //url: api.root + '?wpapi=get_posts&dev=1&id=' + id,
+                    url: url,
+                    dataType: 'json'
+                    // jsonp: 'jsonp'
+                    // success: function(data) {
+                    //     console.log(data);
+                    // }
+                }).then((post, textStatus, jqXHR) => {
+                    renderPost(post);
+                });
+            };
         getPageById(2063);
     };
     $(document).ready(init);
 })(window, document);
-//# sourceMappingURL=main.js.map
+'use strict';
+
+((window, document, Controls) => {
+	// http://codepen.io/elijahmanor/pen/Igpoe
+	// animated hamburger control
+    Controls.initializeNavControl = () => {
+        $('#nav-toggle').on('click', 'span', (event) => {
+            $(event.target).parents('.controls').toggleClass('active');
+        });
+    };
+})(window, document, window.Controls = window.Controls || {});

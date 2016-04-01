@@ -236,3 +236,50 @@ h2 {
   100% {
     -webkit-transform: rotate(360deg) scale(1.25);
             transform: rotate(360deg) scale(1.25); } }
+
+.controls {
+  position: fixed;
+  top: 0;
+  right: 1rem; }
+  .controls .underlay, .controls .overlay {
+    position: fixed;
+    left: 0;
+    top: 0; }
+  .controls .underlay {
+    background-color: transparent;
+    -webkit-transition: all 2s;
+            transition: all 2s;
+    display: none;
+    height: 100%;
+    width: 100%; }
+  .controls #nav-toggle {
+    cursor: pointer;
+    padding: 10px 35px 16px 0px; }
+    .controls #nav-toggle span, .controls #nav-toggle span:before, .controls #nav-toggle span:after {
+      -webkit-transition: all 500ms ease-in-out;
+              transition: all 500ms ease-in-out;
+      cursor: pointer;
+      border-radius: 1px;
+      height: 5px;
+      width: 35px;
+      background: white;
+      position: absolute;
+      display: block;
+      content: ''; }
+    .controls #nav-toggle span:before {
+      top: -10px; }
+    .controls #nav-toggle span:after {
+      bottom: -10px; }
+  .controls.active .underlay {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.75); }
+  .controls.active #nav-toggle span {
+    background-color: transparent; }
+    .controls.active #nav-toggle span:before {
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg); }
+    .controls.active #nav-toggle span:after {
+      -webkit-transform: rotate(-45deg);
+              transform: rotate(-45deg); }
+    .controls.active #nav-toggle span:before, .controls.active #nav-toggle span:after {
+      top: 0; }

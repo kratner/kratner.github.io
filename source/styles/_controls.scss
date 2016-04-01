@@ -1,0 +1,85 @@
+.controls {
+    position: fixed;
+    top: 0;
+    right: 1rem;
+    .underlay, .overlay {
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+    .underlay {
+      background-color: transparent;
+      transition: all 2s;
+      display: none;
+      height: 100%;
+      width: 100%;
+    }
+    #nav-toggle { 
+      cursor: pointer;
+      padding: 10px 35px 16px 0px;
+      span {
+        &, &:before, &:after {
+          transition: all 500ms ease-in-out;
+          cursor: pointer;
+          border-radius: 1px;
+          height: 5px;
+          width: 35px;
+          background: white;
+          position: absolute;
+          display: block;
+          content: '';
+        }
+        &:before {
+          top: -10px;
+        }
+        &:after {
+          bottom: -10px;
+        }
+      }
+    }
+    &.active {
+      .underlay {
+        display: block;
+        background-color: $overlay_color;
+      }
+      #nav-toggle {
+        span {
+          background-color: transparent;
+          &:before {
+            transform: rotate(45deg);
+          }
+          &:after {
+            transform: rotate(-45deg);
+          }
+          &:before, &:after {
+            top: 0;
+          }
+        }
+      }
+    }
+}
+  // #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+  // }
+
+  // #nav-toggle span:before {
+  //   top: -10px; 
+  // }
+  // #nav-toggle span:after {
+  //   bottom: -10px;
+  // }
+  // #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+  //   transition: all 500ms ease-in-out;
+  // }
+  // #nav-toggle.active span {
+  //   background-color: transparent;
+  // }
+  // #nav-toggle.active span:before, #nav-toggle.active span:after {
+  //   top: 0;
+  // }
+//   #nav-toggle.active span:before {
+//     transform: rotate(45deg);
+//   }
+//   #nav-toggle.active span:after {
+//     transform: rotate(-45deg);
+//   }
+// }

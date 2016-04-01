@@ -18,4 +18,3 @@
     };
     $(document).ready(init);
 })(window, document);
-//# sourceMappingURL=wprest.js.map

@@ -1,9 +1,8 @@
 'use strict';
+/*global Controls*/
 ((window, document) => {
     let init = () => {
-	//alert('doc test ready');
-	// http://keithratner.com/wp-json/posts
-	// http://www.keithratner.com/?wpapi=get_posts&dev=1&id=2063
+        Controls.initializeNavControl();
         let api = {
                 //dataType: 'jsonp',
                 uri: 'http://www.keithratner.com/?wpapi=get_posts&dev=1&id=2063',
