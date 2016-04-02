@@ -73,13 +73,19 @@
 (function (window, document) {
     var init = function init() {
         Controls.initializeNavControl();
-        var api = {
+        var $el = {
+            post: {
+                content: $('.post-content')
+            }
+        },
+            api = {
             uri: 'http://www.keithratner.com/?wpapi=get_posts&dev=1&id=2063',
             root: 'http://www.keithratner.com',
             pageid: '2063'
         },
             renderPost = function renderPost(post) {
-            console.log(post);
+            var content = post.content.rendered;
+            $el.post.content.html(content);
         },
             getPageById = function getPageById(id) {
             var url = api.root + '/wp-json/wp/v2/pages/' + api.pageid;

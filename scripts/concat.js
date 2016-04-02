@@ -73,13 +73,19 @@
 ((window, document) => {
     let init = () => {
         Controls.initializeNavControl();
-        let api = {
+        let $el = {
+                post: {
+                    content: $('.post-content')
+                }
+            },
+            api = {
                 uri: 'http://www.keithratner.com/?wpapi=get_posts&dev=1&id=2063',
                 root: 'http://www.keithratner.com',
                 pageid: '2063'
             },
             renderPost = (post) => {
-                console.log(post);
+                let content = post.content.rendered;
+                $el.post.content.html(content);
             },
             getPageById = id => {
                 let url = api.root + '/wp-json/wp/v2/pages/' + api.pageid;
