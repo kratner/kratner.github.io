@@ -20,6 +20,43 @@
       top: 20%;
       width: 60%;
       height: 60%;
+      .kr-portrait {
+        height: 340px;
+        margin: 1rem;
+      }
+    }
+    @include media(542px) {
+      .overlay {
+        .kr-portrait {
+          height: 280px;
+          margin: 1rem;
+        }
+      } 
+    }
+    @include media(480px) {
+      .overlay {
+        .kr-portrait {
+          height: 240px;
+          margin: 1rem;
+        }
+      } 
+    }
+    @include media(375px) {
+      .overlay {
+        .kr-portrait {
+          height: 220px;
+          margin: 1rem;
+        }
+      } 
+    }
+    @include media(320px) {
+      .overlay {
+        top: 15%;
+        .kr-portrait {
+          height: 180px;
+          margin: 1rem;
+        }
+      }
     }
     #nav-toggle { 
       cursor: pointer;
