@@ -34,6 +34,8 @@ body {
   background-color: transparent;
   color: #fff;
   top: 25%; }
+  body .container-fluid {
+    z-index: 1; }
   body:before {
     -webkit-animation: rotate 720s linear infinite;
             animation: rotate 720s linear infinite;
@@ -69,32 +71,35 @@ h2 {
   letter-spacing: 0.025em;
   font-size: 1.25em; }
 
-.splash h1 {
-  font-size: 4.5em; }
-
-.splash h1, .splash h2 {
-  line-height: 1em;
-  margin: 0;
-  text-transform: uppercase; }
-
-.splash h1, .splash h2, .splash h3 {
-  text-shadow: 1px 1px 2px black; }
-
-.splash a {
-  -webkit-transition: all .5s;
-          transition: all .5s;
-  letter-spacing: 0.25em;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 1.125em;
-  margin-top: 12.5%;
-  line-height: 3em;
-  padding: 0 2em;
-  color: #00FFE0;
-  margin-top: 20vh;
-  text-shadow: 1px 1px 1px black; }
-  .splash a:hover {
-    color: #F7FF08; }
+.splash {
+  -webkit-transition: opacity .35s;
+          transition: opacity .35s;
+  opacity: 0.16; }
+  .splash.active {
+    opacity: 1; }
+  .splash h1 {
+    font-size: 4.5em; }
+  .splash h1, .splash h2 {
+    line-height: 1em;
+    margin: 0;
+    text-transform: uppercase; }
+  .splash h1, .splash h2, .splash h3 {
+    text-shadow: 1px 1px 2px black; }
+  .splash a {
+    -webkit-transition: all .5s;
+            transition: all .5s;
+    letter-spacing: 0.25em;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.125em;
+    margin-top: 12.5%;
+    line-height: 3em;
+    padding: 0 2em;
+    color: #00FFE0;
+    margin-top: 20vh;
+    text-shadow: 1px 1px 1px black; }
+    .splash a:hover {
+      color: #F7FF08; }
 
 /* Media Queries */
 @media (min-width: 640px) {
@@ -124,8 +129,7 @@ h2 {
 
 @media screen and (max-width: 542px) {
   body {
-    /* margin-top: -18em; */
-    margin-top: -40%; }
+    /* margin-top: -18em; */ }
   .splash h3 {
     margin-bottom: 28px; }
   .splash a {
@@ -242,22 +246,53 @@ h2 {
   top: 0;
   right: 1rem; }
   .controls .underlay, .controls .overlay {
-    position: fixed;
-    left: 0;
-    top: 0; }
+    position: fixed; }
   .controls .underlay {
-    background-color: transparent;
-    -webkit-transition: all 2s;
-            transition: all 2s;
-    display: none;
+    -webkit-transition: color 5s;
+            transition: color 5s;
     height: 100%;
-    width: 100%; }
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1; }
+  .controls .overlay {
+    -webkit-transition: opacity .5s;
+            transition: opacity .5s;
+    opacity: 0;
+    left: 20%;
+    top: 20%;
+    width: 60%;
+    height: 60%; }
+    .controls .overlay .kr-portrait {
+      height: 340px;
+      margin: 1rem; }
+  @media screen and (max-width: 542px) {
+    .controls .overlay .kr-portrait {
+      height: 280px;
+      margin: 1rem; } }
+  @media screen and (max-width: 480px) {
+    .controls .overlay .kr-portrait {
+      height: 240px;
+      margin: 1rem; } }
+  @media screen and (max-width: 375px) {
+    .controls .overlay .kr-portrait {
+      height: 220px;
+      margin: 1rem; } }
+  @media screen and (max-width: 320px) {
+    .controls .overlay {
+      top: 15%; }
+      .controls .overlay .kr-portrait {
+        height: 180px;
+        margin: 1rem; } }
   .controls #nav-toggle {
     cursor: pointer;
-    padding: 10px 35px 16px 0px; }
+    padding: 10px 35px 16px 0px;
+    position: fixed;
+    top: 1rem;
+    right: 1rem; }
     .controls #nav-toggle span, .controls #nav-toggle span:before, .controls #nav-toggle span:after {
-      -webkit-transition: all 500ms ease-in-out;
-              transition: all 500ms ease-in-out;
+      -webkit-transition: all .25s ease-in-out;
+              transition: all .25s ease-in-out;
       cursor: pointer;
       border-radius: 1px;
       height: 5px;
@@ -270,16 +305,17 @@ h2 {
       top: -10px; }
     .controls #nav-toggle span:after {
       bottom: -10px; }
-  .controls.active .underlay {
-    display: block;
-    background-color: rgba(0, 0, 0, 0.75); }
-  .controls.active #nav-toggle span {
-    background-color: transparent; }
-    .controls.active #nav-toggle span:before {
-      -webkit-transform: rotate(45deg);
-              transform: rotate(45deg); }
-    .controls.active #nav-toggle span:after {
-      -webkit-transform: rotate(-45deg);
-              transform: rotate(-45deg); }
-    .controls.active #nav-toggle span:before, .controls.active #nav-toggle span:after {
-      top: 0; }
+  .controls.active {
+    z-index: 3; }
+    .controls.active .overlay {
+      opacity: 1; }
+    .controls.active #nav-toggle span {
+      background-color: transparent; }
+      .controls.active #nav-toggle span:before {
+        -webkit-transform: rotate(45deg);
+                transform: rotate(45deg); }
+      .controls.active #nav-toggle span:after {
+        -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg); }
+      .controls.active #nav-toggle span:before, .controls.active #nav-toggle span:after {
+        top: 0; }

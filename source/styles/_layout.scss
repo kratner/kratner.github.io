@@ -10,6 +10,9 @@ html, body {
 }
 
 body {
+	.container-fluid {
+		z-index: 1;
+	}
 	//font: 14px 'Arial', sans-serif; //saucerbb
 	font-family: saucerbb;
     -webkit-font-smoothing: antialiased;
@@ -61,6 +64,11 @@ h2 {
 }
 
 .splash {
+	transition: opacity .35s;
+	opacity: 0.16;
+	&.active {
+		opacity: 1;
+	}
 	h1 {
 		font-size: 4.5em;
 	}
@@ -142,7 +150,7 @@ h2 {
 @include media(542px) {
 	body {
 		/* margin-top: -18em; */
-		margin-top: -40%;
+		// margin-top: -40%;
 	}
 	.splash {
 		h3 {
