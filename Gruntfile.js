@@ -161,8 +161,8 @@ module.exports = function(grunt) {
           files: ['source/**/*.js'],
           tasks: ['concat', 'babel', 'uglify'],
           options: {
-            livereload: true
-            //spawn: false
+            livereload: true,
+            spawn: false
           }
         },
         styles: {

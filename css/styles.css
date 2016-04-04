@@ -110,27 +110,27 @@ h2 {
 @media screen and (max-width: 991px) {
   body {
     margin-top: 0; }
-  .splash a {
-    margin-top: 6vh; } }
+    body .splash a {
+      margin-top: 6vh; } }
 
 @media screen and (max-width: 736px) {
-  .splash a {
-    line-height: 5rem;
-    margin-top: 0; }
-  .splash p {
-    margin: 0; }
-  .header {
-    margin-bottom: 2rem; } }
+  body {
+    margin-top: 12%; }
+    body .splash a {
+      line-height: 5rem;
+      margin-top: 0; }
+    body .splash p {
+      margin: 0; }
+    body .header {
+      margin-bottom: 2rem; } }
 
 @media screen and (max-width: 667px) {
-  .splash p {
-    margin: 0; }
-    .splash p a {
+  body {
+    margin-top: 20%; }
+    body .splash p a {
       margin-top: 0; } }
 
 @media screen and (max-width: 542px) {
-  body {
-    /* margin-top: -18em; */ }
   .splash h3 {
     margin-bottom: 28px; }
   .splash a {
@@ -145,20 +145,22 @@ h2 {
 
 @media screen and (max-width: 480px) {
   body {
-    margin-top: 0; }
-  .splash h3 {
-    margin: 1rem 0; }
-  .splash a {
-    line-height: 2rem;
-    margin-bottom: 1rem; } }
+    margin-top: 20%; }
+    body .splash h3 {
+      margin: 1rem 0; }
+    body .splash a {
+      line-height: 2rem;
+      margin-bottom: 1rem; } }
 
 @media screen and (max-width: 375px) {
-  .splash p {
+  body .splash p {
     margin: 2rem; } }
 
 @media screen and (max-width: 320px) {
-  .splash p {
-    margin: 0 0 1.5rem 0; } }
+  body {
+    margin-top: 22%; }
+    body .splash p {
+      margin: 0 0 1.5rem 0; } }
 
 @-webkit-keyframes rotate {
   0% {
@@ -267,10 +269,23 @@ h2 {
     .controls .overlay .kr-portrait {
       height: 340px;
       margin: 1rem; }
+  @media screen and (max-width: 773px) {
+    .controls .overlay {
+      top: 8%; }
+      .controls .overlay .kr-portrait {
+        height: 220px; } }
+  @media screen and (max-width: 736px) {
+    .controls .overlay {
+      top: 14%; }
+      .controls .overlay .kr-portrait {
+        height: 280px;
+        margin: 1rem; } }
   @media screen and (max-width: 542px) {
-    .controls .overlay .kr-portrait {
-      height: 280px;
-      margin: 1rem; } }
+    .controls .overlay {
+      top: 18%; }
+      .controls .overlay .kr-portrait {
+        height: 280px;
+        margin: 1rem; } }
   @media screen and (max-width: 480px) {
     .controls .overlay .kr-portrait {
       height: 240px;

@@ -25,8 +25,26 @@
         margin: 1rem;
       }
     }
+    @include media(773px) {
+      .overlay {
+        top: 8%;
+        .kr-portrait {
+          height: 220px;
+        }
+      }
+    }
+    @include media(736px) {
+      .overlay {
+        top: 14%;
+        .kr-portrait {
+          height: 280px;
+          margin: 1rem;
+        }
+      } 
+    }
     @include media(542px) {
       .overlay {
+        top: 18%;
         .kr-portrait {
           height: 280px;
           margin: 1rem;
