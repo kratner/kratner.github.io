@@ -117,5 +117,13 @@
             $el.controls.toggleClass('active');
             $el.splash.toggleClass('active');
         });
+        $(document).on('keyup', (evt) => {
+            if (evt.keyCode === 27) {
+                if ($el.controls.hasClass('active')) {
+                    $el.controls.toggleClass('active');
+                    $el.splash.toggleClass('active');
+                }
+            }
+        });
     };
 })(window, document, window.Controls = window.Controls || {});
