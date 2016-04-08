@@ -142,12 +142,22 @@ h2 {
 
 @include media(667px) {
 	body {
-		margin-top: 20%;
+		margin-top: 0;
 		.splash {
 			p {
 				a {
 					margin-top: 0;
 				}
+			}
+		}
+	}
+}
+
+@include media(568px) {
+	body {
+		.splash {
+			a {
+				line-height: 4rem;
 			}
 		}
 	}
@@ -190,6 +200,7 @@ h2 {
 
 @include media(375px) {
 	body {
+		margin-top: 0;
 		.splash {
 			p {
 				margin: 2rem;

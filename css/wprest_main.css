@@ -131,9 +131,13 @@ h2 {
 
 @media screen and (max-width: 667px) {
   body {
-    margin-top: 20%; }
+    margin-top: 0; }
     body .splash p a {
       margin-top: 0; } }
+
+@media screen and (max-width: 568px) {
+  body .splash a {
+    line-height: 4rem; } }
 
 @media screen and (max-width: 542px) {
   .splash h3 {
@@ -158,8 +162,10 @@ h2 {
       margin-bottom: 1rem; } }
 
 @media screen and (max-width: 375px) {
-  body .splash p {
-    margin: 2rem; } }
+  body {
+    margin-top: 0; }
+    body .splash p {
+      margin: 2rem; } }
 
 @media screen and (max-width: 320px) {
   body {

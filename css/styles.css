@@ -126,9 +126,13 @@ h2 {
 
 @media screen and (max-width: 667px) {
   body {
-    margin-top: 20%; }
+    margin-top: 0; }
     body .splash p a {
       margin-top: 0; } }
+
+@media screen and (max-width: 568px) {
+  body .splash a {
+    line-height: 4rem; } }
 
 @media screen and (max-width: 542px) {
   .splash h3 {
@@ -153,8 +157,10 @@ h2 {
       margin-bottom: 1rem; } }
 
 @media screen and (max-width: 375px) {
-  body .splash p {
-    margin: 2rem; } }
+  body {
+    margin-top: 0; }
+    body .splash p {
+      margin: 2rem; } }
 
 @media screen and (max-width: 320px) {
   body {
@@ -276,10 +282,16 @@ h2 {
         height: 220px; } }
   @media screen and (max-width: 736px) {
     .controls .overlay {
-      top: 14%; }
+      top: 8%; }
       .controls .overlay .kr-portrait {
-        height: 280px;
+        height: 220px;
         margin: 1rem; } }
+  @media screen and (max-width: 667px) {
+    .controls .overlay {
+      top: 4%; } }
+  @media screen and (max-width: 568px) {
+    .controls .overlay .kr-portrait {
+      height: 180px; } }
   @media screen and (max-width: 542px) {
     .controls .overlay {
       top: 18%; }
