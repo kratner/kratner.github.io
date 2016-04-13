@@ -30,17 +30,19 @@
                     client.open(method, uri);
                     client.send();
 
-                    client.onload = function() {
-                        if (this.status >= 200 && this.status < 300) {
+                    client.onload = evt => {
+                        let _this = evt.target;
+                        if (_this.status >= 200 && _this.status < 300) {
                             // Performs the function "resolve" when this.status is equal to 2xx
-                            resolve(this.response);
+                            resolve(_this.response);
                         } else {
                             // Performs the function "reject" when this.status is different than 2xx
-                            reject(this.statusText);
+                            reject(_this.statusText);
                         }
                     };
-                    client.onerror = function () {
-                        reject(this.statusText);
+                    client.onerror = evt => {
+                        let _this = evt.target;
+                        reject(_this.statusText);
                     };
                 });
 
@@ -49,18 +51,11 @@
             };
         model.httpRequest = url => {
             return {
-                'get': args => {
-                    return ajax('GET', url, args);
-                },
-                'post': args => {
-                    return ajax('POST', url, args);
-                },
-                'put': args => {
-                    return ajax('PUT', url, args);
-                },
-                'delete': function _delete(args) {
-                    return ajax('DELETE', url, args);
-                }
+                'get': args => ajax('GET', url, args),
+                'post': args => ajax('POST', url, args),
+                'put': args => ajax('PUT', url, args),
+                // 'delete': function _delete(args) {
+                'delete': args=> ajax('DELETE', url, args)
             };
         };
         return model;

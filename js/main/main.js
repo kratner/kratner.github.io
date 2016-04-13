@@ -30,17 +30,19 @@
                 client.open(method, uri);
                 client.send();
 
-                client.onload = function () {
-                    if (this.status >= 200 && this.status < 300) {
+                client.onload = function (evt) {
+                    var _this = evt.target;
+                    if (_this.status >= 200 && _this.status < 300) {
                         // Performs the function "resolve" when this.status is equal to 2xx
-                        resolve(this.response);
+                        resolve(_this.response);
                     } else {
                         // Performs the function "reject" when this.status is different than 2xx
-                        reject(this.statusText);
+                        reject(_this.statusText);
                     }
                 };
-                client.onerror = function () {
-                    reject(this.statusText);
+                client.onerror = function (evt) {
+                    var _this = evt.target;
+                    reject(_this.statusText);
                 };
             });
 
@@ -58,6 +60,7 @@
                 'put': function put(args) {
                     return ajax('PUT', url, args);
                 },
+                // 'delete': function _delete(args) {
                 'delete': function _delete(args) {
                     return ajax('DELETE', url, args);
                 }
