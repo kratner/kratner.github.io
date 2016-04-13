@@ -81,14 +81,18 @@
             api = {
                 uri: 'http://www.keithratner.com/?wpapi=get_posts&dev=1&id=2063',
                 root: 'http://www.keithratner.com',
-                pageid: '2063'
+                json: '/wp-json/wp/v2/',
+                pages: 'pages/',
+                posts: 'posts/',
+                pageid: '2063',
+                postid: '2079'
             },
             renderPost = (post) => {
                 let content = post.content.rendered;
                 $el.post.content.html(content);
             },
             getPageById = id => {
-                let url = api.root + '/wp-json/wp/v2/pages/' + api.pageid;
+                let url = api.root + api.json + api.posts + api.postid;
                 $.ajax({
                     crossDomain: true,
                     type: 'GET',
