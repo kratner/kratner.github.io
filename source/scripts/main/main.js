@@ -1,5 +1,5 @@
+/*global Controls, Core*/
 'use strict';
-/*global Controls*/
 ((window, document) => {
     let init = () => {
         Controls.initializeNavControl();
@@ -17,21 +17,17 @@
                 pageid: '2063',
                 postid: '2079'
             },
-            renderPost = (post) => {
-                let content = post.content.rendered;
+            model = new Core.Model(),
+            renderPost = (data) => {
+                let post = JSON.parse(data),
+                    content = post.content.rendered;
                 $el.post.content.html(content);
             },
             getPageById = id => {
                 let url = api.root + api.json + api.posts + api.postid;
-                $.ajax({
-                    crossDomain: true,
-                    type: 'GET',
-                    //async: false,
-                    url: url,
-                    dataType: 'json'
-                }).then((post, textStatus, jqXHR) => {
-                    renderPost(post);
-                });
+                model.httpRequest(url)
+                    .get()
+                    .then(renderPost);
             };
         getPageById(2063);
     };

@@ -1,7 +1,6 @@
 'use strict';
 
 (function (window, document, Core) {
-
     Core.Model = function () {
         var model = {},
             ajax = function ajax(method, url, args) {
@@ -9,12 +8,11 @@
 
             // Creating a promise
             var promise = new Promise(function (resolve, reject) {
-
                 // Instantiates the XMLHttpRequest
                 var client = new XMLHttpRequest(),
                     uri = url,
                     argcount = 0,
-                    key;
+                    key = void 0;
                 //key = undefined;
 
                 if (args && (method === 'POST' || method === 'PUT')) {
@@ -68,8 +66,8 @@
         return model;
     };
 })(window, document, window.Core = window.Core || {});
+/*global Controls, Core*/
 'use strict';
-/*global Controls*/
 (function (window, document) {
     var init = function init() {
         Controls.initializeNavControl();
@@ -87,21 +85,15 @@
             pageid: '2063',
             postid: '2079'
         },
-            renderPost = function renderPost(post) {
-            var content = post.content.rendered;
+            model = new Core.Model(),
+            renderPost = function renderPost(data) {
+            var post = JSON.parse(data),
+                content = post.content.rendered;
             $el.post.content.html(content);
         },
             getPageById = function getPageById(id) {
             var url = api.root + api.json + api.posts + api.postid;
-            $.ajax({
-                crossDomain: true,
-                type: 'GET',
-                //async: false,
-                url: url,
-                dataType: 'json'
-            }).then(function (post, textStatus, jqXHR) {
-                renderPost(post);
-            });
+            model.httpRequest(url).get().then(renderPost);
         };
         getPageById(2063);
     };

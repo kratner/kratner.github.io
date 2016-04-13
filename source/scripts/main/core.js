@@ -1,17 +1,15 @@
 'use strict';
 
-(function (window, document, Core) {
-
-    Core.Model = function () {
-        var model = {},
-            ajax = function ajax(method, url, args) {
+((window, document, Core) => {
+    Core.Model = () => {
+        let model = {},
+            ajax = (method, url, args) => {
             // private function for ajax call
 
             // Creating a promise
-                var promise = new Promise(function (resolve, reject) {
-
+                let promise = new Promise((resolve, reject) => {
                 // Instantiates the XMLHttpRequest
-                    var client = new XMLHttpRequest(),
+                    let client = new XMLHttpRequest(),
                         uri = url,
                         argcount = 0,
                         key;
@@ -32,7 +30,7 @@
                     client.open(method, uri);
                     client.send();
 
-                    client.onload = function () {
+                    client.onload = function() {
                         if (this.status >= 200 && this.status < 300) {
                             // Performs the function "resolve" when this.status is equal to 2xx
                             resolve(this.response);
@@ -49,15 +47,15 @@
                 // Return the promise
                 return promise;
             };
-        model.httpRequest = function (url) {
+        model.httpRequest = url => {
             return {
-                'get': function get(args) {
+                'get': args => {
                     return ajax('GET', url, args);
                 },
-                'post': function post(args) {
+                'post': args => {
                     return ajax('POST', url, args);
                 },
-                'put': function put(args) {
+                'put': args => {
                     return ajax('PUT', url, args);
                 },
                 'delete': function _delete(args) {
