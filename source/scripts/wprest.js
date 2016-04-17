@@ -1,7 +1,6 @@
 /*global $*/
 'use strict';
-(function(window, document) {
-    'use strict';
+((window, document) => {
     let init = () => {
         // stored elements
         let $el = {
@@ -10,7 +9,7 @@
             }
         };
 
-        $el.footer.copyright.html('&copy;' + (function(){return new Date();})().getFullYear());
+        $el.footer.copyright.html('&copy;' + (() => new Date())().getFullYear());
     };
     $(document).ready(init);
 })(window, document);

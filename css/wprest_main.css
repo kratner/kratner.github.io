@@ -267,8 +267,6 @@ h2 {
       padding: 1rem;
       color: #00FFE0; }
   .wp-container .navigation {
-    background: -webkit-linear-gradient(left, rgba(0, 255, 224, 0.5) 0%, rgba(0, 255, 224, 0) 50%, rgba(0, 255, 224, 0.5) 100%);
-    background: linear-gradient(to right, rgba(0, 255, 224, 0.5) 0%, rgba(0, 255, 224, 0) 50%, rgba(0, 255, 224, 0.5) 100%);
     position: fixed;
     top: 0;
     left: 0;
@@ -281,8 +279,6 @@ h2 {
     .wp-container .navigation--link {
       -webkit-transition: all .5s;
               transition: all .5s; }
-      .wp-container .navigation--link:hover {
-        background-color: #00FFE0; }
       .wp-container .navigation--link:focus, .wp-container .navigation--link:hover  {
         text-decoration: none; }
       .wp-container .navigation--link a {
@@ -290,4 +286,4 @@ h2 {
         padding: 3rem;
         text-decoration: none; }
         .wp-container .navigation--link a:hover {
-          color: #000000; }
+          color: #F7FF08; }
