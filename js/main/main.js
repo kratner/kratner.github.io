@@ -30,19 +30,17 @@
                 client.open(method, uri);
                 client.send();
 
-                client.onload = function (evt) {
-                    var _this = evt.target;
-                    if (_this.status >= 200 && _this.status < 300) {
+                client.onload = function () {
+                    if (client.status >= 200 && client.status < 300) {
                         // Performs the function "resolve" when this.status is equal to 2xx
-                        resolve(_this.response);
+                        resolve(client.response);
                     } else {
                         // Performs the function "reject" when this.status is different than 2xx
-                        reject(_this.statusText);
+                        reject(client.statusText);
                     }
                 };
-                client.onerror = function (evt) {
-                    var _this = evt.target;
-                    reject(_this.statusText);
+                client.onerror = function () {
+                    reject(client.statusText);
                 };
             });
 
