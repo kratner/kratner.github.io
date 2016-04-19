@@ -1,7 +1,10 @@
-@import 'variables',
+@import 'normalize',
+		'base',
+		'variables',
 		'colors',
         'mediaqueries',
         'fonts',
+        'typography',
         'layout',
         'animation',
         'controls';

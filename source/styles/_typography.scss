@@ -1,0 +1,20 @@
+.splash {
+	//font-family: saucerbb;
+	font-family: $splash-body-font-family;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	.site-brand {
+		h1, h2, h3, h4, h5, h6 {
+			font-family: $site-brand-font-family;
+		}
+		h3 {
+		font-size: 8rem;
+		}
+		h4 {
+			font-size: 3rem;
+		}
+	}
+}
+.overlay {
+	font-family: $overlay-body-font-family;
+}

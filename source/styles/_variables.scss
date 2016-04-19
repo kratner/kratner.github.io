@@ -10,3 +10,7 @@ $screen-large-min: 960px !default;
 $screen-small-max: ($screen-medium-min - 1) !default;
 $screen-medium-max: ($screen-large-min - 1) !default;
 $screen-large-max: ($screen-large-min - 1) !default;
+
+$site-brand-font-family: 'ledlightregular';
+$splash-body-font-family: 'ledlightregular';
+$overlay-body-font-family: 'saucerbb';
