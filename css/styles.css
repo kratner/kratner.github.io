@@ -416,7 +416,8 @@ input, textarea {
   .splash .site-brand h1, .splash .site-brand h2, .splash .site-brand h3, .splash .site-brand h4, .splash .site-brand h5, .splash .site-brand h6 {
     font-family: "ledlightregular"; }
   .splash .site-brand h3 {
-    font-size: 8rem; }
+    font-size: 8rem;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; }
   .splash .site-brand h4 {
     font-size: 3rem; }
 
