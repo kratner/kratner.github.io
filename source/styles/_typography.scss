@@ -9,10 +9,17 @@
 		}
 		h3 {
 			font-size: 8rem;
-			text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
+			//text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
 		}
 		h4 {
 			font-size: 3rem;
+		}
+		a {
+			text-shadow: none;
+			transition: text-shadow 2s;
+			&:hover {
+				text-shadow: $glow-effect;
+			}
 		}
 	}
 }

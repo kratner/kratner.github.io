@@ -93,6 +93,7 @@ h2 {
 		text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 		&:hover {
 			color: $swatch-2;
+			text-shadow: $glow-effect;
 		}
 	}
 }

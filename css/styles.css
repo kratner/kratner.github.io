@@ -416,10 +416,15 @@ input, textarea {
   .splash .site-brand h1, .splash .site-brand h2, .splash .site-brand h3, .splash .site-brand h4, .splash .site-brand h5, .splash .site-brand h6 {
     font-family: "ledlightregular"; }
   .splash .site-brand h3 {
-    font-size: 8rem;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; }
+    font-size: 8rem; }
   .splash .site-brand h4 {
     font-size: 3rem; }
+  .splash .site-brand a {
+    text-shadow: none;
+    -webkit-transition: text-shadow 2s;
+            transition: text-shadow 2s; }
+    .splash .site-brand a:hover {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; }
 
 .overlay {
   font-family: "saucerbb"; }
@@ -508,7 +513,8 @@ h2 {
     margin-top: 20vh;
     text-shadow: 1px 1px 1px black; }
     .splash a:hover {
-      color: #F7FF08; }
+      color: #F7FF08;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; }
 
 /* Media Queries */
 @media (min-width: 640px) {

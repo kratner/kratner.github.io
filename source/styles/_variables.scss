@@ -14,3 +14,5 @@ $screen-large-max: ($screen-large-min - 1) !default;
 $site-brand-font-family: 'ledlightregular';
 $splash-body-font-family: 'ledlightregular';
 $overlay-body-font-family: 'saucerbb';
+
+$glow-effect: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
