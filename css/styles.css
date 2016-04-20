@@ -416,9 +416,13 @@ input, textarea {
   .splash .site-brand h1, .splash .site-brand h2, .splash .site-brand h3, .splash .site-brand h4, .splash .site-brand h5, .splash .site-brand h6 {
     font-family: "ledlightregular"; }
   .splash .site-brand h3 {
-    font-size: 8rem; }
+    font-size: 8rem;
+    -webkit-animation: glowpulsate 10s infinite;
+            animation: glowpulsate 10s infinite; }
   .splash .site-brand h4 {
-    font-size: 3rem; }
+    font-size: 3rem;
+    -webkit-animation: glowpulsate 20s infinite;
+            animation: glowpulsate 20s infinite; }
   .splash .site-brand a {
     text-shadow: none;
     -webkit-transition: text-shadow 2s;
@@ -663,6 +667,30 @@ h2 {
   100% {
     -webkit-transform: rotate(360deg) scale(1.25);
             transform: rotate(360deg) scale(1.25); } }
+
+@-webkit-keyframes glowpulsate {
+  0% {
+    text-shadow: none; }
+  50% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; } }
+
+@keyframes glowpulsate {
+  0% {
+    text-shadow: none; }
+  50% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; } }
+
+@-webkit-keyframes glowpulsate-rev {
+  0% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; }
+  50% {
+    text-shadow: 0; } }
+
+@keyframes glowpulsate-rev {
+  0% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; }
+  50% {
+    text-shadow: 0; } }
 
 .controls {
   position: fixed;
