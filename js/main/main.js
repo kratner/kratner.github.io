@@ -108,9 +108,10 @@
     Controls.initializeNavControl = function () {
         var $el = {
             controls: $('.controls'),
-            splash: $('.splash')
+            splash: $('.splash'),
+            navToggle: $('.nav-toggle')
         };
-        $('#nav-toggle').on('click', function () {
+        $el.navToggle.on('click', function () {
             $el.controls.toggleClass('active');
             $el.splash.toggleClass('active');
         });

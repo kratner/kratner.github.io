@@ -27,4 +27,8 @@
 }
 .overlay {
 	font-family: $overlay-body-font-family;
+	letter-spacing: .2em;
+	p {
+		margin-bottom: .5em;
+	}
 }
