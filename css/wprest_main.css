@@ -294,6 +294,46 @@ h2 {
   50% {
     text-shadow: 0; } }
 
+@-webkit-keyframes wipeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+            transform: translateY(-40px); }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1; } }
+
+@keyframes wipeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+            transform: translateY(-40px); }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1; } }
+
+@-webkit-keyframes wipeOut {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+            transform: translateY(-40px); } }
+
+@keyframes wipeOut {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+            transform: translateY(-40px); } }
+
 .wp-container {
   font-size: 2rem;
   font-family: saucerbb; }
