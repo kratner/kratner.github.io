@@ -1,11 +1,17 @@
 /*global Controls, Core*/
 'use strict';
-((window, document) => {
+((window, document, Controls) => {
     let init = () => {
         Controls.initializeNavControl();
         let $el = {
+                footer: {
+                    copyright: $('.copyright')
+                },
                 post: {
                     content: $('.post-content')
+                },
+                nav: {
+                    top: $('.controls .site-brand ul')
                 }
             },
             api = {
@@ -29,7 +35,8 @@
                     .get()
                     .then(renderPost);
             };
+        $el.footer.copyright.html('&copy;' + (() => new Date())().getFullYear());
         getPageById(2063);
     };
     $(document).ready(init);
-})(window, document);
+})(window, document, window.Controls = window.Controls || {});

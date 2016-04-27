@@ -61,12 +61,18 @@
 })(window, document, window.Core = window.Core || {});
 /*global Controls, Core*/
 'use strict';
-((window, document) => {
+((window, document, Controls) => {
     let init = () => {
         Controls.initializeNavControl();
         let $el = {
+                footer: {
+                    copyright: $('.copyright')
+                },
                 post: {
                     content: $('.post-content')
+                },
+                nav: {
+                    top: $('.controls .site-brand ul')
                 }
             },
             api = {
@@ -90,10 +96,11 @@
                     .get()
                     .then(renderPost);
             };
+        $el.footer.copyright.html('&copy;' + (() => new Date())().getFullYear());
         getPageById(2063);
     };
     $(document).ready(init);
-})(window, document);
+})(window, document, window.Controls = window.Controls || {});
 'use strict';
 
 ((window, document, Controls) => {
@@ -103,11 +110,19 @@
         let $el = {
             controls: $('.controls'),
             splash: $('.splash'),
-            navToggle: $('.nav-toggle')
+            navToggle: $('.nav-toggle'),
+            nav: {
+                top: $('.controls .site-brand ul')
+            }
         };
         $el.navToggle.on('click', () => {
             $el.controls.toggleClass('active');
             $el.splash.toggleClass('active');
+            if ($el.nav.top.hasClass('active')) {
+                $el.nav.top.removeClass('active').addClass('inactive');
+            } else {
+                $el.nav.top.addClass('active').removeClass('inactive');
+            }
         });
         $(document).on('keyup', (evt) => {
             if (evt.keyCode === 27) {
@@ -119,3 +134,5 @@
         });
     };
 })(window, document, window.Controls = window.Controls || {});
+
+

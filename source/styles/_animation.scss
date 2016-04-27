@@ -30,3 +30,23 @@
 		text-shadow: 0;
 	}	
 }
+@keyframes wipeIn {
+	0% {
+		opacity: 0;
+		transform: translateY(-40px);
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+@keyframes wipeOut {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-40px);
+	}
+}

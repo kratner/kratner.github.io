@@ -25,10 +25,43 @@
 		}
 	}
 }
+.controls {
+	.site-brand {
+		font-family: $site-brand-font-family;
+	    -webkit-font-smoothing: antialiased;
+	    -moz-osx-font-smoothing: grayscale;
+        font-size: 1.2em;
+		letter-spacing: .2em;
+		ul {
+			top: .5em;
+		}
+	    a {
+	    	color: $link_color;
+	    	&:hover {
+	    		text-decoration: none;
+	    		text-shadow: $glow-effect;
+	    	}
+	    }
+	}
+}
 .overlay {
 	font-family: $overlay-body-font-family;
 	letter-spacing: .2em;
 	p {
 		margin-bottom: .5em;
+	}
+}
+
+.footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: right;
+	font-family: $overlay-body-font-family;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	.copyright {
+		padding: 1rem;
+		color: $link_color;
 	}
 }

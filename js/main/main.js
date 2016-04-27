@@ -69,12 +69,18 @@
 })(window, document, window.Core = window.Core || {});
 /*global Controls, Core*/
 'use strict';
-(function (window, document) {
+(function (window, document, Controls) {
     var init = function init() {
         Controls.initializeNavControl();
         var $el = {
+            footer: {
+                copyright: $('.copyright')
+            },
             post: {
                 content: $('.post-content')
+            },
+            nav: {
+                top: $('.controls .site-brand ul')
             }
         },
             api = {
@@ -96,10 +102,13 @@
             var url = api.root + api.json + api.posts + api.postid;
             model.httpRequest(url).get().then(renderPost);
         };
+        $el.footer.copyright.html('&copy;' + function () {
+            return new Date();
+        }().getFullYear());
         getPageById(2063);
     };
     $(document).ready(init);
-})(window, document);
+})(window, document, window.Controls = window.Controls || {});
 'use strict';
 
 (function (window, document, Controls) {
@@ -109,11 +118,19 @@
         var $el = {
             controls: $('.controls'),
             splash: $('.splash'),
-            navToggle: $('.nav-toggle')
+            navToggle: $('.nav-toggle'),
+            nav: {
+                top: $('.controls .site-brand ul')
+            }
         };
         $el.navToggle.on('click', function () {
             $el.controls.toggleClass('active');
             $el.splash.toggleClass('active');
+            if ($el.nav.top.hasClass('active')) {
+                $el.nav.top.removeClass('active').addClass('inactive');
+            } else {
+                $el.nav.top.addClass('active').removeClass('inactive');
+            }
         });
         $(document).on('keyup', function (evt) {
             if (evt.keyCode === 27) {

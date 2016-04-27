@@ -134,4 +134,22 @@
         }
       }
     }
+    ul {
+      opacity: 0;
+      transform: translateY(-40px);
+      position: fixed;
+      right: 3em;
+      top: 1em;
+      width: 85%;
+      &.active {
+        animation: wipeIn .4s forwards;
+      }
+      &.inactive {
+        animation: wipeOut .4s forwards;
+      }
+      li {
+        display: inline;
+        margin: 0 3rem;
+      }
+    }
 }
