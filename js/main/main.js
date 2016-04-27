@@ -126,11 +126,11 @@
         $el.navToggle.on('click', function () {
             $el.controls.toggleClass('active');
             $el.splash.toggleClass('active');
-            if ($el.nav.top.hasClass('active')) {
-                $el.nav.top.removeClass('active').addClass('inactive');
-            } else {
-                $el.nav.top.addClass('active').removeClass('inactive');
-            }
+            // if ($el.nav.top.hasClass('active')) {
+            //     $el.nav.top.removeClass('active').addClass('inactive');
+            // } else {
+            //     $el.nav.top.addClass('active').removeClass('inactive');
+            // }
         });
         $(document).on('keyup', function (evt) {
             if (evt.keyCode === 27) {

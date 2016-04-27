@@ -870,9 +870,8 @@ h2 {
     -webkit-transform: translateY(-40px);
             transform: translateY(-40px);
     position: fixed;
-    right: 3em;
-    top: 1em;
-    width: 85%; }
+    left: 0;
+    top: 1em; }
     .controls ul.active {
       -webkit-animation: wipeIn .4s forwards;
               animation: wipeIn .4s forwards; }
