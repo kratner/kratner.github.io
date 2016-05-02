@@ -446,6 +446,8 @@ input, textarea {
   .controls .site-brand ul {
     top: .5em; }
   .controls .site-brand a {
+    -webkit-animation: glowpulsate 10s infinite;
+            animation: glowpulsate 10s infinite;
     color: #00FFE0; }
     .controls .site-brand a:hover {
       text-decoration: none;
@@ -576,7 +578,10 @@ h2 {
     body .splash p {
       margin: 0; }
     body .header {
-      margin-bottom: 2rem; } }
+      margin-bottom: 2rem;
+      position: relative;
+      right: 0;
+      top: 80px; } }
 
 @media screen and (max-width: 667px) {
   body {
@@ -881,3 +886,7 @@ h2 {
     .controls ul li {
       display: inline;
       margin: 0 3rem; }
+      @media screen and (max-width: 767px) {
+        .controls ul li {
+          display: block;
+          text-align: left; } }

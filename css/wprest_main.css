@@ -142,7 +142,10 @@ h2 {
     body .splash p {
       margin: 0; }
     body .header {
-      margin-bottom: 2rem; } }
+      margin-bottom: 2rem;
+      position: relative;
+      right: 0;
+      top: 80px; } }
 
 @media screen and (max-width: 667px) {
   body {

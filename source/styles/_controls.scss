@@ -150,6 +150,10 @@
       li {
         display: inline;
         margin: 0 3rem;
+        @include media(small-only) {
+          display: block;
+          text-align: left;
+        }
       }
     }
 }

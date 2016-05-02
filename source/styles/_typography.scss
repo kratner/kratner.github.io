@@ -36,6 +36,7 @@
 			top: .5em;
 		}
 	    a {
+	    	animation: glowpulsate 10s infinite;
 	    	color: $link_color;
 	    	&:hover {
 	    		text-decoration: none;
