@@ -40,7 +40,7 @@ body {
 }
 @include media-height(640px) {
 	body {
-		top: 5%;
+		top: 50%;
 		&:before {
 			margin-top: 0;
 		}

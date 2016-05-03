@@ -75,7 +75,7 @@ body {
 
 @media screen and (max-height: 640px) {
   body {
-    top: 5%; }
+    top: 50%; }
     body:before {
       margin-top: 0; } }
 
