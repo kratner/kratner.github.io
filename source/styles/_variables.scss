@@ -16,4 +16,15 @@ $splash-body-font-family: 'ledlightregular';
 // $overlay-body-font-family: 'saucerbb';
 $overlay-body-font-family: 'exo_2.0extra_light';
 
-$glow-effect: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
+// Glow colors
+$glow_green: #49ff18;
+$glow_red: #ff0000;
+$glow_white: #ffffff;
+
+$glow_effect_color_source: $glow_white;
+$glow_effect_color_destination: $glow_red;
+
+
+// $glow-effect: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
+$glow-effect: 0 0 5px $glow_effect_color_source, 0 0 10px $glow_effect_color_source, 0 0 15px $glow_effect_color_source, 0 0 20px $glow_effect_color_destination, 0 0 30px $glow_effect_color_destination, 0 0 40px $glow_effect_color_destination, 0 0 55px $glow_effect_color_destination, 0 0 75px $glow_effect_color_destination;
+
