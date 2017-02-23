@@ -94,6 +94,7 @@
       position: fixed;
       top: 1rem;
       right: 1rem;
+      z-index: 9;
       span {
         &, &:before, &:after {
           transition: all .25s ease-in-out;

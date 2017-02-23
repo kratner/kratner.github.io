@@ -840,7 +840,8 @@ h2 {
     padding: 10px 35px 16px 0px;
     position: fixed;
     top: 1rem;
-    right: 1rem; }
+    right: 1rem;
+    z-index: 9; }
     .controls .nav-toggle span, .controls .nav-toggle span:before, .controls .nav-toggle span:after {
       -webkit-transition: all .25s ease-in-out;
               transition: all .25s ease-in-out;
