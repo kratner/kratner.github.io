@@ -627,94 +627,28 @@ h2 {
     body .splash p {
       margin: 0 0 1.5rem 0; } }
 
-@-webkit-keyframes rotate {
-  0% {
-    -webkit-transform: rotate(0deg) scale(1.25);
-            transform: rotate(0deg) scale(1.25); }
-  8.333% {
-    -webkit-transform: rotate(30deg) scale(1.5);
-            transform: rotate(30deg) scale(1.5); }
-  16.667% {
-    -webkit-transform: rotate(60deg) scale(1.25);
-            transform: rotate(60deg) scale(1.25); }
-  25% {
-    -webkit-transform: rotate(90deg) scale(1.5);
-            transform: rotate(90deg) scale(1.5); }
-  33.333% {
-    -webkit-transform: rotate(120deg) scale(1.25);
-            transform: rotate(120deg) scale(1.25); }
-  41.667% {
-    -webkit-transform: rotate(150deg) scale(1.5);
-            transform: rotate(150deg) scale(1.5); }
-  50% {
-    -webkit-transform: rotate(180deg) scale(1.25);
-            transform: rotate(180deg) scale(1.25); }
-  58.333% {
-    -webkit-transform: rotate(210deg) scale(1.5);
-            transform: rotate(210deg) scale(1.5); }
-  66.667% {
-    -webkit-transform: rotate(240deg) scale(1.25);
-            transform: rotate(240deg) scale(1.25); }
-  75% {
-    -webkit-transform: rotate(270deg) scale(1.5);
-            transform: rotate(270deg) scale(1.5); }
-  83.333% {
-    -webkit-transform: rotate(300deg) scale(1.25);
-            transform: rotate(300deg) scale(1.25); }
-  91.667% {
-    -webkit-transform: rotate(330deg) scale(1.5);
-            transform: rotate(330deg) scale(1.5); }
-  100% {
-    -webkit-transform: rotate(360deg) scale(1.25);
-            transform: rotate(360deg) scale(1.25); } }
-
+/*
 @keyframes rotate {
-  0% {
-    -webkit-transform: rotate(0deg) scale(1.25);
-            transform: rotate(0deg) scale(1.25); }
-  8.333% {
-    -webkit-transform: rotate(30deg) scale(1.5);
-            transform: rotate(30deg) scale(1.5); }
-  16.667% {
-    -webkit-transform: rotate(60deg) scale(1.25);
-            transform: rotate(60deg) scale(1.25); }
-  25% {
-    -webkit-transform: rotate(90deg) scale(1.5);
-            transform: rotate(90deg) scale(1.5); }
-  33.333% {
-    -webkit-transform: rotate(120deg) scale(1.25);
-            transform: rotate(120deg) scale(1.25); }
-  41.667% {
-    -webkit-transform: rotate(150deg) scale(1.5);
-            transform: rotate(150deg) scale(1.5); }
-  50% {
-    -webkit-transform: rotate(180deg) scale(1.25);
-            transform: rotate(180deg) scale(1.25); }
-  58.333% {
-    -webkit-transform: rotate(210deg) scale(1.5);
-            transform: rotate(210deg) scale(1.5); }
-  66.667% {
-    -webkit-transform: rotate(240deg) scale(1.25);
-            transform: rotate(240deg) scale(1.25); }
-  75% {
-    -webkit-transform: rotate(270deg) scale(1.5);
-            transform: rotate(270deg) scale(1.5); }
-  83.333% {
-    -webkit-transform: rotate(300deg) scale(1.25);
-            transform: rotate(300deg) scale(1.25); }
-  91.667% {
-    -webkit-transform: rotate(330deg) scale(1.5);
-            transform: rotate(330deg) scale(1.5); }
-  100% {
-    -webkit-transform: rotate(360deg) scale(1.25);
-            transform: rotate(360deg) scale(1.25); } }
-
+	0% { transform: rotate(0deg) scale(1.25); }
+	8.333% { transform: rotate(30deg) scale(1.50); }
+	16.667% { transform: rotate(60deg) scale(1.25); }
+	25% { transform: rotate(90deg) scale(1.50); }
+	33.333% { transform: rotate(120deg) scale(1.25); }
+	41.667% { transform: rotate(150deg) scale(1.50); }
+	50% { transform: rotate(180deg) scale(1.25); }
+	58.333% { transform: rotate(210deg) scale(1.50); }
+	66.667% { transform: rotate(240deg) scale(1.25); }
+	75% { transform: rotate(270deg) scale(1.50); }
+	83.333% { transform: rotate(300deg) scale(1.25); }
+	91.667% { transform: rotate(330deg) scale(1.50); }
+	100% { transform: rotate(360deg) scale(1.25); }
+}
+*/
 @-webkit-keyframes glowpulsate {
   0% {
     text-shadow: none; }
   50% {
     text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 15px #0000ff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; } }
-
 @keyframes glowpulsate {
   0% {
     text-shadow: none; }
