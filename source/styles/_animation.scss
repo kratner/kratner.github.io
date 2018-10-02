@@ -21,12 +21,12 @@
 		text-shadow: none;
 	}	
 	50% {
-		text-shadow: $glow-effect;
+		//text-shadow: $glow-effect;
 	}	
 }
 @keyframes glowpulsate-rev {
 	0% {
-		text-shadow: $glow-effect;
+		//text-shadow: $glow-effect;
 	}	
 	50% {
 		text-shadow: 0;
