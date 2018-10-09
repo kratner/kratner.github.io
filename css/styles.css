@@ -424,16 +424,13 @@ input, textarea {
     font-family: "ledlightregular"; }
   .splash .site-brand h3 {
     font-size: 8rem;
-    -webkit-animation: glowpulsate 5s infinite;
-            animation: glowpulsate 5s infinite; }
+    animation: glowpulsate 5s infinite; }
   .splash .site-brand h4 {
     font-size: 3rem;
-    -webkit-animation: glowpulsate 20s infinite;
-            animation: glowpulsate 20s infinite; }
+    animation: glowpulsate 20s infinite; }
   .splash .site-brand a {
     text-shadow: none;
-    -webkit-transition: text-shadow 2s;
-            transition: text-shadow 2s; }
+    transition: text-shadow 2s; }
     .splash .site-brand a:hover {
       text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 15px #0000ff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; }
 
@@ -446,8 +443,7 @@ input, textarea {
   .controls .site-brand ul {
     top: .5em; }
   .controls .site-brand a {
-    -webkit-animation: glowpulsate 10s infinite;
-            animation: glowpulsate 10s infinite;
+    animation: glowpulsate 10s infinite;
     color: #00FFE0; }
     .controls .site-brand a:hover {
       text-decoration: none;
@@ -481,8 +477,7 @@ html, body {
   margin: 0; }
 
 body {
-  -webkit-transition: all .3s ease-in-out;
-          transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
   text-align: center;
   position: absolute;
   width: 100%;
@@ -493,11 +488,9 @@ body {
     position: relative;
     z-index: 1; }
   body:before {
-    -webkit-animation: rotate 720s linear infinite;
-            animation: rotate 720s linear infinite;
+    animation: rotate 720s linear infinite;
     background: url(../img/stars3.jpg);
-    -webkit-transition: opacity 6s ease-in-out;
-            transition: opacity 6s ease-in-out;
+    transition: opacity 6s ease-in-out;
     margin-left: -100%;
     margin-top: -100%;
     position: fixed;
@@ -516,8 +509,7 @@ body {
       margin-top: 0; } }
 
 h1, h2 {
-  -webkit-transition: opacity .9s ease-in-out;
-          transition: opacity .9s ease-in-out; }
+  transition: opacity .9s ease-in-out; }
 
 h1 {
   letter-spacing: -0.025em;
@@ -528,8 +520,7 @@ h2 {
   font-size: 1.25em; }
 
 .splash {
-  -webkit-transition: opacity .35s;
-          transition: opacity .35s;
+  transition: opacity .35s;
   opacity: 0.16; }
   .splash.active {
     opacity: 1; }
@@ -542,8 +533,7 @@ h2 {
   .splash h1, .splash h2, .splash h3 {
     text-shadow: 1px 1px 2px black; }
   .splash a {
-    -webkit-transition: all .5s;
-            transition: all .5s;
+    transition: all .5s;
     letter-spacing: 0.25em;
     text-decoration: none;
     display: inline-block;
@@ -644,64 +634,31 @@ h2 {
 	100% { transform: rotate(360deg) scale(1.25); }
 }
 */
-@-webkit-keyframes glowpulsate {
-  0% {
-    text-shadow: none; }
-  50% { } }
 @keyframes glowpulsate {
   0% {
     text-shadow: none; }
   50% { } }
-
-@-webkit-keyframes glowpulsate-rev {
-  0% { }
-  50% {
-    text-shadow: 0; } }
 
 @keyframes glowpulsate-rev {
   0% { }
   50% {
     text-shadow: 0; } }
 
-@-webkit-keyframes wipeIn {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(-40px);
-            transform: translateY(-40px); }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 1; } }
-
 @keyframes wipeIn {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(-40px);
-            transform: translateY(-40px); }
+    transform: translateY(-40px); }
   100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
     opacity: 1; } }
-
-@-webkit-keyframes wipeOut {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 1; }
-  100% {
-    opacity: 0;
-    -webkit-transform: translateY(-40px);
-            transform: translateY(-40px); } }
 
 @keyframes wipeOut {
   0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
     opacity: 1; }
   100% {
     opacity: 0;
-    -webkit-transform: translateY(-40px);
-            transform: translateY(-40px); } }
+    transform: translateY(-40px); } }
 
 .controls {
   position: fixed;
@@ -710,16 +667,14 @@ h2 {
   .controls .underlay, .controls .overlay {
     position: fixed; }
   .controls .underlay {
-    -webkit-transition: color 5s;
-            transition: color 5s;
+    transition: color 5s;
     height: 100%;
     width: 100%;
     left: 0;
     top: 0;
     z-index: -1; }
   .controls .overlay {
-    -webkit-transition: opacity .5s;
-            transition: opacity .5s;
+    transition: opacity .5s;
     opacity: 0;
     left: 20%;
     top: 20%;
@@ -773,8 +728,7 @@ h2 {
     right: 1rem;
     z-index: 9; }
     .controls .nav-toggle span, .controls .nav-toggle span:before, .controls .nav-toggle span:after {
-      -webkit-transition: all .25s ease-in-out;
-              transition: all .25s ease-in-out;
+      transition: all .25s ease-in-out;
       cursor: pointer;
       border-radius: 1px;
       height: 5px;
@@ -794,26 +748,21 @@ h2 {
     .controls.active .nav-toggle span {
       background-color: transparent; }
       .controls.active .nav-toggle span:before {
-        -webkit-transform: rotate(45deg);
-                transform: rotate(45deg); }
+        transform: rotate(45deg); }
       .controls.active .nav-toggle span:after {
-        -webkit-transform: rotate(-45deg);
-                transform: rotate(-45deg); }
+        transform: rotate(-45deg); }
       .controls.active .nav-toggle span:before, .controls.active .nav-toggle span:after {
         top: 0; }
   .controls ul {
     opacity: 0;
-    -webkit-transform: translateY(-40px);
-            transform: translateY(-40px);
+    transform: translateY(-40px);
     position: fixed;
     left: 0;
     top: 1em; }
     .controls ul.active {
-      -webkit-animation: wipeIn .4s forwards;
-              animation: wipeIn .4s forwards; }
+      animation: wipeIn .4s forwards; }
     .controls ul.inactive {
-      -webkit-animation: wipeOut .4s forwards;
-              animation: wipeOut .4s forwards; }
+      animation: wipeOut .4s forwards; }
     .controls ul li {
       display: inline;
       margin: 0 3rem; }

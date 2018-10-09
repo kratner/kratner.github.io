@@ -38,7 +38,8 @@ module.exports = function(grunt) {
 
                 "index_test_prev.html": "source/bake/index_test.html",
                 "index_prev.html": "source/bake/index.html",
-                "wprest_test.html": "source/bake/wprest_test.html"
+                "wprest_test.html": "source/bake/wprest_test.html",
+                "index.html": "source/bake/index_test.html"
 
                 // etc ...
             }
