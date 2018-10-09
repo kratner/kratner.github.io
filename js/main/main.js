@@ -1,9 +1,6 @@
-/*global
-    window, $
-*/
+'use strict';
 
 (function (window, document, Core) {
-    'use strict';
     Core.Model = function () {
         var model = {},
             ajax = function ajax(method, url, args) {
@@ -110,7 +107,7 @@
         }().getFullYear());
         getPageById(2063);
     };
-    //$(document).ready(init);
+    $(document).ready(init);
 })(window, document, window.Controls = window.Controls || {});
 'use strict';
 
