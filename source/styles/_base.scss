@@ -18,11 +18,17 @@ html {
 }
 
 body {
+    margin:0;
+    padding:0;
+    perspective: 1px;
+    transform-style: preserve-3d;
     //background-color: $body-background-colour;
     height: 100%;
     // overflow-y: visible; // Allows js triggered scrolling with overflow-x: hidden
     // overflow-x: hidden; // Needed to fix overflowing content, like hidden menus
-    position: relative;
+    // position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 ol, ul {
@@ -36,3 +42,4 @@ button {
 input, textarea {
     outline: none;
 }
+

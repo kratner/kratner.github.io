@@ -1,6 +1,5 @@
-'use strict';
-
 (function (window, document, Core) {
+    'use strict';
     Core.Model = function () {
         var model = {},
             ajax = function ajax(method, url, args) {
@@ -67,50 +66,6 @@
         return model;
     };
 })(window, document, window.Core = window.Core || {});
-/*global Controls, Core*/
-'use strict';
-(function (window, document, WPREST) {
-    var model = new Core.Model(),
-        init = function init() {
-        WPREST.$el = {
-            pages: {
-                about: $('.pages__page__about')
-            }
-        };
-    };
-    WPREST.api = {
-        uri: 'http://www.keithratner.com/?wpapi=get_posts&dev=1&id=2063',
-        root: 'http://www.keithratner.com',
-        json: '/wp-json/wp/v2/',
-        pages: 'pages/',
-        posts: 'posts/'
-    };
-    WPREST.content = {
-        pages: {
-            about: '2087'
-        },
-        posts: {
-            brief: '2063',
-            splash: '2079'
-        }
-    };
-    WPREST.renderPost = function (data) {
-        var post = JSON.parse(data),
-            content = post.content.rendered;
-        WPREST.$el.pages.about.html(content);
-    };
-    WPREST.getPageById = function (id, callback) {
-        var api = WPREST.api,
-            url = api.root + api.json + api.pages + id;
-        model.httpRequest(url).get().then(callback);
-    };
-    WPREST.init = function () {
-        init();
-        WPREST.getPageById(WPREST.content.pages.about, WPREST.renderPost);
-    };
-    $(document).ready(WPREST.init);
-})(window, document, window.WPREST = window.WPREST || {});
-
 /*global $*/
 'use strict';
 (function (window, document) {

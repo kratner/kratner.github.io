@@ -23,7 +23,7 @@ module.exports = function(grunt) {
           // "js/main/main.js": "source/scripts/main/main.js",
           // "js/main/core.js": "source/scripts/main/core.js",
           "js/main/main.js": "scripts/concat.js",
-          "js/wprest.js": "scripts/wprest.js"
+          // "js/wprest.js": "scripts/wprest.js"
         }
       }
     },
@@ -52,11 +52,7 @@ module.exports = function(grunt) {
       main: {
         src: ['source/scripts/main/**/*.js'],
         dest: 'scripts/concat.js',
-      },
-      wprest: {
-        src: ['source/scripts/main/core.js', 'source/scripts/wprest/wprest_api.js', 'source/scripts/wprest.js'],
-        dest: 'scripts/wprest.js',
-      },
+      }
     },
     cssmin: {
       target: {

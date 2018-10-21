@@ -1,3 +1,13 @@
+body {
+	font-family: $body-font-family;
+	a {
+		&:hover {
+			color: $link_yellow;
+			text-shadow: $glow-effect;
+		}
+	}
+}
+
 .splash {
 	//font-family: saucerbb;
 	font-family: $splash-body-font-family;
