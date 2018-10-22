@@ -102,10 +102,10 @@ img:last-of-type {
   transform-origin: 50% 100%; }
 
 #slide1:before {
-  transform: translateZ(-1px) scale(2); }
+  transform: translateZ(-1px) scale(1.35); }
 
 #slide1 {
-  transform: translateZ(-1px) scale(2);
+  transform: translateZ(-1px) scale(1.35);
   z-index: 2; }
 
 #slide2 {

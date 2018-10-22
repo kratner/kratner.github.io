@@ -77,18 +77,18 @@ img:last-of-type {
 #title h1 {
  transform: translateZ(.25px) scale(.75);
  transform-origin: 50% 100%;
-
+ //font-size: 3em;
 }
 
 #slide1:before {
   //background-image: url("../img/sky.jpg");
-  transform: translateZ(-1px) scale(2);
+  transform: translateZ(-1px) scale(1.35);
   //z-index:2;
   //opacity: .5;
 }
 
 #slide1 {
-  transform: translateZ(-1px) scale(2);
+  transform: translateZ(-1px) scale(1.35);
   z-index:2;
 }
 
