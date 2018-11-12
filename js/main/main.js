@@ -72,7 +72,8 @@
     'use strict';
 
     var init = function init() {
-        Controls.initializeNavControl();
+        // Controls.initializeNavControl();
+
         var $el = {
             footer: {
                 copyright: $('.copyright')
@@ -84,13 +85,47 @@
                 top: $('.controls .site-brand ul')
             }
         },
-            model = new Core.Model();
+            api = {
+            uri: 'http://rats1966.x10host.com/wp-json',
+            root: 'http://www.keithratner.com',
+            midpoint: "/wp/v2/pages/",
+            json: '/wp-json/wp/v2/',
+            pages: 'pages/',
+            posts: 'posts/',
+            // pageid: '2063',
+            //postid: '2079',
+            postid: '2'
+        },
+            model = new Core.Model(),
+
+        /*
+        renderPost = (data) => {
+            let post = JSON.parse(data),
+                content = post.content.rendered;
+            $el.post.content.html(content);
+        },
+        */
+        cacheData = function cacheData(data) {
+            var WPRESTAPIDATA = JSON.parse(data);
+            window.WPRESTAPIDATA = WPRESTAPIDATA;
+        },
+            getSplashPageData = function getSplashPageData() {
+            //let url = api.root + api.json + api.posts + api.postid;
+            //let url = api.uri;
+            var url = api.uri + api.midpoint + api.postid;
+            model.httpRequest(url).get()
+            //.then(renderPost);
+            .then(cacheData);
+        };
+        //window.WPRESTAPIDATA = model.httpRequest(WPRESTAPIURL);
         $el.footer.copyright.html('&copy;' + function () {
             return new Date();
         }().getFullYear());
+        getSplashPageData(2063);
     };
     $(document).ready(init);
 })(window, document, window.Controls = window.Controls || {});
+
 'use strict';
 
 (function (window, document, Controls) {
