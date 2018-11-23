@@ -1,10 +1,14 @@
 body {
 	font-family: $body-font-family;
 	a {
+		color: $link_orange;
 		&:hover {
 			color: $link_yellow;
 			text-shadow: $glow-effect;
 		}
+	}
+	h1 {
+		font-size: 3em;
 	}
 }
 
