@@ -482,6 +482,10 @@ body {
     padding: 1rem;
     color: #00FFE0; }
 
+h4 {
+  font-size: 1em;
+  font-style: oblique; }
+
 .slide {
   position: relative;
   padding: 25vh 10%;
