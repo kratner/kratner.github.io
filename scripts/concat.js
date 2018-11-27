@@ -77,7 +77,7 @@
                 }
             },
             api = {
-                uri: 'http://rats1966.x10host.com/wp-json',
+                uri: 'http://rats1966.x10host.com/wp-json', // relocate WP REST API to HTTPS server
                 root: 'http://www.keithratner.com',
                 midpoint: "/wp/v2/pages/",
                 json: '/wp-json/wp/v2/',
@@ -108,13 +108,13 @@
                     //.then(renderPost);
                     .then(cacheData);
             };
-        //window.WPRESTAPIDATA = model.httpRequest(WPRESTAPIURL);
+        // window.WPRESTAPIDATA = model.httpRequest(WPRESTAPIURL);
         $el.footer.copyright.html('&copy;' + (() => new Date())().getFullYear());
-        getSplashPageData(2063);
+        // *** relocate WP REST API to HTTPS server
+        // getSplashPageData(2063);
     };
     $(document).ready(init);
 })(window, document, window.Controls = window.Controls || {});
-
 
 'use strict';
 
