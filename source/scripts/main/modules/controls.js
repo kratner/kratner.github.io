@@ -1,8 +1,8 @@
 'use strict';
 
 ((window, document, Controls) => {
-	// http://codepen.io/elijahmanor/pen/Igpoe
-	// animated hamburger control
+    // http://codepen.io/elijahmanor/pen/Igpoe
+    // animated hamburger control
     Controls.initializeNavControl = () => {
         let $el = {
             controls: $('.controls'),
@@ -21,7 +21,7 @@
             //     $el.nav.top.addClass('active').removeClass('inactive');
             // }
         });
-        $(document).on('keyup', (evt) => {
+        $(document).on('keyup', evt => {
             if (evt.keyCode === 27) {
                 if ($el.controls.hasClass('active')) {
                     $el.controls.toggleClass('active');
@@ -30,6 +30,4 @@
             }
         });
     };
-})(window, document, window.Controls = window.Controls || {});
-
-
+})(window, document, (window.Controls = window.Controls || {}));

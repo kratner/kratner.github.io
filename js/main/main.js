@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 (function (window, document, Core) {
     Core.Model = function () {
@@ -15,14 +15,14 @@
                     key = void 0;
                 //key = undefined;
 
-                if (args && (method === 'POST' || method === 'PUT')) {
-                    uri += '?';
+                if (args && (method === "POST" || method === "PUT")) {
+                    uri += "?";
                     for (key in args) {
                         if (args.hasOwnProperty(key)) {
                             if (argcount++) {
-                                uri += '&';
+                                uri += "&";
                             }
-                            uri += encodeURIComponent(key) + '=' + encodeURIComponent(args[key]);
+                            uri += encodeURIComponent(key) + "=" + encodeURIComponent(args[key]);
                         }
                     }
                 }
@@ -49,18 +49,18 @@
         };
         model.httpRequest = function (url) {
             return {
-                'get': function get(args) {
-                    return ajax('GET', url, args);
+                get: function get(args) {
+                    return ajax("GET", url, args);
                 },
-                'post': function post(args) {
-                    return ajax('POST', url, args);
+                post: function post(args) {
+                    return ajax("POST", url, args);
                 },
-                'put': function put(args) {
-                    return ajax('PUT', url, args);
+                put: function put(args) {
+                    return ajax("PUT", url, args);
                 },
                 // 'delete': function _delete(args) {
-                'delete': function _delete(args) {
-                    return ajax('DELETE', url, args);
+                delete: function _delete(args) {
+                    return ajax("DELETE", url, args);
                 }
             };
         };
@@ -88,12 +88,12 @@
             api = {
             uri: 'http://rats1966.x10host.com/wp-json', // relocate WP REST API to HTTPS server
             root: 'http://www.keithratner.com',
-            midpoint: "/wp/v2/pages/",
+            midpoint: '/wp/v2/pages/',
             json: '/wp-json/wp/v2/',
             pages: 'pages/',
             posts: 'posts/',
             // pageid: '2063',
-            //postid: '2079',
+            // postid: '2079',
             postid: '2'
         },
             model = new Core.Model(),
@@ -126,7 +126,6 @@
     };
     $(document).ready(init);
 })(window, document, window.Controls = window.Controls || {});
-
 'use strict';
 
 (function (window, document, Controls) {

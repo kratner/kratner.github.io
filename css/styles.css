@@ -495,7 +495,7 @@ h4 {
   transform-style: inherit; }
 
 .slide:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
@@ -512,11 +512,12 @@ h4 {
   margin-left: 0;
   margin-right: auto; }
 
-.slide:nth-child(2n+1) .title {
+.slide:nth-child(2n + 1) .title {
   margin-left: auto;
   margin-right: 0; }
 
-.slide, .slide:before {
+.slide,
+.slide:before {
   background: 50% 50% / cover; }
 
 .header {
@@ -533,7 +534,7 @@ body {
 
 .logo {
   width: 46%;
-  padding: .5em 1.5em; }
+  padding: 0.5em 1.5em; }
 
 #video-background {
   /*  making the video fullscreen  */
@@ -562,6 +563,14 @@ body {
 hr {
   margin-top: 1em;
   margin-bottom: 1em; }
+
+video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translateX(calc((100% - 100vw) / 2)); }
 
 /*
 @keyframes rotate {

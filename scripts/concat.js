@@ -1,64 +1,65 @@
-'use strict';
+"use strict";
 
 ((window, document, Core) => {
-    Core.Model = () => {
-        let model = {},
-            ajax = (method, url, args) => {
-            // private function for ajax call
+  Core.Model = () => {
+    let model = {},
+      ajax = (method, url, args) => {
+        // private function for ajax call
 
-            // Creating a promise
-                let promise = new Promise((resolve, reject) => {
-                // Instantiates the XMLHttpRequest
-                    let client = new XMLHttpRequest(),
-                        uri = url,
-                        argcount = 0,
-                        key;
-                        //key = undefined;
+        // Creating a promise
+        let promise = new Promise((resolve, reject) => {
+          // Instantiates the XMLHttpRequest
+          let client = new XMLHttpRequest(),
+            uri = url,
+            argcount = 0,
+            key;
+          //key = undefined;
 
-                    if (args && (method === 'POST' || method === 'PUT')) {
-                        uri += '?';
-                        for (key in args) {
-                            if (args.hasOwnProperty(key)) {
-                                if (argcount++) {
-                                    uri += '&';
-                                }
-                                uri += encodeURIComponent(key) + '=' + encodeURIComponent(args[key]);
-                            }
-                        }
-                    }
+          if (args && (method === "POST" || method === "PUT")) {
+            uri += "?";
+            for (key in args) {
+              if (args.hasOwnProperty(key)) {
+                if (argcount++) {
+                  uri += "&";
+                }
+                uri +=
+                  encodeURIComponent(key) + "=" + encodeURIComponent(args[key]);
+              }
+            }
+          }
 
-                    client.open(method, uri);
-                    client.send();
+          client.open(method, uri);
+          client.send();
 
-                    client.onload = () => {
-                        if (client.status >= 200 && client.status < 300) {
-                            // Performs the function "resolve" when this.status is equal to 2xx
-                            resolve(client.response);
-                        } else {
-                            // Performs the function "reject" when this.status is different than 2xx
-                            reject(client.statusText);
-                        }
-                    };
-                    client.onerror = () => {
-                        reject(client.statusText);
-                    };
-                });
+          client.onload = () => {
+            if (client.status >= 200 && client.status < 300) {
+              // Performs the function "resolve" when this.status is equal to 2xx
+              resolve(client.response);
+            } else {
+              // Performs the function "reject" when this.status is different than 2xx
+              reject(client.statusText);
+            }
+          };
+          client.onerror = () => {
+            reject(client.statusText);
+          };
+        });
 
-                // Return the promise
-                return promise;
-            };
-        model.httpRequest = url => {
-            return {
-                'get': args => ajax('GET', url, args),
-                'post': args => ajax('POST', url, args),
-                'put': args => ajax('PUT', url, args),
-                // 'delete': function _delete(args) {
-                'delete': args=> ajax('DELETE', url, args)
-            };
-        };
-        return model;
+        // Return the promise
+        return promise;
+      };
+    model.httpRequest = url => {
+      return {
+        get: args => ajax("GET", url, args),
+        post: args => ajax("POST", url, args),
+        put: args => ajax("PUT", url, args),
+        // 'delete': function _delete(args) {
+        delete: args => ajax("DELETE", url, args)
+      };
     };
-})(window, document, window.Core = window.Core || {});
+    return model;
+  };
+})(window, document, (window.Core = window.Core || {}));
 /*global Controls, Core*/
 ((window, document, Controls) => {
     'use strict';
@@ -79,12 +80,12 @@
             api = {
                 uri: 'http://rats1966.x10host.com/wp-json', // relocate WP REST API to HTTPS server
                 root: 'http://www.keithratner.com',
-                midpoint: "/wp/v2/pages/",
+                midpoint: '/wp/v2/pages/',
                 json: '/wp-json/wp/v2/',
                 pages: 'pages/',
                 posts: 'posts/',
                 // pageid: '2063',
-                //postid: '2079',
+                // postid: '2079',
                 postid: '2'
             },
             model = new Core.Model(),
@@ -95,7 +96,7 @@
                 $el.post.content.html(content);
             },
             */
-            cacheData = (data) => {
+            cacheData = data => {
                 let WPRESTAPIDATA = JSON.parse(data);
                 window.WPRESTAPIDATA = WPRESTAPIDATA;
             },
@@ -103,24 +104,26 @@
                 //let url = api.root + api.json + api.posts + api.postid;
                 //let url = api.uri;
                 let url = api.uri + api.midpoint + api.postid;
-                model.httpRequest(url)
+                model
+                    .httpRequest(url)
                     .get()
                     //.then(renderPost);
                     .then(cacheData);
             };
         // window.WPRESTAPIDATA = model.httpRequest(WPRESTAPIURL);
-        $el.footer.copyright.html('&copy;' + (() => new Date())().getFullYear());
+        $el.footer.copyright.html(
+            '&copy;' + (() => new Date())().getFullYear()
+        );
         // *** relocate WP REST API to HTTPS server
         // getSplashPageData(2063);
     };
     $(document).ready(init);
-})(window, document, window.Controls = window.Controls || {});
-
+})(window, document, (window.Controls = window.Controls || {}));
 'use strict';
 
 ((window, document, Controls) => {
-	// http://codepen.io/elijahmanor/pen/Igpoe
-	// animated hamburger control
+    // http://codepen.io/elijahmanor/pen/Igpoe
+    // animated hamburger control
     Controls.initializeNavControl = () => {
         let $el = {
             controls: $('.controls'),
@@ -139,7 +142,7 @@
             //     $el.nav.top.addClass('active').removeClass('inactive');
             // }
         });
-        $(document).on('keyup', (evt) => {
+        $(document).on('keyup', evt => {
             if (evt.keyCode === 27) {
                 if ($el.controls.hasClass('active')) {
                     $el.controls.toggleClass('active');
@@ -148,6 +151,4 @@
             }
         });
     };
-})(window, document, window.Controls = window.Controls || {});
-
-
+})(window, document, (window.Controls = window.Controls || {}));
