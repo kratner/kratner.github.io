@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 (function (window, document, Core) {
     Core.Model = function () {
@@ -15,14 +15,14 @@
                     key = void 0;
                 //key = undefined;
 
-                if (args && (method === "POST" || method === "PUT")) {
-                    uri += "?";
+                if (args && (method === 'POST' || method === 'PUT')) {
+                    uri += '?';
                     for (key in args) {
                         if (args.hasOwnProperty(key)) {
                             if (argcount++) {
-                                uri += "&";
+                                uri += '&';
                             }
-                            uri += encodeURIComponent(key) + "=" + encodeURIComponent(args[key]);
+                            uri += encodeURIComponent(key) + '=' + encodeURIComponent(args[key]);
                         }
                     }
                 }
@@ -50,17 +50,17 @@
         model.httpRequest = function (url) {
             return {
                 get: function get(args) {
-                    return ajax("GET", url, args);
+                    return ajax('GET', url, args);
                 },
                 post: function post(args) {
-                    return ajax("POST", url, args);
+                    return ajax('POST', url, args);
                 },
                 put: function put(args) {
-                    return ajax("PUT", url, args);
+                    return ajax('PUT', url, args);
                 },
                 // 'delete': function _delete(args) {
                 delete: function _delete(args) {
-                    return ajax("DELETE", url, args);
+                    return ajax('DELETE', url, args);
                 }
             };
         };

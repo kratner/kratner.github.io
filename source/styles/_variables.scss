@@ -12,11 +12,12 @@ $screen-medium-max: ($screen-large-min - 1) !default;
 $screen-large-max: ($screen-large-min - 1) !default;
 
 $site-brand-font-family: 'ledlightregular';
-$splash-body-font-family: 'ledlightregular';
+// $splash-body-font-family: 'ledlightregular';
 // $overlay-body-font-family: 'saucerbb';
 $overlay-body-font-family: 'exo_2.0extra_light';
 
-$body-font-family: 'saucerbb';
+$body-font-family: 'Optima';
+$splash-body-font-family: 'saucerbb';
 
 // Link colors
 $link_orange: #f4b98e;
@@ -31,7 +32,11 @@ $glow_white: #ffffff;
 $glow_effect_color_source: $glow_blue;
 $glow_effect_color_destination: $glow_green;
 
-
 // $glow-effect: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
-$glow-effect: 0 0 5px $glow_effect_color_source, 0 0 10px $glow_effect_color_source, 0 0 15px $glow_effect_color_source, 0 0 20px $glow_effect_color_destination, 0 0 30px $glow_effect_color_destination, 0 0 40px $glow_effect_color_destination, 0 0 55px $glow_effect_color_destination, 0 0 75px $glow_effect_color_destination;
-
+$glow-effect: 0 0 5px $glow_effect_color_source,
+  0 0 10px $glow_effect_color_source, 0 0 15px $glow_effect_color_source,
+  0 0 20px $glow_effect_color_destination,
+  0 0 30px $glow_effect_color_destination,
+  0 0 40px $glow_effect_color_destination,
+  0 0 55px $glow_effect_color_destination,
+  0 0 75px $glow_effect_color_destination;

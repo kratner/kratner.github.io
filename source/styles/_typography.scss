@@ -1,87 +1,96 @@
 body {
-	font-family: $body-font-family;
-	a {
-		color: $link_orange;
-		&:hover {
-			color: $link_yellow;
-			text-shadow: $glow-effect;
-		}
-	}
-	h1 {
-		font-size: 3em;
-	}
+  font-family: $body-font-family;
+  a {
+    color: $link_orange;
+    &:hover {
+      color: $link_yellow;
+      text-shadow: $glow-effect;
+    }
+  }
+  h1 {
+    font-size: 3em;
+  }
+}
+
+.splash-container {
+  font-family: $splash-body-font-family;
 }
 
 .splash {
-	//font-family: saucerbb;
-	font-family: $splash-body-font-family;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-	.site-brand {
-		h1, h2, h3, h4, h5, h6 {
-			font-family: $site-brand-font-family;
-		}
-		h3 {
-			font-size: 8rem;
-			//text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
-			animation: glowpulsate 5s infinite;
-		}
-		h4 {
-			font-size: 3rem;
-			animation: glowpulsate 20s infinite;
-		}
-		a {
-			text-shadow: none;
-			transition: text-shadow 2s;
-			&:hover {
-				text-shadow: $glow-effect;
-			}
-		}
-	}
+  //font-family: saucerbb;
+  font-family: $splash-body-font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  .site-brand {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: $site-brand-font-family;
+    }
+    h3 {
+      font-size: 8rem;
+      //text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
+      animation: glowpulsate 5s infinite;
+    }
+    h4 {
+      font-size: 3rem;
+      animation: glowpulsate 20s infinite;
+    }
+    a {
+      text-shadow: none;
+      transition: text-shadow 2s;
+      &:hover {
+        text-shadow: $glow-effect;
+      }
+    }
+  }
 }
 .controls {
-	.site-brand {
-		font-family: $site-brand-font-family;
-	    -webkit-font-smoothing: antialiased;
-	    -moz-osx-font-smoothing: grayscale;
-        font-size: 1.2em;
-		letter-spacing: .2em;
-		ul {
-			top: .5em;
-		}
-	    a {
-	    	animation: glowpulsate 10s infinite;
-	    	color: $link_color;
-	    	&:hover {
-	    		text-decoration: none;
-	    		text-shadow: $glow-effect;
-	    	}
-	    }
-	}
+  .site-brand {
+    font-family: $site-brand-font-family;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 1.2em;
+    letter-spacing: 0.2em;
+    ul {
+      top: 0.5em;
+    }
+    a {
+      animation: glowpulsate 10s infinite;
+      color: $link_color;
+      &:hover {
+        text-decoration: none;
+        text-shadow: $glow-effect;
+      }
+    }
+  }
 }
 .overlay {
-	font-family: $overlay-body-font-family;
-	letter-spacing: .2em;
-	p {
-		margin-bottom: .5em;
-	}
+  font-family: $overlay-body-font-family;
+  letter-spacing: 0.2em;
+  p {
+    margin-bottom: 0.5em;
+  }
 }
 
 .footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	text-align: right;
-	font-family: $overlay-body-font-family;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-	.copyright {
-		padding: 1rem;
-		color: $link_color;
-	}
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: right;
+  font-family: $overlay-body-font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  .copyright {
+    padding: 1rem;
+    color: $link_color;
+  }
 }
 
 h4 {
-    font-size: 1em;
-    font-style: oblique;
+  font-size: 1em;
+  font-style: oblique;
 }
