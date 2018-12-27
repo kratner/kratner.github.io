@@ -302,11 +302,11 @@
   font-style: normal; }
 
 @font-face {
-  font-family: 'fontawesome';
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/fa-regular-400.eot");
-  src: url("../fonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("../fonts/fa-regular-400.woff2") format("woff2"), url("../fonts/fa-regular-400.woff") format("woff"), url("../fonts/fa-regular-400.ttf") format("truetype"), url("../fonts/fa-regular-400.svg#fontawesome") format("svg"); }
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?w4q9dk");
+  src: url("../fonts/icomoon.eot?w4q9dk#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?w4q9dk") format("truetype"), url("../fonts/icomoon.woff?w4q9dk") format("woff"), url("../fonts/icomoon.svg?w4q9dk#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 
 .slide {
   position: relative;
@@ -383,8 +383,8 @@ body {
   transform: translateY(-50%); }
 
 hr {
-  margin-top: 1em;
-  margin-bottom: 1em; }
+  margin-top: 0.5em;
+  margin-bottom: 0.5em; }
 
 video {
   position: fixed;

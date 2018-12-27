@@ -688,11 +688,11 @@ input, textarea {
   font-style: normal; }
 
 @font-face {
-  font-family: 'fontawesome';
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/fa-regular-400.eot");
-  src: url("../fonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("../fonts/fa-regular-400.woff2") format("woff2"), url("../fonts/fa-regular-400.woff") format("woff"), url("../fonts/fa-regular-400.ttf") format("truetype"), url("../fonts/fa-regular-400.svg#fontawesome") format("svg"); }
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?w4q9dk");
+  src: url("../fonts/icomoon.eot?w4q9dk#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?w4q9dk") format("truetype"), url("../fonts/icomoon.woff?w4q9dk") format("woff"), url("../fonts/icomoon.svg?w4q9dk#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 
 body {
   font-family: "Optima"; }
@@ -704,55 +704,77 @@ body {
       color: #ffff00;
       text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 15px #0000ff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; }
   body h1 {
-    font-size: 3em; }
+    font-size: 1.75em; }
+  body h2 {
+    font-size: 1.25em; }
+  body h3 {
+    font-size: 1.1em; }
 
+/*
 .splash-container {
-  font-family: "saucerbb"; }
+  font-family: $splash-body-font-family;
+}
 
 .splash {
-  font-family: "saucerbb";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-  .splash .site-brand h1,
-  .splash .site-brand h2,
-  .splash .site-brand h3,
-  .splash .site-brand h4,
-  .splash .site-brand h5,
-  .splash .site-brand h6 {
-    font-family: "ledlightregular"; }
-  .splash .site-brand h3 {
-    font-size: 8rem;
-    animation: glowpulsate 5s infinite; }
-  .splash .site-brand h4 {
-    font-size: 3rem;
-    animation: glowpulsate 20s infinite; }
-  .splash .site-brand a {
-    text-shadow: none;
-    transition: text-shadow 2s; }
-    .splash .site-brand a:hover {
-      text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 15px #0000ff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; }
-
-.controls .site-brand {
-  font-family: "ledlightregular";
+  //font-family: saucerbb;
+  font-family: $splash-body-font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 1.2em;
-  letter-spacing: 0.2em; }
-  .controls .site-brand ul {
-    top: 0.5em; }
-  .controls .site-brand a {
-    animation: glowpulsate 10s infinite;
-    color: #00FFE0; }
-    .controls .site-brand a:hover {
-      text-decoration: none;
-      text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 15px #0000ff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; }
-
+  .site-brand {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: $site-brand-font-family;
+    }
+    h3 {
+      font-size: 8rem;
+      //text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
+      animation: glowpulsate 5s infinite;
+    }
+    h4 {
+      font-size: 3rem;
+      animation: glowpulsate 20s infinite;
+    }
+    a {
+      text-shadow: none;
+      transition: text-shadow 2s;
+      &:hover {
+        text-shadow: $glow-effect;
+      }
+    }
+  }
+}
+.controls {
+  .site-brand {
+    font-family: $site-brand-font-family;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 1.2em;
+    letter-spacing: 0.2em;
+    ul {
+      top: 0.5em;
+    }
+    a {
+      animation: glowpulsate 10s infinite;
+      color: $link_color;
+      &:hover {
+        text-decoration: none;
+        text-shadow: $glow-effect;
+      }
+    }
+  }
+}
 .overlay {
-  font-family: "exo_2.0extra_light";
-  letter-spacing: 0.2em; }
-  .overlay p {
-    margin-bottom: 0.5em; }
-
+  font-family: $overlay-body-font-family;
+  letter-spacing: 0.2em;
+  p {
+    margin-bottom: 0.5em;
+  }
+}
+*/
 .footer {
   position: fixed;
   bottom: 0;
@@ -769,16 +791,25 @@ h4 {
   font-size: 1em;
   font-style: oblique; }
 
-.fa-download:before {
-  content: '\f019'; }
-
-.fa {
-  display: inline-block;
-  font-family: "fontawesome";
-  font-size: inherit;
-  text-rendering: auto;
+[class^='icon-'],
+[class*=' icon-'] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.icon-download:before {
+  content: '\e960'; }
+
+.icon-download3:before {
+  content: '\e9c7'; }
 
 .slide {
   position: relative;
@@ -855,8 +886,8 @@ body {
   transform: translateY(-50%); }
 
 hr {
-  margin-top: 1em;
-  margin-bottom: 1em; }
+  margin-top: 0.5em;
+  margin-bottom: 0.5em; }
 
 video {
   position: fixed;

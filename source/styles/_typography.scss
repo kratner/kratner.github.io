@@ -2,20 +2,24 @@ body {
   font-family: $body-font-family;
   a {
     transition: all 0.5s ease;
-    // background-color: transparent;
     color: $link_orange;
     &:hover {
       text-decoration: none;
-      // background-color: $link_yellow;
       color: $link_yellow;
       text-shadow: $glow-effect;
     }
   }
   h1 {
-    font-size: 3em;
+    font-size: 1.75em;
+  }
+  h2 {
+    font-size: 1.25em;
+  }
+  h3 {
+    font-size: 1.1em;
   }
 }
-
+/*
 .splash-container {
   font-family: $splash-body-font-family;
 }
@@ -79,7 +83,7 @@ body {
     margin-bottom: 0.5em;
   }
 }
-
+*/
 .footer {
   position: fixed;
   bottom: 0;
@@ -98,15 +102,26 @@ h4 {
   font-size: 1em;
   font-style: oblique;
 }
-.fa-download:before {
-  content: '\f019';
-}
-.fa {
-  display: inline-block;
-  // font: normal normal normal 14px/1 fontawesome;
+
+[class^='icon-'],
+[class*=' icon-'] {
+  /* use !important to prevent issues with browser extensions that change fonts */
   font-family: $icon-font-family;
-  font-size: inherit;
-  text-rendering: auto;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-download:before {
+  content: '\e960';
+}
+.icon-download3:before {
+  content: '\e9c7';
 }
