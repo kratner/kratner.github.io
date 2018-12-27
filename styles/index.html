@@ -94,14 +94,67 @@
   </body>
 </html>
 
-<!-- begin video-background.html -->
-<video autoplay loop id="video-background" muted plays-inline>
-  <source src="img/20181215_154218.mp4" type="video/mp4" />
-</video>
-<!-- end video-background.html -->
-
-<div class="container"><h1>Style Guide</h1></div>
+<!-- begin styleguide.html -->
+<div class="container">
+  <h1>Style Guide</h1>
+  <h2>Form Controls</h2>
+  <div class="form-container">
+    <div class="form-component-title">Input Button</div>
+    <div class="form-component">
+      <label for="styleguide-input-button">Input Button</label>
+      <input type="button" name="styleguide-input-button" value="Button" />
+    </div>
+    <div class="form-component-title">Text Field</div>
+    <div class="form-component">
+      <label for="styleguide-text-field">Name</label>
+      <input type="text" name="styleguide-text-field" />
+    </div>
+    <div class="form-component-title">Password Field</div>
+    <div class="form-component">
+      <label for="styleguide-password-field">Password</label>
+      <input type="password" name="styleguide-password-field" />
+    </div>
+    <div class="form-component-title">Text Area</div>
+    <div class="form-component">
+      <label for="styleguide-text-area">Description</label>
+      <textarea name="styleguide-text-area"></textarea>
+    </div>
+    <div class="form-component-title">Select List</div>
+    <div class="form-component">
+      <label for="styleguide-select-list">Select</label>
+      <select name="styleguide-select-list">
+        <option value="first-option">First Option</option>
+        <option value="second-option">Second Option</option>
+        <option value="third-option">Third Option</option>
+      </select>
+    </div>
+    <div class="form-component-title">Multi-Select List</div>
+    <div class="form-component">
+      <label for="styleguide-select-list">Select</label>
+      <select name="styleguide-select-list" size="3" multiple>
+        <option value="first-option">First Option</option>
+        <option value="second-option">Second Option</option>
+        <option value="third-option">Third Option</option>
+      </select>
+    </div>
+    <div class="form-component-title">Check Box</div>
+    <div class="form-component">
+      <label for="styleguide-select-list">Check</label>
+      <input type="checkbox" name="styleguide-checkbox" ></input>
+    </div>
+    <div class="form-component-title">Radio Input</div>
+    <div class="form-component">
+      <label for="styleguide-radio-input-first-option">First Option</label>
+      <input type="radio" name="styleguide-radio-input" id="first-option" value="first_option" checked>
+      <label for="styleguide-radio-input-second-option">Second Option</label>
+      <input type="radio" name="styleguide-radio-input" id="second-option" value="second-option">
+      <label for="styleguide-radio-input-third-option">Third Option</label>
+      <input type="radio" name="styleguide-radio-input" id="third-option" value="third-option">
+    </div>
+  </div>
+</div>
 <footer class="footer"><span class="copyright">©2018</span></footer>
+<!-- end styleguide.html -->
 <!-- edited 12/22/2018 5:22 PM - KR -->
 
 <!-- Vue Production -->

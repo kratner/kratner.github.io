@@ -1,8 +1,12 @@
 body {
   font-family: $body-font-family;
   a {
+    transition: all 0.5s ease;
+    // background-color: transparent;
     color: $link_orange;
     &:hover {
+      text-decoration: none;
+      // background-color: $link_yellow;
       color: $link_yellow;
       text-shadow: $glow-effect;
     }
@@ -93,4 +97,16 @@ body {
 h4 {
   font-size: 1em;
   font-style: oblique;
+}
+.fa-download:before {
+  content: '\f019';
+}
+.fa {
+  display: inline-block;
+  // font: normal normal normal 14px/1 fontawesome;
+  font-family: $icon-font-family;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

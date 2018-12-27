@@ -687,11 +687,20 @@ input, textarea {
   font-weight: bold;
   font-style: normal; }
 
+@font-face {
+  font-family: 'fontawesome';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/fa-regular-400.eot");
+  src: url("../fonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("../fonts/fa-regular-400.woff2") format("woff2"), url("../fonts/fa-regular-400.woff") format("woff"), url("../fonts/fa-regular-400.ttf") format("truetype"), url("../fonts/fa-regular-400.svg#fontawesome") format("svg"); }
+
 body {
   font-family: "Optima"; }
   body a {
+    transition: all 0.5s ease;
     color: #f4b98e; }
     body a:hover {
+      text-decoration: none;
       color: #ffff00;
       text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 15px #0000ff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; }
   body h1 {
@@ -759,6 +768,17 @@ body {
 h4 {
   font-size: 1em;
   font-style: oblique; }
+
+.fa-download:before {
+  content: '\f019'; }
+
+.fa {
+  display: inline-block;
+  font-family: "fontawesome";
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 .slide {
   position: relative;
@@ -893,113 +913,8 @@ video {
     opacity: 0;
     transform: translateY(-40px); } }
 
-.controls {
-  position: fixed;
-  top: 0;
-  right: 1rem; }
-  .controls .underlay, .controls .overlay {
-    position: fixed; }
-  .controls .underlay {
-    transition: color 5s;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-    z-index: -1; }
-  .controls .overlay {
-    transition: opacity .5s;
-    opacity: 0;
-    left: 20%;
-    top: 20%;
-    width: 60%;
-    height: 60%; }
-    .controls .overlay .kr-portrait {
-      height: 340px;
-      margin: 1rem; }
-  @media screen and (max-width: 773px) {
-    .controls .overlay {
-      top: 8%; }
-      .controls .overlay .kr-portrait {
-        height: 220px; } }
-  @media screen and (max-width: 736px) {
-    .controls .overlay {
-      top: 8%; }
-      .controls .overlay .kr-portrait {
-        height: 220px;
-        margin: 1rem; } }
-  @media screen and (max-width: 667px) {
-    .controls .overlay {
-      top: 4%; } }
-  @media screen and (max-width: 568px) {
-    .controls .overlay .kr-portrait {
-      height: 180px; } }
-  @media screen and (max-width: 542px) {
-    .controls .overlay {
-      top: 18%; }
-      .controls .overlay .kr-portrait {
-        height: 280px;
-        margin: 1rem; } }
-  @media screen and (max-width: 480px) {
-    .controls .overlay .kr-portrait {
-      height: 240px;
-      margin: 1rem; } }
-  @media screen and (max-width: 375px) {
-    .controls .overlay .kr-portrait {
-      height: 220px;
-      margin: 1rem; } }
-  @media screen and (max-width: 320px) {
-    .controls .overlay {
-      top: 15%; }
-      .controls .overlay .kr-portrait {
-        height: 180px;
-        margin: 1rem; } }
-  .controls .nav-toggle {
-    cursor: pointer;
-    padding: 10px 35px 16px 0px;
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 9; }
-    .controls .nav-toggle span, .controls .nav-toggle span:before, .controls .nav-toggle span:after {
-      transition: all .25s ease-in-out;
-      cursor: pointer;
-      border-radius: 1px;
-      height: 5px;
-      width: 35px;
-      background: white;
-      position: absolute;
-      display: block;
-      content: ''; }
-    .controls .nav-toggle span:before {
-      top: -10px; }
-    .controls .nav-toggle span:after {
-      bottom: -10px; }
-  .controls.active {
-    z-index: 3; }
-    .controls.active .overlay {
-      opacity: 1; }
-    .controls.active .nav-toggle span {
-      background-color: transparent; }
-      .controls.active .nav-toggle span:before {
-        transform: rotate(45deg); }
-      .controls.active .nav-toggle span:after {
-        transform: rotate(-45deg); }
-      .controls.active .nav-toggle span:before, .controls.active .nav-toggle span:after {
-        top: 0; }
-  .controls ul {
-    opacity: 0;
-    transform: translateY(-40px);
-    position: fixed;
-    left: 0;
-    top: 1em; }
-    .controls ul.active {
-      animation: wipeIn .4s forwards; }
-    .controls ul.inactive {
-      animation: wipeOut .4s forwards; }
-    .controls ul li {
-      display: inline;
-      margin: 0 3rem; }
-      @media screen and (max-width: 767px) {
-        .controls ul li {
-          display: block;
-          text-align: left; } }
+.form-container .form-component-title {
+  font-weight: 700;
+  border-bottom: solid 1px #ccc;
+  margin-top: 1em;
+  margin-bottom: 1em; }
