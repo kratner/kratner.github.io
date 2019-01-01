@@ -74,6 +74,23 @@
     var init = function init() {
         // Controls.initializeNavControl();
 
+        /**
+         * Function that tracks a click on an outbound link in Analytics.
+         * This function takes a valid URL string as an argument, and uses that URL string
+         * as the event label. Setting the transport method to 'beacon' lets the hit be sent
+         * using 'navigator.sendBeacon' in browser that support it.
+         */
+        var trackOutboundLink = function trackOutboundLink(url) {
+            gtag('event', 'click', {
+                event_category: 'outbound',
+                event_label: url,
+                transport_type: 'beacon',
+                event_callback: function event_callback() {
+                    // document.location = url;
+                }
+            });
+        };
+
         var $el = {
             footer: {
                 copyright: $('.copyright')
@@ -83,7 +100,8 @@
             },
             nav: {
                 top: $('.controls .site-brand ul')
-            }
+            },
+            link: $('.gtag')
         },
             api = {
             uri: 'http://rats1966.x10host.com/wp-json', // relocate WP REST API to HTTPS server
@@ -99,12 +117,12 @@
             model = new Core.Model(),
 
         /*
-        renderPost = (data) => {
-            let post = JSON.parse(data),
-                content = post.content.rendered;
-            $el.post.content.html(content);
-        },
-        */
+              renderPost = (data) => {
+                  let post = JSON.parse(data),
+                      content = post.content.rendered;
+                  $el.post.content.html(content);
+              },
+              */
         cacheData = function cacheData(data) {
             var WPRESTAPIDATA = JSON.parse(data);
             window.WPRESTAPIDATA = WPRESTAPIDATA;
@@ -121,6 +139,9 @@
         $el.footer.copyright.html('&copy;' + function () {
             return new Date();
         }().getFullYear());
+        $el.link.on('click', function (evt) {
+            trackOutboundLink(evt.target.href);
+        });
         // *** relocate WP REST API to HTTPS server
         // getSplashPageData(2063);
     };
