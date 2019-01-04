@@ -352,7 +352,8 @@ body {
   margin: 0;
   padding: 0;
   background-attachment: fixed;
-  background-size: cover; }
+  background-size: cover;
+  background-color: #000000; }
 
 .logo {
   width: 46%;
@@ -451,7 +452,7 @@ video {
     text-align: right; }
     .wp-container .footer .copyright {
       padding: 1rem;
-      color: #00FFE0; }
+      color: #00ffe0; }
   .wp-container .navigation {
     position: fixed;
     top: 0;
@@ -467,8 +468,8 @@ video {
       .wp-container .navigation--link:focus, .wp-container .navigation--link:hover  {
         text-decoration: none; }
       .wp-container .navigation--link a {
-        color: #00FFE0;
+        color: #00ffe0;
         padding: 3rem;
         text-decoration: none; }
         .wp-container .navigation--link a:hover {
-          color: #F7FF08; }
+          color: #f7ff08; }

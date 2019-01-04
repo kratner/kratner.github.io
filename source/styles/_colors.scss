@@ -1,14 +1,20 @@
-$swatch-1: #00FFE0;
-$swatch-2: #F7FF08;
+$swatch-1: #00ffe0;
+$swatch-2: #f7ff08;
 $swatch-3: #ffffff; // white
-$swatch-4: #2F802B;
-$swatch-5: rgba(0,255,224,0.75);
+$swatch-4: #2f802b;
+$swatch-5: rgba(0, 255, 224, 0.75);
 $swatch-6: #000000;
-$underlay_color: rgba(0,0,0,0.75);
-$gradient-1: linear-gradient(to right, rgba(0,255,224,0.5) 0%, rgba(0,255,224,0) 50%,rgba(0,255,224,0.5) 100%);
+$underlay_color: rgba(0, 0, 0, 0.75);
+$gradient-1: linear-gradient(
+  to right,
+  rgba(0, 255, 224, 0.5) 0%,
+  rgba(0, 255, 224, 0) 50%,
+  rgba(0, 255, 224, 0.5) 100%
+);
 $link_color: $swatch-1;
 $link_hover_color: $swatch-2;
 //$nav_background_color: rgba(255, 255, 255, 0.25);
 $nav_background_color: $gradient-1;
-$footer-background: rgba(0,255,224,0.25);
+$footer-background: rgba(0, 255, 224, 0.25);
 $footer-link-color: rgba(247, 255, 8, 0.67);
+$body-background-color: $swatch-6;

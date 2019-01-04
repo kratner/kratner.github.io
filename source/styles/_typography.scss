@@ -1,12 +1,14 @@
 body {
   font-family: $body-font-family;
-  a {
+  a,
+  .ctl {
     transition: all 0.5s ease;
     color: $link_orange;
     &:hover {
       text-decoration: none;
       color: $link_yellow;
       text-shadow: $glow-effect;
+      cursor: pointer;
     }
   }
   h1 {
@@ -124,4 +126,13 @@ h4 {
 }
 .icon-download3:before {
   content: '\e9c7';
+}
+.icon-play:before {
+  content: '\e912';
+}
+.icon-film:before {
+  content: '\e913';
+}
+.icon-video-camera:before {
+  content: '\e914';
 }

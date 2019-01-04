@@ -696,13 +696,16 @@ input, textarea {
 
 body {
   font-family: "Optima"; }
-  body a {
+  body a,
+  body .ctl {
     transition: all 0.5s ease;
     color: #f4b98e; }
-    body a:hover {
+    body a:hover,
+    body .ctl:hover {
       text-decoration: none;
       color: #ffff00;
-      text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 15px #0000ff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; }
+      text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 15px #0000ff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
+      cursor: pointer; }
   body h1 {
     font-size: 1.75em; }
   body h2 {
@@ -785,7 +788,7 @@ body {
   -moz-osx-font-smoothing: grayscale; }
   .footer .copyright {
     padding: 1rem;
-    color: #00FFE0; }
+    color: #00ffe0; }
 
 h4 {
   font-size: 1em;
@@ -810,6 +813,15 @@ h4 {
 
 .icon-download3:before {
   content: '\e9c7'; }
+
+.icon-play:before {
+  content: '\e912'; }
+
+.icon-film:before {
+  content: '\e913'; }
+
+.icon-video-camera:before {
+  content: '\e914'; }
 
 .slide {
   position: relative;
@@ -855,7 +867,8 @@ body {
   margin: 0;
   padding: 0;
   background-attachment: fixed;
-  background-size: cover; }
+  background-size: cover;
+  background-color: #000000; }
 
 .logo {
   width: 46%;

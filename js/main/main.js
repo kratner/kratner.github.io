@@ -68,7 +68,7 @@
     };
 })(window, document, window.Core = window.Core || {});
 /*global Controls, Core*/
-(function (window, document, Controls) {
+(function (window, document, Controls, UIElements, Collections) {
     'use strict';
 
     var init = function init() {
@@ -90,18 +90,30 @@
                 }
             });
         };
-
-        var $el = {
+        var switchBackgroundVideo = function switchBackgroundVideo() {
+            //console.log('switch video');
+            var new_random_item = Math.floor(Math.random() * Collections.paths.video_sources.length);
+            UIElements.$el.background.video_source.attr('src', Collections.paths.video_sources[new_random_item]);
+            UIElements.$el.background.video_element.load();
+        };
+        Collections.paths = {
+            video_sources: ['img/20181215_154218.mp4', 'img/20190103_151234.mp4', 'img/pb_201811221400.mp4', 'img/pb_201811261530.mp4', 'img/pb_201811261532.mp4', 'img/pb-boardwalk-2018-11-26.mp4']
+        };
+        UIElements.$el = {
+            background: {
+                video_element: $('#video-background'),
+                video_source: $('#video-background > source')
+            },
             footer: {
                 copyright: $('.copyright')
             },
+            link: $('.gtag')
+        };
+        Controls.$el = { bg_video_switch: $('[data-ctl=bgvideoswitch]') };
+        var $el = {
             post: {
                 content: $('.post-content')
-            },
-            nav: {
-                top: $('.controls .site-brand ul')
-            },
-            link: $('.gtag')
+            }
         },
             api = {
             uri: 'http://rats1966.x10host.com/wp-json', // relocate WP REST API to HTTPS server
@@ -136,17 +148,22 @@
             .then(cacheData);
         };
         // window.WPRESTAPIDATA = model.httpRequest(WPRESTAPIURL);
-        $el.footer.copyright.html('&copy;' + function () {
+        UIElements.$el.footer.copyright.html('&copy;' + function () {
             return new Date();
         }().getFullYear());
-        $el.link.on('click', function (evt) {
+        UIElements.$el.link.on('click', function (evt) {
             trackOutboundLink(evt.target.href);
         });
+        Controls.$el.bg_video_switch.on('click', function (evt) {
+            switchBackgroundVideo();
+        });
+        // randomize video
+        switchBackgroundVideo();
         // *** relocate WP REST API to HTTPS server
         // getSplashPageData(2063);
     };
     $(document).ready(init);
-})(window, document, window.Controls = window.Controls || {});
+})(window, document, window.Controls = window.Controls || {}, window.UIElements = window.UIElements || {}, window.Collections = window.Collections || {});
 'use strict';
 
 (function (window, document, Controls) {
