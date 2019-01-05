@@ -1,6 +1,3 @@
-/**
- * Rules have 3 settings 0 (off), 1 (warning), 2 (error)
- */
 {
   "globals": {
     "checkCompat": true,
@@ -24,16 +21,10 @@
     "modules": true
   },
   "rules": {
-    /**
-     * Override eslint defaults
-     */
     "no-console": 1,
     "no-debugger": 1,
     "no-unreachable": 1,
     "valid-jsdoc": 0,
-    /**
-     * Best Practices (http://eslint.org/docs/rules/#best-practices)
-     */
     "accessor-pairs": 0,
     "block-scoped-var": 2,
     "complexity": [0, 11],
@@ -48,7 +39,6 @@
     "no-caller": 2,
     "no-div-regex": 0,
     "no-else-return": 2,
-    //"no-empty-label": 2,
     "no-eq-null": 0,
     "no-eval": 2,
     "no-extend-native": 0,
@@ -88,10 +78,6 @@
     "vars-on-top": 2,
     "wrap-iife": [2, "any"],
     "yoda": 2,
-
-    /**
-     * Variables (http://eslint.org/docs/rules/#variables)
-     */
     "init-declarations": 0,
     "no-catch-shadow": 0,
     "no-delete-var": 2,
@@ -103,10 +89,6 @@
     "no-undefined": 2,
     "no-unused-vars": [1, { "vars": "local", "args": "none" }],
     "no-use-before-define": [2, "nofunc"],
-
-    /**
-     * Style (http://eslint.org/docs/rules/#stylistic-issues)
-     */
     "array-bracket-spacing": [2, "never"],
     "block-spacing": 0,
     "brace-style": [2, "1tbs", { "allowSingleLine": true }],
@@ -126,7 +108,7 @@
     "indent": [2, 4],
     "jsx-quotes": 0,
     "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
-    "keyword-spacing": [1, "always"],
+    "keyword-spacing": ["error", { "after": true }],
     "lines-around-comment": 0,
     "linebreak-style": [2, "unix"],
     "max-nested-callbacks": 0,
@@ -158,13 +140,10 @@
     "semi-spacing": [1, { "before": false, "after": true }],
     "semi": [2, "always"],
     "sort-vars": 0,
-    //"space-after-keywords": [1, "always"],
-    //"space-before-keywords": [1, "always"],
     "space-before-blocks": [1, "always"],
     "space-before-function-paren": [1, "never"],
     "space-in-parens": [1, "never"],
     "space-infix-ops": 2,
-    //"space-return-throw-case": 2,
     "space-unary-ops": [2, { "words": true, "nonwords": false }],
     "spaced-comment": 0,
     "wrap-regex": 0

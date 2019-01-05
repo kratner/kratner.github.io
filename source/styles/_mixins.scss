@@ -1,42 +1,42 @@
-html {
-  //font-size: 62.5%; /* 1 */
-}
-
-@function parseInt($n) { /* 2 */
+@function parseInt($n) {
+  /* 2 */
   @return $n / ($n * 0 + 1);
 }
 
 @mixin rem($property, $values) {
-  $px : (); /* 3 */
+  $px: (); /* 3 */
   $rem: (); /* 3 */
 
-  @each $value in $values { /* 4 */
+  @each $value in $values {
+    /* 4 */
 
-    @if $value == 0 or $value == auto { /* 5 */
-      $px : append($px , $value);
+    @if $value == 0 or $value == auto {
+      /* 5 */
+      $px: append($px, $value);
       $rem: append($rem, $value);
-    }
-
-    @else {
-      $unit: unit($value);    /* 6 */
+    } @else {
+      $unit: unit($value); /* 6 */
       $val: parseInt($value); /* 6 */
 
-      @if $unit == "px" {  /* 7 */
-        $px : append($px,  $value);
+      @if $unit == 'px' {
+        /* 7 */
+        $px: append($px, $value);
         $rem: append($rem, ($val / 10 + rem));
       }
 
-      @if $unit == "rem" { /* 7 */
-        $px : append($px,  ($val * 10 + px));
+      @if $unit == 'rem' {
+        /* 7 */
+        $px: append($px, ($val * 10 + px));
         $rem: append($rem, $value);
       }
     }
   }
 
-  @if $px == $rem {     /* 8 */
-    #{$property}: $px;  /* 9 */
+  @if $px == $rem {
+    /* 8 */
+    #{$property}: $px; /* 9 */
   } @else {
-    #{$property}: $px;  /* 9 */
+    #{$property}: $px; /* 9 */
     #{$property}: $rem; /* 9 */
   }
 }
@@ -47,11 +47,16 @@ html {
        -moz-border-radius: $radius;
         -ms-border-radius: $radius;
   */
-          border-radius: $radius;
+  border-radius: $radius;
 }
 
 @mixin neon-text {
-  color:#fff;
-  background-color:#232323;
-  text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
+  color: #fff;
+  background-color: #232323;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18,
+    0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
+}
+
+@mixin text-shadow($distancex, $distancey, $blur, $shadow_color) {
+  text-shadow: $distancex $distancey $blur $shadow_color;
 }

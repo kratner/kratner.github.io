@@ -713,71 +713,6 @@ body {
   body h3 {
     font-size: 1.1em; }
 
-/*
-.splash-container {
-  font-family: $splash-body-font-family;
-}
-
-.splash {
-  //font-family: saucerbb;
-  font-family: $splash-body-font-family;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  .site-brand {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: $site-brand-font-family;
-    }
-    h3 {
-      font-size: 8rem;
-      //text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
-      animation: glowpulsate 5s infinite;
-    }
-    h4 {
-      font-size: 3rem;
-      animation: glowpulsate 20s infinite;
-    }
-    a {
-      text-shadow: none;
-      transition: text-shadow 2s;
-      &:hover {
-        text-shadow: $glow-effect;
-      }
-    }
-  }
-}
-.controls {
-  .site-brand {
-    font-family: $site-brand-font-family;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 1.2em;
-    letter-spacing: 0.2em;
-    ul {
-      top: 0.5em;
-    }
-    a {
-      animation: glowpulsate 10s infinite;
-      color: $link_color;
-      &:hover {
-        text-decoration: none;
-        text-shadow: $glow-effect;
-      }
-    }
-  }
-}
-.overlay {
-  font-family: $overlay-body-font-family;
-  letter-spacing: 0.2em;
-  p {
-    margin-bottom: 0.5em;
-  }
-}
-*/
 .footer {
   position: fixed;
   bottom: 0;
@@ -788,7 +723,8 @@ body {
   -moz-osx-font-smoothing: grayscale; }
   .footer .copyright {
     padding: 1rem;
-    color: #00ffe0; }
+    color: #00ffe0;
+    text-shadow: 2px 1px 1px #000; }
 
 h4 {
   font-size: 1em;
@@ -798,7 +734,6 @@ h4 {
 [class*=' icon-'] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "icomoon" !important;
-  speak: none;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -814,6 +749,9 @@ h4 {
 .icon-download3:before {
   content: '\e9c7'; }
 
+.icon-share2:before {
+  content: '\ea82'; }
+
 .icon-play:before {
   content: '\e912'; }
 
@@ -822,6 +760,57 @@ h4 {
 
 .icon-video-camera:before {
   content: '\e914'; }
+
+.icon-facebook:before {
+  content: '\ea90'; }
+
+.icon-facebook2:before {
+  content: '\ea91'; }
+
+.icon-instagram:before {
+  content: '\ea92'; }
+
+.icon-whatsapp:before {
+  content: '\ea93'; }
+
+.icon-spotify:before {
+  content: '\ea94'; }
+
+.icon-twitter:before {
+  content: '\ea96'; }
+
+.icon-youtube:before {
+  content: '\ea9d'; }
+
+.icon-vimeo:before {
+  content: '\eaa0'; }
+
+.icon-behance:before {
+  content: '\eaa8'; }
+
+.icon-behance2:before {
+  content: '\eaa9'; }
+
+.icon-github:before {
+  content: '\eab0'; }
+
+.icon-trello:before {
+  content: '\eab3'; }
+
+.icon-tumblr:before {
+  content: '\eab9'; }
+
+.icon-tumblr2:before {
+  content: '\eaba'; }
+
+.icon-skype:before {
+  content: '\eac5'; }
+
+.icon-linkedin:before {
+  content: '\eac9'; }
+
+.icon-linkedin2:before {
+  content: '\eaca'; }
 
 .slide {
   position: relative;
@@ -913,6 +902,10 @@ video {
 .splash-container {
   position: relative;
   top: 50%; }
+
+.social-links a {
+  margin: 0 0.25em;
+  font-size: 1.2em; }
 
 /*
 @keyframes rotate {
