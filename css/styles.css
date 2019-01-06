@@ -707,7 +707,7 @@ body {
       text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 15px #0000ff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
       cursor: pointer; }
   body h1 {
-    font-size: 1.75em; }
+    font-size: 1.5em; }
   body h2 {
     font-size: 1.25em; }
   body h3 {
@@ -881,8 +881,7 @@ body {
   text-shadow: 1px 1px 6px black;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding: 0;
   position: relative;
   top: 50%;
   transform: translateY(-50%); }
@@ -903,9 +902,23 @@ video {
   position: relative;
   top: 50%; }
 
-.social-links a {
-  margin: 0 0.25em;
-  font-size: 1.2em; }
+.brand-title {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.25em 0 0.1em;
+  margin: 0 0 0.3em 0; }
+
+.overlay-heading {
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0.2em 0;
+  padding: 0.1em 0; }
+
+.social-links {
+  margin: 0.2em 0 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.2em 0 0 0; }
+  .social-links a {
+    margin: 0 0.25em;
+    font-size: 1.2em; }
 
 /*
 @keyframes rotate {
