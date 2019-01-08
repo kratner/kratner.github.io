@@ -1,5 +1,5 @@
 /*global module:false*/
-module.exports = function(grunt) {
+module.exports = grunt => {
     require('load-grunt-tasks')(grunt);
 
     // Project configuration.
@@ -95,7 +95,7 @@ module.exports = function(grunt) {
 
                 // specify a logger function. By default the requests are
                 // sent to stdout.
-                logFn: function(req, res, error) {},
+                logFn: (req, res, error) => {},
 
                 // Proxies all requests which can't be resolved locally to the given url
                 // Note this this will disable 'showDir'
@@ -175,17 +175,24 @@ module.exports = function(grunt) {
     });
 
     // These plugins provide necessary tasks.
+
+    /*
     grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    */
+
     // grunt.loadNpmTasks('grunt-contrib-qunit');
     // grunt.loadNpmTasks('grunt-contrib-jshint');
+
+    /*
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-http-server');
     grunt.loadNpmTasks('grunt-bake');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    */
 
     // Default task.
     grunt.registerTask('default', [
