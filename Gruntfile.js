@@ -7,8 +7,8 @@ module.exports = grunt => {
         autoprefixer: {
             compile: {
                 files: {
-                    'css/styles.css': 'css/styles.css',
-                    'css/wprest_main.css': 'css/wprest_main.css'
+                    'css/styles.css': 'css/styles.css'
+                    //'css/wprest_main.css': 'css/wprest_main.css'
                 }
             }
         },
@@ -134,8 +134,8 @@ module.exports = grunt => {
             my_target: {
                 files: {
                     //'js/main.min.js': ['js/main.js'],
-                    'js/main.min.js': ['js/main/main.js'],
-                    'js/wprest.min.js': ['js/wprest.js']
+                    'js/main.min.js': ['js/main/main.js']
+                    //'js/wprest.min.js': ['js/wprest.js']
                 },
                 options: {
                     quoteStyle: 1
