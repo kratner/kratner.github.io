@@ -67,7 +67,7 @@
         return model;
     };
 })(window, document, window.Core = window.Core || {});
-/*global Controls, Core*/
+/*global Controls, Core, gtag*/
 (function (window, document, Controls, UIElements, Collections) {
     'use strict';
 
@@ -89,8 +89,8 @@
                     // document.location = url;
                 }
             });
-        };
-        var switchBackgroundVideo = function switchBackgroundVideo() {
+        },
+            switchBackgroundVideo = function switchBackgroundVideo() {
             //console.log('switch video');
             var new_random_item = Math.floor(Math.random() * Collections.paths.video_sources.length);
             UIElements.$el.background.video_source.attr('src', Collections.paths.video_sources[new_random_item]);
@@ -109,45 +109,9 @@
             },
             link: $('.gtag')
         };
-        Controls.$el = { bg_video_switch: $('[data-ctl=bgvideoswitch]') };
-        var $el = {
-            post: {
-                content: $('.post-content')
-            }
-        },
-            api = {
-            uri: 'http://rats1966.x10host.com/wp-json', // relocate WP REST API to HTTPS server
-            root: 'http://www.keithratner.com',
-            midpoint: '/wp/v2/pages/',
-            json: '/wp-json/wp/v2/',
-            pages: 'pages/',
-            posts: 'posts/',
-            // pageid: '2063',
-            // postid: '2079',
-            postid: '2'
-        },
-            model = new Core.Model(),
+        Controls.$el = Controls.$el || {};
+        Controls.$el.bg_video_switch = $('[data-ctl=bgvideoswitch]');
 
-        /*
-              renderPost = (data) => {
-                  let post = JSON.parse(data),
-                      content = post.content.rendered;
-                  $el.post.content.html(content);
-              },
-              */
-        cacheData = function cacheData(data) {
-            var WPRESTAPIDATA = JSON.parse(data);
-            window.WPRESTAPIDATA = WPRESTAPIDATA;
-        },
-            getSplashPageData = function getSplashPageData() {
-            //let url = api.root + api.json + api.posts + api.postid;
-            //let url = api.uri;
-            var url = api.uri + api.midpoint + api.postid;
-            model.httpRequest(url).get()
-            //.then(renderPost);
-            .then(cacheData);
-        };
-        // window.WPRESTAPIDATA = model.httpRequest(WPRESTAPIURL);
         UIElements.$el.footer.copyright.html('&copy;' + function () {
             return new Date();
         }().getFullYear());
