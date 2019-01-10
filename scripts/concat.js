@@ -84,16 +84,14 @@
                     }
                 });
             },
-            switchBackgroundVideo = () => {
+            switchBackgroundVideo = (arr, $el_video, $el_source) => {
                 //console.log('switch video');
                 let new_random_item = Math.floor(
-                    Math.random() * Collections.paths.video_sources.length
+                    // Math.random() * Collections.paths.video_sources.length
+                    Math.random() * arr.length
                 );
-                UIElements.$el.background.video_source.attr(
-                    'src',
-                    Collections.paths.video_sources[new_random_item]
-                );
-                UIElements.$el.background.video_element.load();
+                $el_source.attr('src', arr[new_random_item]);
+                $el_video.load();
             };
         Collections.paths = {
             video_sources: [
@@ -115,6 +113,7 @@
             },
             link: $('.gtag')
         };
+
         Controls.$el = Controls.$el || {};
         Controls.$el.bg_video_switch = $('[data-ctl=bgvideoswitch]');
 
@@ -125,10 +124,18 @@
             trackOutboundLink(evt.target.href);
         });
         Controls.$el.bg_video_switch.on('click', evt => {
-            switchBackgroundVideo();
+            switchBackgroundVideo(
+                Collections.paths.video_sources,
+                UIElements.$el.background.video_element,
+                UIElements.$el.background.video_source
+            );
         });
         // randomize video
-        switchBackgroundVideo();
+        switchBackgroundVideo(
+            Collections.paths.video_sources,
+            UIElements.$el.background.video_element,
+            UIElements.$el.background.video_source
+        );
         // *** relocate WP REST API to HTTPS server
         // getSplashPageData(2063);
     };
@@ -145,6 +152,7 @@
 ((window, document, Controls) => {
     // http://codepen.io/elijahmanor/pen/Igpoe
     // animated hamburger control
+    /*
     Controls.initializeNavControl = () => {
         let $el = {
             controls: $('.controls'),
@@ -172,4 +180,5 @@
             }
         });
     };
+    */
 })(window, document, (window.Controls = window.Controls || {}));

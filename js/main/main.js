@@ -90,11 +90,13 @@
                 }
             });
         },
-            switchBackgroundVideo = function switchBackgroundVideo() {
+            switchBackgroundVideo = function switchBackgroundVideo(arr, $el_video, $el_source) {
             //console.log('switch video');
-            var new_random_item = Math.floor(Math.random() * Collections.paths.video_sources.length);
-            UIElements.$el.background.video_source.attr('src', Collections.paths.video_sources[new_random_item]);
-            UIElements.$el.background.video_element.load();
+            var new_random_item = Math.floor(
+            // Math.random() * Collections.paths.video_sources.length
+            Math.random() * arr.length);
+            $el_source.attr('src', arr[new_random_item]);
+            $el_video.load();
         };
         Collections.paths = {
             video_sources: ['img/20181215_154218.mp4', 'img/20190103_151234.mp4', 'img/pb_201811221400.mp4', 'img/pb_201811261530.mp4', 'img/pb_201811261532.mp4', 'img/pb-boardwalk-2018-11-26.mp4']
@@ -109,6 +111,7 @@
             },
             link: $('.gtag')
         };
+
         Controls.$el = Controls.$el || {};
         Controls.$el.bg_video_switch = $('[data-ctl=bgvideoswitch]');
 
@@ -119,10 +122,10 @@
             trackOutboundLink(evt.target.href);
         });
         Controls.$el.bg_video_switch.on('click', function (evt) {
-            switchBackgroundVideo();
+            switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
         });
         // randomize video
-        switchBackgroundVideo();
+        switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
         // *** relocate WP REST API to HTTPS server
         // getSplashPageData(2063);
     };
@@ -133,8 +136,9 @@
 (function (window, document, Controls) {
     // http://codepen.io/elijahmanor/pen/Igpoe
     // animated hamburger control
-    Controls.initializeNavControl = function () {
-        var $el = {
+    /*
+    Controls.initializeNavControl = () => {
+        let $el = {
             controls: $('.controls'),
             splash: $('.splash'),
             navToggle: $('.nav-toggle'),
@@ -142,7 +146,7 @@
                 top: $('.controls .site-brand ul')
             }
         };
-        $el.navToggle.on('click', function () {
+        $el.navToggle.on('click', () => {
             $el.controls.toggleClass('active');
             $el.splash.toggleClass('active');
             // if ($el.nav.top.hasClass('active')) {
@@ -151,7 +155,7 @@
             //     $el.nav.top.addClass('active').removeClass('inactive');
             // }
         });
-        $(document).on('keyup', function (evt) {
+        $(document).on('keyup', evt => {
             if (evt.keyCode === 27) {
                 if ($el.controls.hasClass('active')) {
                     $el.controls.toggleClass('active');
@@ -160,4 +164,5 @@
             }
         });
     };
+    */
 })(window, document, window.Controls = window.Controls || {});

@@ -3,6 +3,7 @@
 ((window, document, Controls) => {
     // http://codepen.io/elijahmanor/pen/Igpoe
     // animated hamburger control
+    /*
     Controls.initializeNavControl = () => {
         let $el = {
             controls: $('.controls'),
@@ -30,4 +31,5 @@
             }
         });
     };
+    */
 })(window, document, (window.Controls = window.Controls || {}));
