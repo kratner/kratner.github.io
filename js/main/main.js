@@ -1,5 +1,72 @@
 'use strict';
 
+/*global UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
+(function (window, document) {
+    'use strict';
+
+    var init = function init() {
+        UIElements.cacheElements();
+        Controls.cacheElements();
+        Events.bindEvents();
+
+        // randomize video
+        Actions.methods.switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
+
+        Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
+    };
+    $(document).ready(init);
+})(window, document);
+/*global gtag*/
+'use strict';
+
+(function (window, Actions) {
+    Actions.methods = {
+        switchBackgroundVideo: function switchBackgroundVideo(arr, $el_video, $el_source) {
+            //console.log('switch video');
+            var new_random_item = Math.floor(
+            // Math.random() * Collections.paths.video_sources.length
+            Math.random() * arr.length);
+            $el_source.attr('src', arr[new_random_item]);
+            $el_video.load();
+        },
+        displayCopyrightYear: function displayCopyrightYear($el) {
+            $el.html('&copy;' + function () {
+                return new Date();
+            }().getFullYear());
+        }
+    };
+})(window, window.Actions = window.Actions || {});
+/*global gtag*/
+'use strict';
+
+(function (window, Analytics) {
+    /**
+     * Function that tracks a click on an outbound link in Analytics.
+     * This function takes a valid URL string as an argument, and uses that URL string
+     * as the event label. Setting the transport method to 'beacon' lets the hit be sent
+     * using 'navigator.sendBeacon' in browser that support it.
+     */
+    Analytics.trackOutboundLink = function (url) {
+        console.log('trackOutboundLinks method invoked');
+        gtag('event', 'click', {
+            event_category: 'outbound',
+            event_label: url,
+            transport_type: 'beacon',
+            event_callback: function event_callback() {
+                // document.location = url;
+            }
+        });
+    };
+})(window, window.Analytics = window.Analytics || {});
+'use strict';
+
+(function (window, document, Controls) {
+    Controls.cacheElements = function () {
+        Controls.$el = { bg_video_switch: $('[data-ctl=bgvideoswitch]') };
+    };
+})(window, document, window.Controls = window.Controls || {});
+'use strict';
+
 (function (window, document, Core) {
     Core.Model = function () {
         var model = {},
@@ -67,40 +134,30 @@
         return model;
     };
 })(window, document, window.Core = window.Core || {});
-/*global Controls, Core, gtag*/
-(function (window, document, Controls, UIElements, Collections) {
-    'use strict';
+/*global UIElements, Analytics, Actions, Collections, Controls*/
+'use strict';
 
-    var init = function init() {
-        // Controls.initializeNavControl();
+(function (window, Events) {
+    Events.bindEvents = function () {
+        UIElements.$el.link.on('click', function (evt) {
+            Analytics.trackOutboundLink(evt.target.href);
+        });
+        Controls.$el.bg_video_switch.on('click', function (evt) {
+            Actions.methods.switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
+        });
+    };
+})(window, window.Events = window.Events || {});
+'use strict';
 
-        /**
-         * Function that tracks a click on an outbound link in Analytics.
-         * This function takes a valid URL string as an argument, and uses that URL string
-         * as the event label. Setting the transport method to 'beacon' lets the hit be sent
-         * using 'navigator.sendBeacon' in browser that support it.
-         */
-        var trackOutboundLink = function trackOutboundLink(url) {
-            gtag('event', 'click', {
-                event_category: 'outbound',
-                event_label: url,
-                transport_type: 'beacon',
-                event_callback: function event_callback() {
-                    // document.location = url;
-                }
-            });
-        },
-            switchBackgroundVideo = function switchBackgroundVideo(arr, $el_video, $el_source) {
-            //console.log('switch video');
-            var new_random_item = Math.floor(
-            // Math.random() * Collections.paths.video_sources.length
-            Math.random() * arr.length);
-            $el_source.attr('src', arr[new_random_item]);
-            $el_video.load();
-        };
-        Collections.paths = {
-            video_sources: ['img/20181215_154218.mp4', 'img/20190103_151234.mp4', 'img/pb_201811221400.mp4', 'img/pb_201811261530.mp4', 'img/pb_201811261532.mp4', 'img/pb-boardwalk-2018-11-26.mp4']
-        };
+(function (window, Collections) {
+    Collections.paths = {
+        video_sources: ['img/20181215_154218.mp4', 'img/20190103_151234.mp4', 'img/pb_201811221400.mp4', 'img/pb_201811261530.mp4', 'img/pb_201811261532.mp4', 'img/pb-boardwalk-2018-11-26.mp4']
+    };
+})(window, window.Collections = window.Collections || {});
+'use strict';
+
+(function (window, UIElements) {
+    UIElements.cacheElements = function () {
         UIElements.$el = {
             background: {
                 video_element: $('#video-background'),
@@ -111,58 +168,5 @@
             },
             link: $('.gtag')
         };
-
-        Controls.$el = Controls.$el || {};
-        Controls.$el.bg_video_switch = $('[data-ctl=bgvideoswitch]');
-
-        UIElements.$el.footer.copyright.html('&copy;' + function () {
-            return new Date();
-        }().getFullYear());
-        UIElements.$el.link.on('click', function (evt) {
-            trackOutboundLink(evt.target.href);
-        });
-        Controls.$el.bg_video_switch.on('click', function (evt) {
-            switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
-        });
-        // randomize video
-        switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
-        // *** relocate WP REST API to HTTPS server
-        // getSplashPageData(2063);
     };
-    $(document).ready(init);
-})(window, document, window.Controls = window.Controls || {}, window.UIElements = window.UIElements || {}, window.Collections = window.Collections || {});
-'use strict';
-
-(function (window, document, Controls) {
-    // http://codepen.io/elijahmanor/pen/Igpoe
-    // animated hamburger control
-    /*
-    Controls.initializeNavControl = () => {
-        let $el = {
-            controls: $('.controls'),
-            splash: $('.splash'),
-            navToggle: $('.nav-toggle'),
-            nav: {
-                top: $('.controls .site-brand ul')
-            }
-        };
-        $el.navToggle.on('click', () => {
-            $el.controls.toggleClass('active');
-            $el.splash.toggleClass('active');
-            // if ($el.nav.top.hasClass('active')) {
-            //     $el.nav.top.removeClass('active').addClass('inactive');
-            // } else {
-            //     $el.nav.top.addClass('active').removeClass('inactive');
-            // }
-        });
-        $(document).on('keyup', evt => {
-            if (evt.keyCode === 27) {
-                if ($el.controls.hasClass('active')) {
-                    $el.controls.toggleClass('active');
-                    $el.splash.toggleClass('active');
-                }
-            }
-        });
-    };
-    */
-})(window, document, window.Controls = window.Controls || {});
+})(window, window.UIElements = window.UIElements || {});
