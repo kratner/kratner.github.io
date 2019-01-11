@@ -16,7 +16,6 @@
     };
     $(document).ready(init);
 })(window, document);
-/*global gtag*/
 'use strict';
 
 (function (window, Actions) {

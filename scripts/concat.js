@@ -17,7 +17,6 @@
     };
     $(document).ready(init);
 })(window, document);
-/*global gtag*/
 'use strict';
 
 ((window, Actions) => {

@@ -1,4 +1,3 @@
-/*global gtag*/
 'use strict';
 
 ((window, Actions) => {
