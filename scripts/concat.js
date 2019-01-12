@@ -46,7 +46,6 @@
      * using 'navigator.sendBeacon' in browser that support it.
      */
     Analytics.trackOutboundLink = url => {
-        console.log('trackOutboundLinks method invoked');
         gtag('event', 'click', {
             event_category: 'outbound',
             event_label: url,
