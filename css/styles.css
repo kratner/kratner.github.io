@@ -750,15 +750,6 @@ h4 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-download:before {
-  content: '\e960'; }
-
-.icon-download3:before {
-  content: '\e9c7'; }
-
-.icon-share2:before {
-  content: '\ea82'; }
-
 .icon-play:before {
   content: '\e912'; }
 
@@ -767,6 +758,30 @@ h4 {
 
 .icon-video-camera:before {
   content: '\e914'; }
+
+.icon-download:before {
+  content: '\e960'; }
+
+.icon-download3:before {
+  content: '\e9c7'; }
+
+.icon-info:before {
+  content: '\ea0c'; }
+
+.icon-circle-up:before {
+  content: '\ea41'; }
+
+.icon-circle-right:before {
+  content: '\ea42'; }
+
+.icon-circle-down:before {
+  content: '\ea43'; }
+
+.icon-circle-left:before {
+  content: '\ea44'; }
+
+.icon-share2:before {
+  content: '\ea82'; }
 
 .icon-facebook:before {
   content: '\ea90'; }
