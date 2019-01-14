@@ -1,10 +1,12 @@
 'use strict';
 
-/*global UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
+/*global Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
 (function (window, document) {
     'use strict';
 
     var init = function init() {
+        Data.initializeFirebase();
+
         UIElements.cacheElements();
         Controls.cacheElements();
         Events.bindEvents();
@@ -13,6 +15,8 @@
         Actions.methods.switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
 
         Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
+
+        Data.getLinks();
     };
     $(document).ready(init);
 })(window, document);
@@ -132,6 +136,32 @@
         return model;
     };
 })(window, document, window.Core = window.Core || {});
+/*global firebase */
+'use strict';
+
+(function (window, document, Data) {
+    Data.initializeFirebase = function () {
+        // Initialize Firebase
+        var config = {
+            apiKey: 'AIzaSyBErwJPIqN7K-gfcUMisC594dZEHcjnzkY',
+            authDomain: 'kratner-firebase.firebaseapp.com',
+            databaseURL: 'https://kratner-firebase.firebaseio.com',
+            projectId: 'kratner-firebase',
+            storageBucket: '',
+            messagingSenderId: '386299743486'
+        };
+        firebase.initializeApp(config);
+        Data.database = firebase.database();
+    };
+    Data.getLinks = function () {
+        var linksRef = Data.database.ref('links');
+        linksRef.orderByKey().on('value', function (snapshot) {
+            console.log(snapshot.val());
+        }, function (error) {
+            console.log('Error: ' + error.code);
+        });
+    };
+})(window, document, window.Data = window.Data || {});
 /*global UIElements, Analytics, Actions, Collections, Controls*/
 'use strict';
 
