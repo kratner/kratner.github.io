@@ -1,4 +1,4 @@
-/*global firebase */
+/*global firebase, Actions */
 'use strict';
 
 ((window, document, Data) => {
@@ -14,17 +14,13 @@
         };
         firebase.initializeApp(config);
         Data.database = firebase.database();
+        const firestore = firebase.firestore(),
+            settings = {timestampsInSnapshots: true};
+        firestore.settings(settings);
+        Data.firestore = firestore;
+        Data.collection = Data.firestore.collection('links');
     };
     Data.getLinks = () => {
-        let linksRef = Data.database.ref('links');
-        linksRef.orderByKey().on(
-            'value',
-            snapshot => {
-                console.log(snapshot.val());
-            },
-            error => {
-                console.log('Error: ' + error.code);
-            }
-        );
+        return Data.collection.get();
     };
 })(window, document, (window.Data = window.Data || {}));

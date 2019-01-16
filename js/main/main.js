@@ -16,7 +16,9 @@
 
         Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
 
-        Data.getLinks();
+        Data.getLinks().then(Actions.methods.parseLinks).then(function (links) {
+            UIElements.displayLinks(links, UIElements.$el.linksContainer);
+        });
     };
     $(document).ready(init);
 })(window, document);
@@ -36,6 +38,25 @@
             $el.html('&copy;' + function () {
                 return new Date();
             }().getFullYear());
+        },
+        parseLinks: function parseLinks(querySnapshot) {
+            var links = [],
+                linksByWeight = [],
+                linksObject = {};
+            querySnapshot.docs.forEach(function (doc) {
+                links.push(doc.data());
+            });
+            linksByWeight = links.sort(function (elA, elB) {
+                if (elA.weight < elB.weight) {
+                    return -1;
+                }
+                if (elA.weight > elB.weight) {
+                    return 1;
+                }
+                return 0;
+            });
+            return linksByWeight;
+            // console.log(linksByWeight);
         }
     };
 })(window, window.Actions = window.Actions || {});
@@ -136,7 +157,7 @@
         return model;
     };
 })(window, document, window.Core = window.Core || {});
-/*global firebase */
+/*global firebase, Actions */
 'use strict';
 
 (function (window, document, Data) {
@@ -152,14 +173,14 @@
         };
         firebase.initializeApp(config);
         Data.database = firebase.database();
+        var firestore = firebase.firestore(),
+            settings = { timestampsInSnapshots: true };
+        firestore.settings(settings);
+        Data.firestore = firestore;
+        Data.collection = Data.firestore.collection('links');
     };
     Data.getLinks = function () {
-        var linksRef = Data.database.ref('links');
-        linksRef.orderByKey().on('value', function (snapshot) {
-            console.log(snapshot.val());
-        }, function (error) {
-            console.log('Error: ' + error.code);
-        });
+        return Data.collection.get();
     };
 })(window, document, window.Data = window.Data || {});
 /*global UIElements, Analytics, Actions, Collections, Controls*/
@@ -194,7 +215,15 @@
             footer: {
                 copyright: $('.copyright')
             },
-            link: $('.gtag')
+            link: $('.gtag'),
+            linksContainer: $('#links-container')
         };
+    };
+    UIElements.displayLinks = function (links, $el) {
+        $el.html('').append('<div class="link-padding"></div>');
+        links.forEach(function (element) {
+            var icon = element.icon === undefined ? '' : '<span class="icon-' + element.icon + '"></span>';
+            $el.find('.link-padding').append('<p><a href="' + element.href + '" class="' + element.class + '" title="' + element.title + '" target="' + element.target + '">' + element.text + ' ' + icon + '</a></p>');
+        });
     };
 })(window, window.UIElements = window.UIElements || {});

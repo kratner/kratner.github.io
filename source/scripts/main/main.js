@@ -17,7 +17,11 @@
 
         Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
 
-        Data.getLinks();
+        Data.getLinks()
+            .then(Actions.methods.parseLinks)
+            .then(links => {
+                UIElements.displayLinks(links, UIElements.$el.linksContainer);
+            });
     };
     $(document).ready(init);
 })(window, document);

@@ -921,6 +921,9 @@ video {
   min-height: 100%;
   transform: translateX(calc((100% - 100vw) / 2)); }
 
+.link-padding {
+  padding: 0.5em 0; }
+
 .splash-container {
   position: relative;
   top: 50%; }
@@ -928,7 +931,7 @@ video {
 .brand-title {
   background-color: rgba(255, 255, 255, 0.2);
   padding: 0.25em 0 0.1em;
-  margin: 0 0 0.3em 0; }
+  margin: 0; }
 
 .overlay-heading {
   background-color: rgba(255, 255, 255, 0.2);
@@ -936,9 +939,9 @@ video {
   padding: 0.1em 0; }
 
 .social-links {
-  margin: 0.2em 0 0;
+  margin: 0;
   background-color: rgba(255, 255, 255, 0.2);
-  padding: 0.2em 0 0 0; }
+  padding: 0.4em 0 0.2em 0; }
   .social-links a {
     margin: 0 0.25em;
     font-size: 1.2em; }
@@ -985,6 +988,40 @@ video {
   100% {
     opacity: 0;
     transform: translateY(-40px); } }
+
+.mdprogressbar {
+  width: 100%;
+  height: 1em;
+  overflow-x: hidden; }
+  .mdprogressbar .line {
+    position: absolute;
+    opacity: 0.4;
+    background: #4a8df8;
+    width: 150%; }
+  .mdprogressbar .subline {
+    position: absolute;
+    background: #4a8df8;
+    height: 1em; }
+  .mdprogressbar .inc {
+    animation: increase 2s infinite; }
+  .mdprogressbar .dec {
+    animation: decrease 2s 0.5s infinite; }
+
+@keyframes increase {
+  from {
+    left: -5%;
+    width: 5%; }
+  to {
+    left: 130%;
+    width: 100%; } }
+
+@keyframes decrease {
+  from {
+    left: -80%;
+    width: 80%; }
+  to {
+    left: 110%;
+    width: 10%; } }
 
 .form-container .form-component-title {
   font-weight: 700;
