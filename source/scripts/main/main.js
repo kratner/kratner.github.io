@@ -8,12 +8,19 @@
         Controls.cacheElements();
         Events.bindEvents();
 
-        // randomize video
-        Actions.methods.switchBackgroundVideo(
-            Collections.paths.video_sources,
-            UIElements.$el.background.video_element,
-            UIElements.$el.background.video_source
-        );
+        UIElements.showProgressBar(UIElements.$el.linksContainer);
+
+        Data.getVideoSources()
+            .then(Actions.methods.parseVideoSources)
+            .then(sources => {
+                Collections.paths.video_sources = sources;
+                // randomize video
+                Actions.methods.switchBackgroundVideo(
+                    Collections.paths.video_sources,
+                    UIElements.$el.background.video_element,
+                    UIElements.$el.background.video_source
+                );
+            });
 
         Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
 

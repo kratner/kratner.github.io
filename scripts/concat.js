@@ -8,12 +8,19 @@
         Controls.cacheElements();
         Events.bindEvents();
 
-        // randomize video
-        Actions.methods.switchBackgroundVideo(
-            Collections.paths.video_sources,
-            UIElements.$el.background.video_element,
-            UIElements.$el.background.video_source
-        );
+        UIElements.showProgressBar(UIElements.$el.linksContainer);
+
+        Data.getVideoSources()
+            .then(Actions.methods.parseVideoSources)
+            .then(sources => {
+                Collections.paths.video_sources = sources;
+                // randomize video
+                Actions.methods.switchBackgroundVideo(
+                    Collections.paths.video_sources,
+                    UIElements.$el.background.video_element,
+                    UIElements.$el.background.video_source
+                );
+            });
 
         Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
 
@@ -30,12 +37,8 @@
 ((window, Actions) => {
     Actions.methods = {
         switchBackgroundVideo: (arr, $el_video, $el_source) => {
-            //console.log('switch video');
-            let new_random_item = Math.floor(
-                // Math.random() * Collections.paths.video_sources.length
-                Math.random() * arr.length
-            );
-            $el_source.attr('src', arr[new_random_item]);
+            let new_random_item = Math.floor(Math.random() * arr.length);
+            $el_source.attr('src', arr[new_random_item].path);
             $el_video.load();
         },
         displayCopyrightYear: $el => {
@@ -57,7 +60,13 @@
                 return 0;
             });
             return linksByWeight;
-            // console.log(linksByWeight);
+        },
+        parseVideoSources: querySnapshot => {
+            let sources = [];
+            querySnapshot.docs.forEach(doc => {
+                sources.push(doc.data());
+            });
+            return sources;
         }
     };
 })(window, (window.Actions = window.Actions || {}));
@@ -173,11 +182,10 @@
             settings = {timestampsInSnapshots: true};
         firestore.settings(settings);
         Data.firestore = firestore;
-        Data.collection = Data.firestore.collection('links');
+        Data.getCollection = id => Data.firestore.collection(id).get();
     };
-    Data.getLinks = () => {
-        return Data.collection.get();
-    };
+    Data.getLinks = () => Data.getCollection('links');
+    Data.getVideoSources = () => Data.getCollection('video_sources');
 })(window, document, (window.Data = window.Data || {}));
 /*global UIElements, Analytics, Actions, Collections, Controls*/
 'use strict';
@@ -201,12 +209,14 @@
 ((window, Collections) => {
     Collections.paths = {
         video_sources: [
+            /*
             'img/20181215_154218.mp4',
             'img/20190103_151234.mp4',
             'img/pb_201811221400.mp4',
             'img/pb_201811261530.mp4',
             'img/pb_201811261532.mp4',
             'img/pb-boardwalk-2018-11-26.mp4'
+            */
         ]
     };
 })(window, (window.Collections = window.Collections || {}));
@@ -225,6 +235,15 @@
             link: $('.gtag'),
             linksContainer: $('#links-container')
         };
+    };
+    UIElements.showProgressBar = ($container, indeterminate = true) => {
+        if (indeterminate) {
+            $container.html('').append(`<div class="mdprogressbar">
+                <div class="line"></div>
+                <div class="subline inc"></div>
+                <div class="subline dec"></div>
+                </div>`);
+        }
     };
     UIElements.displayLinks = (links, $el) => {
         $el.html('').append('<div class="link-padding"></div>');

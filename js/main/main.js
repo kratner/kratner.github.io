@@ -11,8 +11,13 @@
         Controls.cacheElements();
         Events.bindEvents();
 
-        // randomize video
-        Actions.methods.switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
+        UIElements.showProgressBar(UIElements.$el.linksContainer);
+
+        Data.getVideoSources().then(Actions.methods.parseVideoSources).then(function (sources) {
+            Collections.paths.video_sources = sources;
+            // randomize video
+            Actions.methods.switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
+        });
 
         Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
 
@@ -27,11 +32,8 @@
 (function (window, Actions) {
     Actions.methods = {
         switchBackgroundVideo: function switchBackgroundVideo(arr, $el_video, $el_source) {
-            //console.log('switch video');
-            var new_random_item = Math.floor(
-            // Math.random() * Collections.paths.video_sources.length
-            Math.random() * arr.length);
-            $el_source.attr('src', arr[new_random_item]);
+            var new_random_item = Math.floor(Math.random() * arr.length);
+            $el_source.attr('src', arr[new_random_item].path);
             $el_video.load();
         },
         displayCopyrightYear: function displayCopyrightYear($el) {
@@ -55,7 +57,13 @@
                 return 0;
             });
             return linksByWeight;
-            // console.log(linksByWeight);
+        },
+        parseVideoSources: function parseVideoSources(querySnapshot) {
+            var sources = [];
+            querySnapshot.docs.forEach(function (doc) {
+                sources.push(doc.data());
+            });
+            return sources;
         }
     };
 })(window, window.Actions = window.Actions || {});
@@ -176,10 +184,15 @@
             settings = { timestampsInSnapshots: true };
         firestore.settings(settings);
         Data.firestore = firestore;
-        Data.collection = Data.firestore.collection('links');
+        Data.getCollection = function (id) {
+            return Data.firestore.collection(id).get();
+        };
     };
     Data.getLinks = function () {
-        return Data.collection.get();
+        return Data.getCollection('links');
+    };
+    Data.getVideoSources = function () {
+        return Data.getCollection('video_sources');
     };
 })(window, document, window.Data = window.Data || {});
 /*global UIElements, Analytics, Actions, Collections, Controls*/
@@ -199,7 +212,16 @@
 
 (function (window, Collections) {
     Collections.paths = {
-        video_sources: ['img/20181215_154218.mp4', 'img/20190103_151234.mp4', 'img/pb_201811221400.mp4', 'img/pb_201811261530.mp4', 'img/pb_201811261532.mp4', 'img/pb-boardwalk-2018-11-26.mp4']
+        video_sources: [
+            /*
+            'img/20181215_154218.mp4',
+            'img/20190103_151234.mp4',
+            'img/pb_201811221400.mp4',
+            'img/pb_201811261530.mp4',
+            'img/pb_201811261532.mp4',
+            'img/pb-boardwalk-2018-11-26.mp4'
+            */
+        ]
     };
 })(window, window.Collections = window.Collections || {});
 'use strict';
@@ -217,6 +239,13 @@
             link: $('.gtag'),
             linksContainer: $('#links-container')
         };
+    };
+    UIElements.showProgressBar = function ($container) {
+        var indeterminate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+        if (indeterminate) {
+            $container.html('').append('<div class="mdprogressbar">\n                <div class="line"></div>\n                <div class="subline inc"></div>\n                <div class="subline dec"></div>\n                </div>');
+        }
     };
     UIElements.displayLinks = function (links, $el) {
         $el.html('').append('<div class="link-padding"></div>');

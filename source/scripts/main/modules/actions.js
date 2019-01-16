@@ -3,12 +3,8 @@
 ((window, Actions) => {
     Actions.methods = {
         switchBackgroundVideo: (arr, $el_video, $el_source) => {
-            //console.log('switch video');
-            let new_random_item = Math.floor(
-                // Math.random() * Collections.paths.video_sources.length
-                Math.random() * arr.length
-            );
-            $el_source.attr('src', arr[new_random_item]);
+            let new_random_item = Math.floor(Math.random() * arr.length);
+            $el_source.attr('src', arr[new_random_item].path);
             $el_video.load();
         },
         displayCopyrightYear: $el => {
@@ -30,7 +26,13 @@
                 return 0;
             });
             return linksByWeight;
-            // console.log(linksByWeight);
+        },
+        parseVideoSources: querySnapshot => {
+            let sources = [];
+            querySnapshot.docs.forEach(doc => {
+                sources.push(doc.data());
+            });
+            return sources;
         }
     };
 })(window, (window.Actions = window.Actions || {}));

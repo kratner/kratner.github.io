@@ -18,9 +18,8 @@
             settings = {timestampsInSnapshots: true};
         firestore.settings(settings);
         Data.firestore = firestore;
-        Data.collection = Data.firestore.collection('links');
+        Data.getCollection = id => Data.firestore.collection(id).get();
     };
-    Data.getLinks = () => {
-        return Data.collection.get();
-    };
+    Data.getLinks = () => Data.getCollection('links');
+    Data.getVideoSources = () => Data.getCollection('video_sources');
 })(window, document, (window.Data = window.Data || {}));

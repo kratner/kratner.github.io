@@ -14,6 +14,15 @@
             linksContainer: $('#links-container')
         };
     };
+    UIElements.showProgressBar = ($container, indeterminate = true) => {
+        if (indeterminate) {
+            $container.html('').append(`<div class="mdprogressbar">
+                <div class="line"></div>
+                <div class="subline inc"></div>
+                <div class="subline dec"></div>
+                </div>`);
+        }
+    };
     UIElements.displayLinks = (links, $el) => {
         $el.html('').append('<div class="link-padding"></div>');
         links.forEach(element => {
