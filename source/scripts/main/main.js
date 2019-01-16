@@ -9,6 +9,7 @@
         Events.bindEvents();
 
         UIElements.showProgressBar(UIElements.$el.linksContainer);
+        UIElements.showProgressBar(UIElements.$el.socialLinksContainer);
 
         Data.getVideoSources()
             .then(Actions.methods.parseVideoSources)
@@ -27,7 +28,22 @@
         Data.getLinks()
             .then(Actions.methods.parseLinks)
             .then(links => {
-                UIElements.displayLinks(links, UIElements.$el.linksContainer);
+                Collections.links.project_links = links.filter(
+                    element => element.type === 'project'
+                );
+                Collections.links.social_links = links.filter(
+                    element => element.type === 'social'
+                );
+                UIElements.displayLinks(
+                    Collections.links.project_links,
+                    UIElements.$el.linksContainer
+                );
+                UIElements.displayLinks(
+                    Collections.links.social_links,
+                    UIElements.$el.socialLinksContainer,
+                    false,
+                    true
+                );
             });
     };
     $(document).ready(init);
