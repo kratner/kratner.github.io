@@ -18,7 +18,7 @@
         $el.html('').append('<div class="link-padding"></div>');
         links.forEach(element => {
             let icon =
-                element.icon === undefined
+                typeof element.icon === 'undefined'
                     ? ''
                     : `<span class="icon-${element.icon}"></span>`;
             $el.find('.link-padding').append(

@@ -16,8 +16,7 @@
         },
         parseLinks: querySnapshot => {
             let links = [],
-                linksByWeight = [],
-                linksObject = {};
+                linksByWeight = [];
             querySnapshot.docs.forEach(doc => {
                 links.push(doc.data());
             });
