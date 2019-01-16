@@ -1,10 +1,12 @@
 'use strict';
 
-/*global UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
+/*global Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
 (function (window, document) {
     'use strict';
 
     var init = function init() {
+        Data.initializeFirebase();
+
         UIElements.cacheElements();
         Controls.cacheElements();
         Events.bindEvents();
@@ -13,6 +15,10 @@
         Actions.methods.switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
 
         Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
+
+        Data.getLinks().then(Actions.methods.parseLinks).then(function (links) {
+            UIElements.displayLinks(links, UIElements.$el.linksContainer);
+        });
     };
     $(document).ready(init);
 })(window, document);
@@ -32,6 +38,24 @@
             $el.html('&copy;' + function () {
                 return new Date();
             }().getFullYear());
+        },
+        parseLinks: function parseLinks(querySnapshot) {
+            var links = [],
+                linksByWeight = [];
+            querySnapshot.docs.forEach(function (doc) {
+                links.push(doc.data());
+            });
+            linksByWeight = links.sort(function (elA, elB) {
+                if (elA.weight < elB.weight) {
+                    return -1;
+                }
+                if (elA.weight > elB.weight) {
+                    return 1;
+                }
+                return 0;
+            });
+            return linksByWeight;
+            // console.log(linksByWeight);
         }
     };
 })(window, window.Actions = window.Actions || {});
@@ -132,6 +156,32 @@
         return model;
     };
 })(window, document, window.Core = window.Core || {});
+/*global firebase, Actions */
+'use strict';
+
+(function (window, document, Data) {
+    Data.initializeFirebase = function () {
+        // Initialize Firebase
+        var config = {
+            apiKey: 'AIzaSyBErwJPIqN7K-gfcUMisC594dZEHcjnzkY',
+            authDomain: 'kratner-firebase.firebaseapp.com',
+            databaseURL: 'https://kratner-firebase.firebaseio.com',
+            projectId: 'kratner-firebase',
+            storageBucket: '',
+            messagingSenderId: '386299743486'
+        };
+        firebase.initializeApp(config);
+        Data.database = firebase.database();
+        var firestore = firebase.firestore(),
+            settings = { timestampsInSnapshots: true };
+        firestore.settings(settings);
+        Data.firestore = firestore;
+        Data.collection = Data.firestore.collection('links');
+    };
+    Data.getLinks = function () {
+        return Data.collection.get();
+    };
+})(window, document, window.Data = window.Data || {});
 /*global UIElements, Analytics, Actions, Collections, Controls*/
 'use strict';
 
@@ -164,7 +214,15 @@
             footer: {
                 copyright: $('.copyright')
             },
-            link: $('.gtag')
+            link: $('.gtag'),
+            linksContainer: $('#links-container')
         };
+    };
+    UIElements.displayLinks = function (links, $el) {
+        $el.html('').append('<div class="link-padding"></div>');
+        links.forEach(function (element) {
+            var icon = typeof element.icon === 'undefined' ? '' : '<span class="icon-' + element.icon + '"></span>';
+            $el.find('.link-padding').append('<p><a href="' + element.href + '" class="' + element.class + '" title="' + element.title + '" target="' + element.target + '">' + element.text + ' ' + icon + '</a></p>');
+        });
     };
 })(window, window.UIElements = window.UIElements || {});

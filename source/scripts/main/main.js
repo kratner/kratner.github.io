@@ -1,7 +1,9 @@
-/*global UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
+/*global Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
 ((window, document) => {
     'use strict';
     let init = () => {
+        Data.initializeFirebase();
+
         UIElements.cacheElements();
         Controls.cacheElements();
         Events.bindEvents();
@@ -14,6 +16,12 @@
         );
 
         Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
+
+        Data.getLinks()
+            .then(Actions.methods.parseLinks)
+            .then(links => {
+                UIElements.displayLinks(links, UIElements.$el.linksContainer);
+            });
     };
     $(document).ready(init);
 })(window, document);

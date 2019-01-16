@@ -1,7 +1,9 @@
-/*global UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
+/*global Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
 ((window, document) => {
     'use strict';
     let init = () => {
+        Data.initializeFirebase();
+
         UIElements.cacheElements();
         Controls.cacheElements();
         Events.bindEvents();
@@ -14,6 +16,12 @@
         );
 
         Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
+
+        Data.getLinks()
+            .then(Actions.methods.parseLinks)
+            .then(links => {
+                UIElements.displayLinks(links, UIElements.$el.linksContainer);
+            });
     };
     $(document).ready(init);
 })(window, document);
@@ -32,6 +40,24 @@
         },
         displayCopyrightYear: $el => {
             $el.html('&copy;' + (() => new Date())().getFullYear());
+        },
+        parseLinks: querySnapshot => {
+            let links = [],
+                linksByWeight = [];
+            querySnapshot.docs.forEach(doc => {
+                links.push(doc.data());
+            });
+            linksByWeight = links.sort((elA, elB) => {
+                if (elA.weight < elB.weight) {
+                    return -1;
+                }
+                if (elA.weight > elB.weight) {
+                    return 1;
+                }
+                return 0;
+            });
+            return linksByWeight;
+            // console.log(linksByWeight);
         }
     };
 })(window, (window.Actions = window.Actions || {}));
@@ -127,6 +153,32 @@
         return model;
     };
 })(window, document, (window.Core = window.Core || {}));
+/*global firebase, Actions */
+'use strict';
+
+((window, document, Data) => {
+    Data.initializeFirebase = () => {
+        // Initialize Firebase
+        let config = {
+            apiKey: 'AIzaSyBErwJPIqN7K-gfcUMisC594dZEHcjnzkY',
+            authDomain: 'kratner-firebase.firebaseapp.com',
+            databaseURL: 'https://kratner-firebase.firebaseio.com',
+            projectId: 'kratner-firebase',
+            storageBucket: '',
+            messagingSenderId: '386299743486'
+        };
+        firebase.initializeApp(config);
+        Data.database = firebase.database();
+        const firestore = firebase.firestore(),
+            settings = {timestampsInSnapshots: true};
+        firestore.settings(settings);
+        Data.firestore = firestore;
+        Data.collection = Data.firestore.collection('links');
+    };
+    Data.getLinks = () => {
+        return Data.collection.get();
+    };
+})(window, document, (window.Data = window.Data || {}));
 /*global UIElements, Analytics, Actions, Collections, Controls*/
 'use strict';
 
@@ -170,7 +222,22 @@
             footer: {
                 copyright: $('.copyright')
             },
-            link: $('.gtag')
+            link: $('.gtag'),
+            linksContainer: $('#links-container')
         };
+    };
+    UIElements.displayLinks = (links, $el) => {
+        $el.html('').append('<div class="link-padding"></div>');
+        links.forEach(element => {
+            let icon =
+                typeof element.icon === 'undefined'
+                    ? ''
+                    : `<span class="icon-${element.icon}"></span>`;
+            $el.find('.link-padding').append(
+                `<p><a href="${element.href}" class="${element.class}" title="${
+                    element.title
+                }" target="${element.target}">${element.text} ${icon}</a></p>`
+            );
+        });
     };
 })(window, (window.UIElements = window.UIElements || {}));

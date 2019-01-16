@@ -11,6 +11,11 @@ $screen-small-max: ($screen-medium-min - 1) !default;
 $screen-medium-max: ($screen-large-min - 1) !default;
 $screen-large-max: ($screen-large-min - 1) !default;
 
+// Progress Bar Heights
+$progress-bar-height: 1em;
+
+// Fonts
+
 $site-brand-font-family: 'ledlightregular';
 // $splash-body-font-family: 'ledlightregular';
 // $overlay-body-font-family: 'saucerbb';
