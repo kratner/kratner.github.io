@@ -13,6 +13,9 @@
 
         Data.getVideoSources()
             .then(Actions.methods.parseVideoSources)
+            .catch(error => {
+                console.log('Error getting video source array: ', error);
+            })
             .then(sources => {
                 Collections.paths.video_sources = sources;
                 // randomize video
@@ -27,6 +30,9 @@
 
         Data.getLinks()
             .then(Actions.methods.parseLinks)
+            .catch(error => {
+                console.log('Error getting links array: ', error);
+            })
             .then(links => {
                 Collections.links.project_links = links.filter(
                     element => element.type === 'project'

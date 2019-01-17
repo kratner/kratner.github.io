@@ -14,7 +14,9 @@
         UIElements.showProgressBar(UIElements.$el.linksContainer);
         UIElements.showProgressBar(UIElements.$el.socialLinksContainer);
 
-        Data.getVideoSources().then(Actions.methods.parseVideoSources).then(function (sources) {
+        Data.getVideoSources().then(Actions.methods.parseVideoSources).catch(function (error) {
+            console.log('Error getting video source array: ', error);
+        }).then(function (sources) {
             Collections.paths.video_sources = sources;
             // randomize video
             Actions.methods.switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
@@ -22,7 +24,9 @@
 
         Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
 
-        Data.getLinks().then(Actions.methods.parseLinks).then(function (links) {
+        Data.getLinks().then(Actions.methods.parseLinks).catch(function (error) {
+            console.log('Error getting links array: ', error);
+        }).then(function (links) {
             Collections.links.project_links = links.filter(function (element) {
                 return element.type === 'project';
             });
