@@ -2,6 +2,7 @@
 ((window, document) => {
     'use strict';
     let init = () => {
+        Router.route();
         Data.initializeFirebase();
 
         UIElements.cacheElements();

@@ -5,6 +5,7 @@
     'use strict';
 
     var init = function init() {
+        Router.route();
         Data.initializeFirebase();
 
         UIElements.cacheElements();
@@ -231,6 +232,23 @@
         social_links: []
     };
 })(window, window.Collections = window.Collections || {});
+'use strict';
+
+(function (window, document, Router) {
+    Router.route = function () {
+        var ref = document.referrer,
+            isValidUrl = function isValidUrl(string) {
+            try {
+                new URL(string);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        },
+            url = isValidUrl(ref) ? new URL(ref) : new URL(document.location);
+        console.log(url);
+    };
+})(window, document, window.Router = window.Router || {});
 'use strict';
 
 (function (window, UIElements) {
