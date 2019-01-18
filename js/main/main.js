@@ -1,6 +1,6 @@
 'use strict';
 
-/*global Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
+/*global Router, Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
 (function (window, document) {
     'use strict';
 
@@ -239,9 +239,9 @@
         var ref = document.referrer,
             isValidUrl = function isValidUrl(string) {
             try {
-                new URL(string);
+                var newUrl = new URL(string);
                 return true;
-            } catch (_) {
+            } catch (err) {
                 return false;
             }
         },

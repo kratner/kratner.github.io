@@ -1,4 +1,4 @@
-/*global Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
+/*global Router, Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
 ((window, document) => {
     'use strict';
     let init = () => {
@@ -245,9 +245,9 @@
         const ref = document.referrer,
             isValidUrl = string => {
                 try {
-                    new URL(string);
+                    let newUrl = new URL(string);
                     return true;
-                } catch (_) {
+                } catch (err) {
                     return false;
                 }
             },
