@@ -251,6 +251,27 @@
 })(window, document, window.Router = window.Router || {});
 'use strict';
 
+(function (window, Templates) {
+    Templates._ALinkElement = function (href, cssClass, title, target, text) {
+        return '<a href="' + href + '" class="' + cssClass + '" title="' + title + '" target="' + target + '">' + text + '</a>';
+    };
+    Templates._IconElement = function (icon) {
+        return '<span class="icon-' + icon + '"></span>';
+    };
+    Templates._PaddedDiv = function (cssClass) {
+        return '<div class="' + cssClass + '"></div>';
+    };
+    Templates._ProgressBar = function (indeterminate) {
+        return indeterminate ? '<div class="mdprogressbar">\n        <div class="line"></div>\n        <div class="subline inc"></div>\n        <div class="subline dec"></div>\n        </div>' : '';
+    };
+})(window, window.Templates = window.Templates || {});
+/*
+ * Refer to templates.js module
+ * for string literals and information
+ */
+/*global Templates */
+'use strict';
+
 (function (window, UIElements) {
     UIElements.cacheElements = function () {
         UIElements.$el = {
@@ -269,34 +290,30 @@
     UIElements.showProgressBar = function ($container) {
         var indeterminate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
-        if (indeterminate) {
-            $container.html('').append('<div class="mdprogressbar">\n                <div class="line"></div>\n                <div class="subline inc"></div>\n                <div class="subline dec"></div>\n                </div>');
-        }
+        $container.html('').append(Templates._ProgressBar(indeterminate));
     };
     UIElements.displayLinks = function (links, $el) {
         var hasPadding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
         var inline = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+        var htmlListTag = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'ul';
+        var htmlListItemTag = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 'li';
 
         var $container = void 0;
+        $el.html('');
         if (hasPadding) {
-            $el.html('').append('<div class="link-padding"></div>');
-            $container = hasPadding ? $el.find('.link-padding') : $el;
-            if (inline) {
-                $container.append('<p>');
-                $container = $container.find('p');
-            }
+            var cssPaddingClass = 'link-padding';
+            $el.append(Templates._PaddedDiv(cssPaddingClass));
+            $container = hasPadding ? $el.find('.' + cssPaddingClass) : $el;
         } else {
             $container = $el;
-            if (inline) {
-                $container.html('').append('<p>');
-                $container = $container.find('p');
-            }
         }
+        $container.append($('<' + htmlListTag + '>'));
+        $container = $container.find(htmlListTag);
         links.forEach(function (element) {
-            var icon = typeof element.icon === 'undefined' ? '' : '<span class="icon-' + element.icon + '"></span>',
+            var icon = typeof element.icon === 'undefined' ? '' : Templates._IconElement(element.icon),
                 text = typeof element.text === 'undefined' ? '' : element.text,
-                aLinkElement = '<a href="' + element.href + '" class="' + element.class + '" title="' + element.title + '" target="' + element.target + '">' + text + ' ' + icon + '</a>',
-                linkElement = inline ? aLinkElement : '<p>' + aLinkElement + '</p>';
+                aLinkElement = Templates._ALinkElement(element.href, element.class, element.title, element.target, text + ' ' + icon),
+                linkElement = '<' + htmlListItemTag + '>' + aLinkElement + '</' + htmlListItemTag + '>';
             $container.append(linkElement);
         });
     };

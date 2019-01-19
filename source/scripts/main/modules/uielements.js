@@ -1,3 +1,8 @@
+/*
+ * Refer to templates.js module
+ * for string literals and information
+ */
+/*global Templates */
 'use strict';
 
 ((window, UIElements) => {
@@ -16,49 +21,41 @@
         };
     };
     UIElements.showProgressBar = ($container, indeterminate = true) => {
-        if (indeterminate) {
-            $container.html('').append(`<div class="mdprogressbar">
-                <div class="line"></div>
-                <div class="subline inc"></div>
-                <div class="subline dec"></div>
-                </div>`);
-        }
+        $container.html('').append(Templates._ProgressBar(indeterminate));
     };
     UIElements.displayLinks = (
         links,
         $el,
         hasPadding = true,
-        inline = false
+        inline = false,
+        htmlListTag = 'ul', // stick with unordered list for now
+        htmlListItemTag = 'li'
     ) => {
         let $container;
+        $el.html('');
         if (hasPadding) {
-            $el.html('').append('<div class="link-padding"></div>');
-            $container = hasPadding ? $el.find('.link-padding') : $el;
-            if (inline) {
-                $container.append('<p>');
-                $container = $container.find('p');
-            }
+            let cssPaddingClass = 'link-padding';
+            $el.append(Templates._PaddedDiv(cssPaddingClass));
+            $container = hasPadding ? $el.find(`.${cssPaddingClass}`) : $el;
         } else {
             $container = $el;
-            if (inline) {
-                $container.html('').append('<p>');
-                $container = $container.find('p');
-            }
         }
+        $container.append($(`<${htmlListTag}>`));
+        $container = $container.find(htmlListTag);
         links.forEach(element => {
             let icon =
                     typeof element.icon === 'undefined'
                         ? ''
-                        : `<span class="icon-${element.icon}"></span>`,
+                        : Templates._IconElement(element.icon),
                 text = typeof element.text === 'undefined' ? '' : element.text,
-                aLinkElement = `<a href="${element.href}" class="${
-                    element.class
-                }" title="${element.title}" target="${
-                    element.target
-                }">${text} ${icon}</a>`,
-                linkElement = inline
-                    ? aLinkElement
-                    : '<p>' + aLinkElement + '</p>';
+                aLinkElement = Templates._ALinkElement(
+                    element.href,
+                    element.class,
+                    element.title,
+                    element.target,
+                    `${text} ${icon}`
+                ),
+                linkElement = `<${htmlListItemTag}>${aLinkElement}</${htmlListItemTag}>`;
             $container.append(linkElement);
         });
     };
