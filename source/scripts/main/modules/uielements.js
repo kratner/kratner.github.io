@@ -48,13 +48,13 @@
                         ? ''
                         : Templates._IconElement(element.icon),
                 text = typeof element.text === 'undefined' ? '' : element.text,
-                aLinkElement = Templates._ALinkElement(
-                    element.href,
-                    element.class,
-                    element.title,
-                    element.target,
-                    `${text} ${icon}`
-                ),
+                aLinkElement = Templates._ALinkElement({
+                    href: element.href,
+                    cssClass: element.class,
+                    title: element.title,
+                    target: element.target,
+                    text: `${text} ${icon}`
+                }),
                 linkElement = `<${htmlListItemTag}>${aLinkElement}</${htmlListItemTag}>`;
             $container.append(linkElement);
         });

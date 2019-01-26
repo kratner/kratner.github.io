@@ -1,9 +1,20 @@
 'use strict';
 
 ((window, Templates) => {
-    Templates._ALinkElement = (href, cssClass, title, target, text) => {
-        return `<a href="${href}" class="${cssClass}" title="${title}" target="${target}">${text}</a>`;
-    };
+    /*
+     * _ALinkElement
+     * param obj = {
+     *   href:      hypertext reference
+     *   cssClass:  css class(es); separate multiple classes by spaces
+     *   title:     title attribute
+     *   target:    target attribute
+     *   text:      link text
+     * }
+     */
+    Templates._ALinkElement = obj =>
+        `<a href="${obj.href}" class="${obj.cssClass}" title="${
+            obj.title
+        }" target="${obj.target}">${obj.text}</a>`;
     Templates._IconElement = icon => `<span class="icon-${icon}"></span>`;
     Templates._PaddedDiv = cssClass => `<div class="${cssClass}"></div>`;
     Templates._ProgressBar = indeterminate => {

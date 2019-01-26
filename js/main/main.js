@@ -252,8 +252,18 @@
 'use strict';
 
 (function (window, Templates) {
-    Templates._ALinkElement = function (href, cssClass, title, target, text) {
-        return '<a href="' + href + '" class="' + cssClass + '" title="' + title + '" target="' + target + '">' + text + '</a>';
+    /*
+     * _ALinkElement
+     * param obj = {
+     *   href:      hypertext reference
+     *   cssClass:  css class(es); separate multiple classes by spaces
+     *   title:     title attribute
+     *   target:    target attribute
+     *   text:      link text
+     * }
+     */
+    Templates._ALinkElement = function (obj) {
+        return '<a href="' + obj.href + '" class="' + obj.cssClass + '" title="' + obj.title + '" target="' + obj.target + '">' + obj.text + '</a>';
     };
     Templates._IconElement = function (icon) {
         return '<span class="icon-' + icon + '"></span>';
@@ -312,7 +322,13 @@
         links.forEach(function (element) {
             var icon = typeof element.icon === 'undefined' ? '' : Templates._IconElement(element.icon),
                 text = typeof element.text === 'undefined' ? '' : element.text,
-                aLinkElement = Templates._ALinkElement(element.href, element.class, element.title, element.target, text + ' ' + icon),
+                aLinkElement = Templates._ALinkElement({
+                href: element.href,
+                cssClass: element.class,
+                title: element.title,
+                target: element.target,
+                text: text + ' ' + icon
+            }),
                 linkElement = '<' + htmlListItemTag + '>' + aLinkElement + '</' + htmlListItemTag + '>';
             $container.append(linkElement);
         });
