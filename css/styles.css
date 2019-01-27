@@ -697,16 +697,21 @@ input, textarea {
 body {
   font-family: "Optima";
   font-size: 2.75em; }
+  body .theme-light {
+    color: #f4b98e;
+    text-shadow: 1px 1px 1px #000; }
+    body .theme-light h1 {
+      color: #00ffff; }
   @media screen and (max-width: 767px) {
     body {
       font-size: 1.5em; } }
   body a,
   body .ctl {
+    text-decoration: none;
     transition: all 0.5s ease;
     color: #f4b98e; }
     body a:hover,
     body .ctl:hover {
-      text-decoration: none;
       color: #ffff00;
       text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 15px #0000ff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
       cursor: pointer; }
@@ -898,6 +903,23 @@ h4 {
 .icon-file-excel:before {
   content: '\eae2'; }
 
+.container {
+  padding: 1em; }
+  .container .login-form {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1em 1em; }
+    .container .login-form label {
+      width: 5em;
+      display: inline-block; }
+    .container .login-form .form-component {
+      padding: 0.5em 0; }
+
+.app-controls {
+  padding: 1em; }
+
+#links-container li {
+  padding: 0.1em; }
+
 .slide {
   position: relative;
   padding: 25vh 10%;
@@ -935,7 +957,6 @@ h4 {
 .header {
   text-align: center;
   font-size: 175%;
-  color: #fff;
   text-shadow: 0 2px 2px #000; }
 
 body {
@@ -963,7 +984,6 @@ body {
 .front {
   background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
-  color: #fff;
   text-shadow: 1px 1px 6px black;
   margin-left: auto;
   margin-right: auto;
@@ -971,6 +991,8 @@ body {
   position: relative;
   top: 50%;
   transform: translateY(-50%); }
+  .front h1 {
+    font-weight: normal; }
 
 hr {
   margin-top: 0.5em;

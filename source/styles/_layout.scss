@@ -1,3 +1,26 @@
+.container {
+  padding: 1em;
+  .login-form {
+    background-color: $underlay_color;
+    padding: 1em 1em;
+    label {
+      width: 5em;
+      display: inline-block;
+    }
+    .form-component {
+      padding: 0.5em 0;
+    }
+  }
+}
+.app-controls {
+  padding: 1em;
+}
+#links-container {
+  li {
+    padding: 0.1em;
+  }
+}
+
 .slide {
   position: relative;
   padding: 25vh 10%;
@@ -44,7 +67,7 @@
 .header {
   text-align: center;
   font-size: 175%;
-  color: #fff;
+  //color: #fff;
   text-shadow: 0 2px 2px #000;
 }
 
@@ -75,9 +98,9 @@ body {
 }
 
 .front {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: $underlay_color;
   text-align: center;
-  color: #fff;
+  //color: #fff;
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 1);
   margin-left: auto;
   margin-right: auto;
@@ -85,6 +108,9 @@ body {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  h1 {
+    font-weight: normal;
+  }
 }
 
 hr {

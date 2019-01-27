@@ -2,15 +2,23 @@ body {
   font-family: $body-font-family;
   font-size: 2.75em;
 
+  .theme-light {
+    color: $theme_light_body;
+    @include text-shadow(1px, 1px, 1px, #000);
+    h1 {
+      color: $theme_light_h1;
+    }
+  }
+
   @include media(small-only) {
     font-size: 1.5em;
   }
   a,
   .ctl {
+    text-decoration: none;
     transition: all 0.5s ease;
     color: $link_orange;
     &:hover {
-      text-decoration: none;
       color: $link_yellow;
       text-shadow: $glow-effect;
       cursor: pointer;

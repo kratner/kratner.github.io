@@ -12,6 +12,13 @@
                 }
             },
             url = isValidUrl(ref) ? new URL(ref) : new URL(document.location);
-        console.log(url);
+        switch (url.pathname) {
+        case '/admin.html':
+            console.log('launch admin login form');
+            break;
+        default:
+            console.log(url.pathname);
+        }
+        //console.log(url);
     };
 })(window, document, (window.Router = window.Router || {}));
