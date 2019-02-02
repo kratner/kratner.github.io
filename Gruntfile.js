@@ -55,6 +55,15 @@ module.exports = grunt => {
                 dest: 'scripts/concat.js'
             }
         },
+        connect: {
+            all: {
+                options: {
+                    port: 8080,
+                    hostname: '0.0.0.0',
+                    livereload: 8081
+                }
+            }
+        },
         cssmin: {
             target: {
                 files: [
@@ -94,83 +103,27 @@ module.exports = grunt => {
             }
         },
         watch: {
+            options: {
+                livereload: 8081
+            },
+            bake: {
+                files: ['source/bake/*.*'],
+                tasks: ['bake']
+            },
             includes: {
                 files: ['source/includes/*.*'],
-                tasks: ['bake'],
-                options: {
-                    livereload: true
-                }
+                tasks: ['bake']
             },
             pages: {
-                files: ['*.html'],
-                options: {
-                    livereload: true
-                }
+                files: ['*.html']
             },
             scripts: {
                 files: ['source/**/*.js'],
-                tasks: ['concat', 'babel', 'uglify'],
-                options: {
-                    livereload: true,
-                    spawn: false
-                }
+                tasks: ['concat', 'babel', 'uglify']
             },
             styles: {
                 files: ['source/**/*.scss'],
-                tasks: ['sass', 'autoprefixer', 'cssmin', 'bake'],
-                options: {
-                    livereload: true
-                }
-            }
-        },
-        'http-server': {
-            dev: {
-                // the server root directory
-                root: '.',
-
-                // the server port
-                // can also be written as a function, e.g.
-                // port: function() { return 8282; }
-                port: 8080,
-
-                // the host ip address
-                // If specified to, for example, "127.0.0.1" the server will
-                // only be available on that ip.
-                // Specify "0.0.0.0" to be available everywhere
-                host: '0.0.0.0',
-
-                cache: 0,
-                showDir: true,
-                autoIndex: true,
-
-                // server default file extension
-                ext: 'html',
-
-                // run in parallel with other tasks
-                runInBackground: true | false,
-
-                // specify a logger function. By default the requests are
-                // sent to stdout.
-                logFn: (req, res, error) => {},
-
-                // Proxies all requests which can't be resolved locally to the given url
-                // Note this this will disable 'showDir'
-                // proxy: "http://someurl.com",
-
-                /// Use 'https: true' for default module SSL configuration
-                /// (default state is disabled)
-                https: false,
-
-                // Tell grunt task to open the browser
-                openBrowser: false
-
-                // customize url to serve specific pages
-                /*
-            customPages: {
-                "/readme": "README.md",
-                "/readme.html": "README.html"
-            }
-            */
+                tasks: ['sass', 'autoprefixer', 'cssmin', 'bake']
             }
         }
     });
@@ -204,7 +157,8 @@ module.exports = grunt => {
         'cssmin',
         'uglify',
         'bake',
-        'http-server',
+        // 'http-server',
+        'connect',
         'watch'
     ]);
 };
