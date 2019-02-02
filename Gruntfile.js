@@ -94,6 +94,13 @@ module.exports = grunt => {
             }
         },
         watch: {
+            bake: {
+                files: ['source/bake/*.*'],
+                tasks: ['bake'],
+                options: {
+                    livereload: true
+                }
+            },
             includes: {
                 files: ['source/includes/*.*'],
                 tasks: ['bake'],
