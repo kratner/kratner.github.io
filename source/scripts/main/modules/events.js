@@ -6,6 +6,29 @@
         UIElements.$el.link.on('click', evt => {
             Analytics.trackOutboundLink(evt.target.href);
         });
+        /*
+        UIElements.$el.descriptiveLink.on({
+            mouseenter: evt => {
+                UIElements.$el.linkDescription.css({
+                    'max-height': '0px',
+                    opacity: 0
+                });
+                $(evt.target)
+                    .closest('li')
+                    .find('.linkdescription')
+                    .css({
+                        'max-height': '800px',
+                        opacity: 1
+                    });
+            }
+        });
+        UIElements.$el.linkDescription.on('click', evt => {
+            $(evt.target).css({
+                'max-height': '0px',
+                opacity: 0
+            });
+        });
+        */
         Controls.$el.bg_video_switch.on('click', evt => {
             Actions.methods.switchBackgroundVideo(
                 Collections.paths.video_sources,

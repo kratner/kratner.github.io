@@ -11,10 +11,21 @@
      *   text:      link text
      * }
      */
-    Templates._ALinkElement = obj =>
-        `<a href="${obj.href}" class="${obj.cssClass}" title="${
-            obj.title
-        }" target="${obj.target}">${obj.text}</a>`;
+    Templates._ALinkElement = obj => {
+        let dataDescription =
+                obj.dataDescription === ''
+                    ? ''
+                    : `data-description="${obj.dataDescription}"`,
+            descriptiveLinkCSSClass =
+                obj.dataDescription === '' ? '' : 'descriptive';
+        return `<a 
+            href="${obj.href}" 
+            class="${obj.cssClass} ${descriptiveLinkCSSClass}"
+            ${dataDescription}
+            title="${obj.title}" 
+            target="${obj.target}"
+        >${obj.text}</a>`;
+    };
     Templates._IconElement = icon => `<span class="icon-${icon}"></span>`;
     Templates._PaddedDiv = cssClass => `<div class="${cssClass}"></div>`;
     Templates._ProgressBar = indeterminate => {

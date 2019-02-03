@@ -36,6 +36,8 @@
             });
             UIElements.displayLinks(Collections.links.project_links, UIElements.$el.linksContainer);
             UIElements.displayLinks(Collections.links.social_links, UIElements.$el.socialLinksContainer, false, true);
+            UIElements.cacheElements();
+            Events.bindEvents();
         });
     };
     $(document).ready(init);
@@ -216,6 +218,29 @@
         UIElements.$el.link.on('click', function (evt) {
             Analytics.trackOutboundLink(evt.target.href);
         });
+        /*
+        UIElements.$el.descriptiveLink.on({
+            mouseenter: evt => {
+                UIElements.$el.linkDescription.css({
+                    'max-height': '0px',
+                    opacity: 0
+                });
+                $(evt.target)
+                    .closest('li')
+                    .find('.linkdescription')
+                    .css({
+                        'max-height': '800px',
+                        opacity: 1
+                    });
+            }
+        });
+        UIElements.$el.linkDescription.on('click', evt => {
+            $(evt.target).css({
+                'max-height': '0px',
+                opacity: 0
+            });
+        });
+        */
         Controls.$el.bg_video_switch.on('click', function (evt) {
             Actions.methods.switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
         });
@@ -270,7 +295,9 @@
      * }
      */
     Templates._ALinkElement = function (obj) {
-        return '<a href="' + obj.href + '" class="' + obj.cssClass + '" title="' + obj.title + '" target="' + obj.target + '">' + obj.text + '</a>';
+        var dataDescription = obj.dataDescription === '' ? '' : 'data-description="' + obj.dataDescription + '"',
+            descriptiveLinkCSSClass = obj.dataDescription === '' ? '' : 'descriptive';
+        return '<a \n            href="' + obj.href + '" \n            class="' + obj.cssClass + ' ' + descriptiveLinkCSSClass + '"\n            ' + dataDescription + '\n            title="' + obj.title + '" \n            target="' + obj.target + '"\n        >' + obj.text + '</a>';
     };
     Templates._IconElement = function (icon) {
         return '<span class="icon-' + icon + '"></span>';
@@ -301,7 +328,9 @@
             },
             link: $('.gtag'),
             linksContainer: $('#links-container'),
-            socialLinksContainer: $('#social-links-container')
+            socialLinksContainer: $('#social-links-container'),
+            descriptiveLink: $('.descriptive'),
+            linkDescription: $('.linkdescription')
         };
     };
     UIElements.showProgressBar = function ($container) {
@@ -312,8 +341,11 @@
     UIElements.displayLinks = function (links, $el) {
         var hasPadding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
         var inline = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-        var htmlListTag = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'ul';
-        var htmlListItemTag = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 'li';
+        var showDataDescription = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+        var linkFromDataDescription = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : true;
+        var dataDescriptionCSSClass = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : 'linkdescription';
+        var htmlListTag = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 'ul';
+        var htmlListItemTag = arguments.length > 8 && arguments[8] !== undefined ? arguments[8] : 'li';
 
         var $container = void 0;
         $el.html('');
@@ -329,14 +361,17 @@
         links.forEach(function (element) {
             var icon = typeof element.icon === 'undefined' ? '' : Templates._IconElement(element.icon),
                 text = typeof element.text === 'undefined' ? '' : element.text,
+                dataDescription = typeof element.description === 'undefined' ? '' : element.description,
+                linkDescription = dataDescription === '' ? '' : '<p class="' + dataDescriptionCSSClass + '">' + dataDescription + '</p>',
                 aLinkElement = Templates._ALinkElement({
-                href: element.href,
                 cssClass: element.class,
-                title: element.title,
+                dataDescription: dataDescription,
+                href: element.href,
                 target: element.target,
+                title: element.title,
                 text: text + ' ' + icon
             }),
-                linkElement = '<' + htmlListItemTag + '>' + aLinkElement + '</' + htmlListItemTag + '>';
+                linkElement = '<' + htmlListItemTag + '>' + aLinkElement + linkDescription + '</' + htmlListItemTag + '>';
             $container.append(linkElement);
         });
     };

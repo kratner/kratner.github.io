@@ -17,7 +17,9 @@
             },
             link: $('.gtag'),
             linksContainer: $('#links-container'),
-            socialLinksContainer: $('#social-links-container')
+            socialLinksContainer: $('#social-links-container'),
+            descriptiveLink: $('.descriptive'),
+            linkDescription: $('.linkdescription')
         };
     };
     UIElements.showProgressBar = ($container, indeterminate = true) => {
@@ -28,6 +30,9 @@
         $el,
         hasPadding = true,
         inline = false,
+        showDataDescription = true,
+        linkFromDataDescription = true,
+        dataDescriptionCSSClass = 'linkdescription',
         htmlListTag = 'ul', // stick with unordered list for now
         htmlListItemTag = 'li'
     ) => {
@@ -48,14 +53,23 @@
                         ? ''
                         : Templates._IconElement(element.icon),
                 text = typeof element.text === 'undefined' ? '' : element.text,
+                dataDescription =
+                    typeof element.description === 'undefined'
+                        ? ''
+                        : element.description,
+                linkDescription =
+                    dataDescription === ''
+                        ? ''
+                        : `<p class="${dataDescriptionCSSClass}">${dataDescription}</p>`,
                 aLinkElement = Templates._ALinkElement({
-                    href: element.href,
                     cssClass: element.class,
-                    title: element.title,
+                    dataDescription: dataDescription,
+                    href: element.href,
                     target: element.target,
+                    title: element.title,
                     text: `${text} ${icon}`
                 }),
-                linkElement = `<${htmlListItemTag}>${aLinkElement}</${htmlListItemTag}>`;
+                linkElement = `<${htmlListItemTag}>${aLinkElement}${linkDescription}</${htmlListItemTag}>`;
             $container.append(linkElement);
         });
     };

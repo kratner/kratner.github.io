@@ -51,6 +51,8 @@
                     false,
                     true
                 );
+                UIElements.cacheElements();
+                Events.bindEvents();
             });
     };
     $(document).ready(init);

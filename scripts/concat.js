@@ -51,6 +51,8 @@
                     false,
                     true
                 );
+                UIElements.cacheElements();
+                Events.bindEvents();
             });
     };
     $(document).ready(init);
@@ -218,6 +220,29 @@
         UIElements.$el.link.on('click', evt => {
             Analytics.trackOutboundLink(evt.target.href);
         });
+        /*
+        UIElements.$el.descriptiveLink.on({
+            mouseenter: evt => {
+                UIElements.$el.linkDescription.css({
+                    'max-height': '0px',
+                    opacity: 0
+                });
+                $(evt.target)
+                    .closest('li')
+                    .find('.linkdescription')
+                    .css({
+                        'max-height': '800px',
+                        opacity: 1
+                    });
+            }
+        });
+        UIElements.$el.linkDescription.on('click', evt => {
+            $(evt.target).css({
+                'max-height': '0px',
+                opacity: 0
+            });
+        });
+        */
         Controls.$el.bg_video_switch.on('click', evt => {
             Actions.methods.switchBackgroundVideo(
                 Collections.paths.video_sources,
@@ -275,10 +300,21 @@
      *   text:      link text
      * }
      */
-    Templates._ALinkElement = obj =>
-        `<a href="${obj.href}" class="${obj.cssClass}" title="${
-            obj.title
-        }" target="${obj.target}">${obj.text}</a>`;
+    Templates._ALinkElement = obj => {
+        let dataDescription =
+                obj.dataDescription === ''
+                    ? ''
+                    : `data-description="${obj.dataDescription}"`,
+            descriptiveLinkCSSClass =
+                obj.dataDescription === '' ? '' : 'descriptive';
+        return `<a 
+            href="${obj.href}" 
+            class="${obj.cssClass} ${descriptiveLinkCSSClass}"
+            ${dataDescription}
+            title="${obj.title}" 
+            target="${obj.target}"
+        >${obj.text}</a>`;
+    };
     Templates._IconElement = icon => `<span class="icon-${icon}"></span>`;
     Templates._PaddedDiv = cssClass => `<div class="${cssClass}"></div>`;
     Templates._ProgressBar = indeterminate => {
@@ -310,7 +346,9 @@
             },
             link: $('.gtag'),
             linksContainer: $('#links-container'),
-            socialLinksContainer: $('#social-links-container')
+            socialLinksContainer: $('#social-links-container'),
+            descriptiveLink: $('.descriptive'),
+            linkDescription: $('.linkdescription')
         };
     };
     UIElements.showProgressBar = ($container, indeterminate = true) => {
@@ -321,6 +359,9 @@
         $el,
         hasPadding = true,
         inline = false,
+        showDataDescription = true,
+        linkFromDataDescription = true,
+        dataDescriptionCSSClass = 'linkdescription',
         htmlListTag = 'ul', // stick with unordered list for now
         htmlListItemTag = 'li'
     ) => {
@@ -341,14 +382,23 @@
                         ? ''
                         : Templates._IconElement(element.icon),
                 text = typeof element.text === 'undefined' ? '' : element.text,
+                dataDescription =
+                    typeof element.description === 'undefined'
+                        ? ''
+                        : element.description,
+                linkDescription =
+                    dataDescription === ''
+                        ? ''
+                        : `<p class="${dataDescriptionCSSClass}">${dataDescription}</p>`,
                 aLinkElement = Templates._ALinkElement({
-                    href: element.href,
                     cssClass: element.class,
-                    title: element.title,
+                    dataDescription: dataDescription,
+                    href: element.href,
                     target: element.target,
+                    title: element.title,
                     text: `${text} ${icon}`
                 }),
-                linkElement = `<${htmlListItemTag}>${aLinkElement}</${htmlListItemTag}>`;
+                linkElement = `<${htmlListItemTag}>${aLinkElement}${linkDescription}</${htmlListItemTag}>`;
             $container.append(linkElement);
         });
     };

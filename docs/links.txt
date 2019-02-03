@@ -1,0 +1,14 @@
+HTML5 Project Template
+Clone this repository and use as a boilerplate to get up and running with some of the latest Continuous Integration (CI) front-end development tools. Familiarize yourself with GitHub, sign up for an account if you haven’t already (and if you haven’t, do that immediately!), fire up a terminal window (don’t be afraid), install Node.js, clone the repo, npm install, and get ready for all the cool things.
+
+Export named artboards as PNG
+Manage all of your project's image assets in a single Illustrator file with this plugin. Lay out your assets on individual artboards sized to desired pixel dimensions, name each artboard as you would name each associated PNG file, then run the plugin. You will be prompted with a dialog where you can specify the destination folder for all of your PNGs. This path will be saved to a hidden layer in the Illustrator file, so you only need to set it once. Of course, you can change it at any time. The script will then iterate through each artboard and save PNG files to the destination folder. A note on workflow: You can place source Photoshop .PSD files. I use clipping masks on each artboard and place PSD's as standard procedure, thus keeping source files fully editable and, of course, using non-destructive editing within Photoshop wherever and whenever possible.
+
+List open files (in development)
+This is a simple Illustrator plugin to list all of your open AI files.
+
+Open multipage PDF
+Credit Carlos Canto for this plugin which will import a PDF file with multiple pages into a single Illustrator file, placing each page on an individual artboard. Note that you can save the Illustrator file back to multi-page PDF format. Amongst other things, this is useful as an alternative to printing out online forms provided as PDF files. Pull your forms into Illustrator, add text and superimpose images and/or digital signatures, and save them back out. Save some trees.
+
+Social media profile Template
+This is an Illustrator file with named artboards sized according to the various social media profile requirements. Let me know if I've missed anything. Use this in conjunction with the Export Named Artboards as PNG plugin to help manage your social media digital marketing assets.
