@@ -41,7 +41,13 @@
                 Collections.links.social_links = links.filter(
                     element => element.type === 'social'
                 );
+                /*
                 UIElements.displayLinks(
+                    Collections.links.project_links,
+                    UIElements.$el.linksContainer
+                );
+                */
+                UIElements.displaySummaryDetails(
                     Collections.links.project_links,
                     UIElements.$el.linksContainer
                 );

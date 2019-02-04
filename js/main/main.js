@@ -34,7 +34,13 @@
             Collections.links.social_links = links.filter(function (element) {
                 return element.type === 'social';
             });
-            UIElements.displayLinks(Collections.links.project_links, UIElements.$el.linksContainer);
+            /*
+            UIElements.displayLinks(
+                Collections.links.project_links,
+                UIElements.$el.linksContainer
+            );
+            */
+            UIElements.displaySummaryDetails(Collections.links.project_links, UIElements.$el.linksContainer);
             UIElements.displayLinks(Collections.links.social_links, UIElements.$el.socialLinksContainer, false, true);
             UIElements.cacheElements();
             Events.bindEvents();
@@ -315,6 +321,9 @@
     Templates._ProgressBar = function (indeterminate) {
         return indeterminate ? '<div class="mdprogressbar">\n        <div class="line"></div>\n        <div class="subline inc"></div>\n        <div class="subline dec"></div>\n        </div>' : '';
     };
+    Templates._SummaryDetails = function (obj) {
+        return '<details>\n        <summary>' + obj.summary + '</summary>\n            ' + obj.details + '\n        </details>';
+    };
 })(window, window.Templates = window.Templates || {});
 /*
  * Refer to templates.js module
@@ -345,6 +354,23 @@
         var indeterminate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
         $container.html('').append(Templates._ProgressBar(indeterminate));
+    };
+    UIElements.displaySummaryDetails = function (links, $el) {
+        var linkElement = '';
+        $el.html('');
+        links.forEach(function (element) {
+            console.log(element);
+            linkElement = typeof element.description === 'undefined' ? Templates._ALinkElement({
+                href: element.href,
+                text: element.text,
+                title: element.title,
+                target: element.target
+            }) : Templates._SummaryDetails({
+                summary: element.text,
+                details: element.description
+            });
+            $el.append(linkElement);
+        });
     };
     UIElements.displayLinks = function (links, $el) {
         var hasPadding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;

@@ -26,6 +26,26 @@
     UIElements.showProgressBar = ($container, indeterminate = true) => {
         $container.html('').append(Templates._ProgressBar(indeterminate));
     };
+    UIElements.displaySummaryDetails = (links, $el) => {
+        let linkElement = '';
+        $el.html('');
+        links.forEach(element => {
+            console.log(element);
+            linkElement =
+                typeof element.description === 'undefined'
+                    ? Templates._ALinkElement({
+                        href: element.href,
+                        text: element.text,
+                        title: element.title,
+                        target: element.target
+                    })
+                    : Templates._SummaryDetails({
+                        summary: element.text,
+                        details: element.description
+                    });
+            $el.append(linkElement);
+        });
+    };
     UIElements.displayLinks = (
         links,
         $el,

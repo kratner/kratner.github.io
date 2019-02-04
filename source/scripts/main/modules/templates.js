@@ -39,4 +39,8 @@
         </div>`
             : '';
     };
+    Templates._SummaryDetails = obj => `<details>
+        <summary>${obj.summary}</summary>
+            ${obj.details}
+        </details>`;
 })(window, (window.Templates = window.Templates || {}));
