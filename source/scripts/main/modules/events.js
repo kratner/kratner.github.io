@@ -6,6 +6,17 @@
         UIElements.$el.link.on('click', evt => {
             Analytics.trackOutboundLink(evt.target.href);
         });
+        UIElements.$el.descriptiveLink.on('click', evt => {
+            $(evt.target)
+                .parent()
+                .find('.linkdescription')
+                .addClass('reveal');
+        });
+        UIElements.$el.hideDescription.on('click', evt => {
+            $(evt.target)
+                .closest('.linkdescription')
+                .removeClass('reveal');
+        });
         /*
         UIElements.$el.descriptiveLink.on({
             mouseenter: evt => {

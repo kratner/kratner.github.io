@@ -23,7 +23,6 @@
 .linkdescription {
   // display: none;
   color: $theme_light_caption;
-  cursor: pointer;
   font-size: 0.8em;
   width: 85%;
   margin-left: auto;
@@ -32,6 +31,14 @@
   opacity: 0;
   overflow: hidden;
   transition: all 0.75s;
+  &.reveal {
+    max-height: 800px;
+    opacity: 1;
+  }
+}
+.hidedescription {
+  color: $link_orange;
+  cursor: pointer;
 }
 .slide {
   position: relative;

@@ -17,9 +17,10 @@
                     ? ''
                     : `data-description="${obj.dataDescription}"`,
             descriptiveLinkCSSClass =
-                obj.dataDescription === '' ? '' : 'descriptive';
+                obj.dataDescription === '' ? '' : 'descriptive',
+            href = obj.href === '' ? '' : `href="${obj.href}"`;
         return `<a 
-            href="${obj.href}" 
+            ${href}
             class="${obj.cssClass} ${descriptiveLinkCSSClass}"
             ${dataDescription}
             title="${obj.title}" 

@@ -218,6 +218,12 @@
         UIElements.$el.link.on('click', function (evt) {
             Analytics.trackOutboundLink(evt.target.href);
         });
+        UIElements.$el.descriptiveLink.on('click', function (evt) {
+            $(evt.target).parent().find('.linkdescription').addClass('reveal');
+        });
+        UIElements.$el.hideDescription.on('click', function (evt) {
+            $(evt.target).closest('.linkdescription').removeClass('reveal');
+        });
         /*
         UIElements.$el.descriptiveLink.on({
             mouseenter: evt => {
@@ -296,8 +302,9 @@
      */
     Templates._ALinkElement = function (obj) {
         var dataDescription = obj.dataDescription === '' ? '' : 'data-description="' + obj.dataDescription + '"',
-            descriptiveLinkCSSClass = obj.dataDescription === '' ? '' : 'descriptive';
-        return '<a \n            href="' + obj.href + '" \n            class="' + obj.cssClass + ' ' + descriptiveLinkCSSClass + '"\n            ' + dataDescription + '\n            title="' + obj.title + '" \n            target="' + obj.target + '"\n        >' + obj.text + '</a>';
+            descriptiveLinkCSSClass = obj.dataDescription === '' ? '' : 'descriptive',
+            href = obj.href === '' ? '' : 'href="' + obj.href + '"';
+        return '<a \n            ' + href + '\n            class="' + obj.cssClass + ' ' + descriptiveLinkCSSClass + '"\n            ' + dataDescription + '\n            title="' + obj.title + '" \n            target="' + obj.target + '"\n        >' + obj.text + '</a>';
     };
     Templates._IconElement = function (icon) {
         return '<span class="icon-' + icon + '"></span>';
@@ -330,7 +337,8 @@
             linksContainer: $('#links-container'),
             socialLinksContainer: $('#social-links-container'),
             descriptiveLink: $('.descriptive'),
-            linkDescription: $('.linkdescription')
+            linkDescription: $('.linkdescription'),
+            hideDescription: $('.hidedescription')
         };
     };
     UIElements.showProgressBar = function ($container) {
@@ -362,16 +370,42 @@
             var icon = typeof element.icon === 'undefined' ? '' : Templates._IconElement(element.icon),
                 text = typeof element.text === 'undefined' ? '' : element.text,
                 dataDescription = typeof element.description === 'undefined' ? '' : element.description,
-                linkDescription = dataDescription === '' ? '' : '<p class="' + dataDescriptionCSSClass + '">' + dataDescription + '</p>',
-                aLinkElement = Templates._ALinkElement({
-                cssClass: element.class,
+                href = '',
+                objALinkElement = {
                 dataDescription: dataDescription,
-                href: element.href,
                 target: element.target,
                 title: element.title,
                 text: text + ' ' + icon
-            }),
-                linkElement = '<' + htmlListItemTag + '>' + aLinkElement + linkDescription + '</' + htmlListItemTag + '>';
+            },
+                aLinkElement = '',
+                linkElement = '',
+                linkDescription = '',
+                closeIcon = Templates._IconElement('cancel-circle'),
+                closeDescriptionLink = '',
+                dataDescriptionLink = '';
+            if (linkFromDataDescription) {
+                if (dataDescription === '') {
+                    href = element.href === '' ? '' : '' + element.href;
+                } else {
+                    href = '';
+                    dataDescriptionLink = element.href === '' ? '' : Templates._ALinkElement({
+                        cssClass: element.class,
+                        dataDescription: element.description,
+                        href: element.href,
+                        title: element.title,
+                        target: element.target,
+                        text: Templates._IconElement('share')
+                    });
+                }
+            } else {
+                href = element.href === '' ? '' : '' + element.href;
+            }
+            objALinkElement.cssClass = element.class;
+            objALinkElement.href = href;
+            aLinkElement = Templates._ALinkElement(objALinkElement);
+            closeDescriptionLink = '<span class="hidedescription" title="Close">' + closeIcon + '</span>';
+            linkDescription = dataDescription === '' ? '' : '<p class="' + dataDescriptionCSSClass + '">' + closeDescriptionLink + ' ' + dataDescription + ' ' + dataDescriptionLink + '</p>';
+            linkElement = '<' + htmlListItemTag + '>' + aLinkElement + linkDescription + '</' + htmlListItemTag + '>';
             $container.append(linkElement);
         });
     };
