@@ -301,7 +301,7 @@
      * }
      */
     Templates._ALinkElement = function (obj) {
-        var dataDescription = obj.dataDescription === '' ? '' : 'data-description="' + obj.dataDescription + '"',
+        var dataDescription = obj.dataDescription === '' || typeof obj.dataDescription === 'undefined' ? '' : 'data-description="' + obj.dataDescription + '"',
             descriptiveLinkCSSClass = obj.dataDescription === '' ? '' : 'descriptive',
             href = obj.href === '' ? '' : 'href="' + obj.href + '"';
         return '<a \n            ' + href + '\n            class="' + obj.cssClass + ' ' + descriptiveLinkCSSClass + '"\n            ' + dataDescription + '\n            title="' + obj.title + '" \n            target="' + obj.target + '"\n        >' + obj.text + '</a>';
@@ -390,7 +390,7 @@
                     href = '';
                     dataDescriptionLink = element.href === '' ? '' : Templates._ALinkElement({
                         cssClass: element.class,
-                        dataDescription: element.description,
+                        //dataDescription: element.description,
                         href: element.href,
                         title: element.title,
                         target: element.target,

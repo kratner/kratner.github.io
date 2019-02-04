@@ -24,6 +24,7 @@
   // display: none;
   color: $theme_light_caption;
   font-size: 0.8em;
+  text-align: left;
   width: 85%;
   margin-left: auto;
   margin-right: auto;
@@ -31,14 +32,24 @@
   opacity: 0;
   overflow: hidden;
   transition: all 0.75s;
+  padding: 0;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-radius: 0.5em;
   &.reveal {
     max-height: 800px;
     opacity: 1;
+    overflow: visible;
+    padding: 0.5em;
   }
 }
 .hidedescription {
   color: $link_orange;
   cursor: pointer;
+  float: right;
+  position: relative;
+  right: -2em;
 }
 .slide {
   position: relative;

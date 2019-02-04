@@ -81,7 +81,7 @@
                             ? ''
                             : Templates._ALinkElement({
                                 cssClass: element.class,
-                                dataDescription: element.description,
+                                  //dataDescription: element.description,
                                 href: element.href,
                                 title: element.title,
                                 target: element.target,

@@ -313,7 +313,8 @@
      */
     Templates._ALinkElement = obj => {
         let dataDescription =
-                obj.dataDescription === ''
+                obj.dataDescription === '' ||
+                typeof obj.dataDescription === 'undefined'
                     ? ''
                     : `data-description="${obj.dataDescription}"`,
             descriptiveLinkCSSClass =
@@ -422,7 +423,7 @@
                             ? ''
                             : Templates._ALinkElement({
                                 cssClass: element.class,
-                                dataDescription: element.description,
+                                  //dataDescription: element.description,
                                 href: element.href,
                                 title: element.title,
                                 target: element.target,
