@@ -301,10 +301,9 @@
      * }
      */
     Templates._ALinkElement = function (obj) {
-        var dataDescription = obj.dataDescription === '' || typeof obj.dataDescription === 'undefined' ? '' : 'data-description="' + obj.dataDescription + '"',
-            descriptiveLinkCSSClass = obj.dataDescription === '' ? '' : 'descriptive',
+        var descriptiveLinkCSSClass = obj.dataDescription === '' ? '' : 'descriptive',
             href = obj.href === '' ? '' : 'href="' + obj.href + '"';
-        return '<a \n            ' + href + '\n            class="' + obj.cssClass + ' ' + descriptiveLinkCSSClass + '"\n            ' + dataDescription + '\n            title="' + obj.title + '" \n            target="' + obj.target + '"\n        >' + obj.text + '</a>';
+        return '<a \n            ' + href + '\n            class="' + obj.cssClass + ' ' + descriptiveLinkCSSClass + '"\n            title="' + obj.title + '" \n            target="' + obj.target + '"\n        >' + obj.text + '</a>';
     };
     Templates._IconElement = function (icon) {
         return '<span class="icon-' + icon + '"></span>';
@@ -320,7 +319,7 @@
  * Refer to templates.js module
  * for string literals and information
  */
-/*global Templates */
+/*global $, Templates */
 'use strict';
 
 (function (window, UIElements) {

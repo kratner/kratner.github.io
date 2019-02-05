@@ -2,7 +2,7 @@
  * Refer to templates.js module
  * for string literals and information
  */
-/*global Templates */
+/*global $, Templates */
 'use strict';
 
 ((window, UIElements) => {

@@ -12,18 +12,12 @@
      * }
      */
     Templates._ALinkElement = obj => {
-        let dataDescription =
-                obj.dataDescription === '' ||
-                typeof obj.dataDescription === 'undefined'
-                    ? ''
-                    : `data-description="${obj.dataDescription}"`,
-            descriptiveLinkCSSClass =
+        let descriptiveLinkCSSClass =
                 obj.dataDescription === '' ? '' : 'descriptive',
             href = obj.href === '' ? '' : `href="${obj.href}"`;
         return `<a 
             ${href}
             class="${obj.cssClass} ${descriptiveLinkCSSClass}"
-            ${dataDescription}
             title="${obj.title}" 
             target="${obj.target}"
         >${obj.text}</a>`;
