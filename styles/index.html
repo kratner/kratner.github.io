@@ -40,7 +40,8 @@
     <!-- jQuery UI -->
     <link href="/css/jquery-ui.css" rel="stylesheet" />
 
-    <script src="/js/main.min.js"></script>
+    <!-- <script src="/js/main.min.js"></script> -->
+    <script src="/js/main/main.js"></script>
 
     <meta charset="utf-8" />
 
@@ -82,9 +83,11 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- begin video-background.html -->
-    <video autoplay loop id="video-background" muted plays-inline>
-      <source src="/img/20181215_154218.mp4" type="video/mp4" />
-    </video>
+    <div class="video-background">
+      <video autoplay loop class="video-background__video" muted plays-inline>
+        <source src="/img/20181215_154218.mp4" type="video/mp4" />
+      </video>
+    </div>
     <!-- end video-background.html -->
 
     <!-- begin styleguide.html -->
@@ -163,10 +166,6 @@
     <footer class="footer"><span class="copyright">©2018</span></footer>
     <!-- end styleguide.html -->
     <!-- edited 12/22/2018 5:22 PM - KR -->
-
-    <!-- Vue Production -->
-    <script src="/js/vue/vue.min.js"></script>
-    <!-- End Vue Production -->
 
     <footer class="footer">
       <span

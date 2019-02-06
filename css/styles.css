@@ -353,13 +353,91 @@ td,
 th {
   padding: 0; }
 
-a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, tfoot, thead, time, tr, tt, u, ul, var, video {
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+tfoot,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline; }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box; }
 
 html {
@@ -370,19 +448,20 @@ html {
 body {
   margin: 0;
   padding: 0;
-  perspective: 1px;
   transform-style: preserve-3d;
   height: 100%;
   overflow-y: scroll;
   overflow-x: hidden; }
 
-ol, ul {
+ol,
+ul {
   list-style: none; }
 
 button {
   padding: 0; }
 
-input, textarea {
+input,
+textarea {
   outline: none; }
 
 /* FONTS */
@@ -700,7 +779,8 @@ body {
   body .theme-light {
     color: #f4b98e;
     text-shadow: 1px 1px 1px #000; }
-    body .theme-light h1 {
+    body .theme-light h1,
+    body .theme-light #spinner {
       color: #00ffff; }
   @media screen and (max-width: 767px) {
     body {
@@ -726,8 +806,6 @@ body {
     font-size: 1.1em; }
 
 .footer {
-  position: fixed;
-  bottom: 0;
   width: 100%;
   text-align: right;
   font-family: "exo_2.0extra_light";
@@ -779,6 +857,15 @@ h4 {
 
 .icon-download:before {
   content: '\e960'; }
+
+.icon-spinner:before {
+  content: '\e97a'; }
+
+.icon-spinner9:before {
+  content: '\e982'; }
+
+.icon-spinner10:before {
+  content: '\e983'; }
 
 .icon-power-cord:before {
   content: '\e9b7'; }
@@ -1008,17 +1095,6 @@ body {
   width: 46%;
   padding: 0.5em 1.5em; }
 
-#video-background {
-  /*  making the video fullscreen  */
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  height: 1vh;
-  z-index: -100;
-  top: 0; }
-
 .front {
   background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
@@ -1032,14 +1108,6 @@ body {
 hr {
   margin-top: 0.5em;
   margin-bottom: 0.5em; }
-
-video {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  transform: translateX(calc((100% - 100vw) / 2)); }
 
 .link-padding {
   padding: 0.5em 0; }
@@ -1064,6 +1132,35 @@ video {
   .social-links ul li {
     display: inline; }
 
+#spinner {
+  text-align: center;
+  font-size: 2em;
+  padding: 0.5em 0;
+  animation: rotate 2s infinite linear;
+  width: 2em;
+  height: 2em;
+  margin-left: auto;
+  margin-right: auto; }
+
+.video-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100; }
+
+.video-background__video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%); }
+
 /*
 @keyframes rotate {
 	0% { transform: rotate(0deg) scale(1.25); }
@@ -1081,6 +1178,18 @@ video {
 	100% { transform: rotate(360deg) scale(1.25); }
 }
 */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); }
+  25% {
+    transform: rotate(90deg); }
+  50% {
+    transform: rotate(180deg); }
+  75% {
+    transform: rotate(270deg); }
+  100% {
+    transform: rotate(360deg); } }
+
 @keyframes glowpulsate {
   0% {
     text-shadow: none; }

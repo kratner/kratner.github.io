@@ -9,8 +9,10 @@
         Controls.cacheElements();
         Events.bindEvents();
 
-        UIElements.showProgressBar(UIElements.$el.linksContainer);
-        UIElements.showProgressBar(UIElements.$el.socialLinksContainer);
+        //UIElements.showSpinner(UIElements.$el.spinner);
+        UIElements.showSpinner(UIElements.$el.linksContainer);
+        //UIElements.showProgressBar(UIElements.$el.linksContainer);
+        //UIElements.showProgressBar(UIElements.$el.socialLinksContainer);
 
         Data.getVideoSources()
             .then(Actions.methods.parseVideoSources)
@@ -20,11 +22,14 @@
             .then(sources => {
                 Collections.paths.video_sources = sources;
                 // randomize video
+                /*
+
                 Actions.methods.switchBackgroundVideo(
                     Collections.paths.video_sources,
                     UIElements.$el.background.video_element,
                     UIElements.$el.background.video_source
                 );
+                */
             });
 
         Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
@@ -345,8 +350,8 @@
     UIElements.cacheElements = () => {
         UIElements.$el = {
             background: {
-                video_element: $('#video-background'),
-                video_source: $('#video-background > source')
+                video_element: $('.video-background__video'),
+                video_source: $('.video-background__video > source')
             },
             footer: {
                 copyright: $('.copyright')
@@ -356,11 +361,16 @@
             socialLinksContainer: $('#social-links-container'),
             descriptiveLink: $('.descriptive'),
             linkDescription: $('.linkdescription'),
-            hideDescription: $('.hidedescription')
+            hideDescription: $('.hidedescription'),
+            spinner: $('#spinner')
         };
     };
     UIElements.showProgressBar = ($container, indeterminate = true) => {
         $container.html('').append(Templates._ProgressBar(indeterminate));
+    };
+    UIElements.showSpinner = ($container, show = true) => {
+        let spinner = show ? Templates._IconElement('spinner9') : '';
+        $container.html(`<div id="spinner">${spinner}</div>`);
     };
     UIElements.displayLinks = (
         links,

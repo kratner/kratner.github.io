@@ -5,7 +5,8 @@ body {
   .theme-light {
     color: $theme_light_body;
     @include text-shadow(1px, 1px, 1px, #000);
-    h1 {
+    h1,
+    #spinner {
       color: $theme_light_h1;
     }
   }
@@ -39,8 +40,8 @@ body {
   }
 }
 .footer {
-  position: fixed;
-  bottom: 0;
+  //position: fixed;
+  //bottom: 0;
   width: 100%;
   text-align: right;
   font-family: $overlay-body-font-family;
@@ -97,6 +98,15 @@ h4 {
 }
 .icon-download:before {
   content: '\e960';
+}
+.icon-spinner:before {
+  content: '\e97a';
+}
+.icon-spinner9:before {
+  content: '\e982';
+}
+.icon-spinner10:before {
+  content: '\e983';
 }
 .icon-power-cord:before {
   content: '\e9b7';

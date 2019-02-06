@@ -1,45 +1,124 @@
 // Custom reset to complete normalize
-a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, tfoot, thead, time, tr, tt, u, ul, var, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    vertical-align: baseline
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+tfoot,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
-    height: 100%;
-    // overflow-y: visible; // Allows js triggered scrolling with overflow-x: hidden
-    overflow-x: hidden; // Needed to fix overflowing content, like hidden menus //fixes overflow problem in nexus7 for feature categories
+  font-size: 62.5%;
+  height: 100%;
+  // overflow-y: visible; // Allows js triggered scrolling with overflow-x: hidden
+  overflow-x: hidden; // Needed to fix overflowing content, like hidden menus //fixes overflow problem in nexus7 for feature categories
 }
 
 body {
-    margin:0;
-    padding:0;
-    perspective: 1px;
-    transform-style: preserve-3d;
-    //background-color: $body-background-colour;
-    height: 100%;
-    // overflow-y: visible; // Allows js triggered scrolling with overflow-x: hidden
-    // overflow-x: hidden; // Needed to fix overflowing content, like hidden menus
-    // position: relative;
-    overflow-y: scroll;
-    overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  //perspective: 1px;
+  transform-style: preserve-3d;
+  //background-color: $body-background-colour;
+  height: 100%;
+  // overflow-y: visible; // Allows js triggered scrolling with overflow-x: hidden
+  // overflow-x: hidden; // Needed to fix overflowing content, like hidden menus
+  // position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-ol, ul {
-    list-style: none;
+ol,
+ul {
+  list-style: none;
 }
 
 button {
-    padding: 0;
+  padding: 0;
 }
 
-input, textarea {
-    outline: none;
+input,
+textarea {
+  outline: none;
 }
-
