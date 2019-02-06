@@ -1026,10 +1026,7 @@ body {
   text-shadow: 1px 1px 6px black;
   margin-left: auto;
   margin-right: auto;
-  padding: 0;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%); }
+  padding: 0; }
   .front h1 {
     font-weight: normal; }
 
@@ -1047,10 +1044,6 @@ video {
 
 .link-padding {
   padding: 0.5em 0; }
-
-.splash-container {
-  position: relative;
-  top: 50%; }
 
 .brand-title {
   background-color: rgba(255, 255, 255, 0.2);

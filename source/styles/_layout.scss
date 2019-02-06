@@ -136,9 +136,9 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding: 0;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  //position: relative;
+  //top: 50%;
+  //transform: translateY(-50%);
   h1 {
     font-weight: normal;
   }
@@ -161,8 +161,8 @@ video {
   padding: 0.5em 0;
 }
 .splash-container {
-  position: relative;
-  top: 50%;
+  //position: relative;
+  //top: 50%;
 }
 .brand-title {
   background-color: $semitransparent_white;
