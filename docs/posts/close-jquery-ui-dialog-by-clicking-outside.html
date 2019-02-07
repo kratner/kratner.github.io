@@ -1,0 +1,80 @@
+<div id="content" class="span12 article-container tc-gallery-style">
+
+                    
+                        
+                                                                                    
+                                                                    <article id="post-1972" class="row-fluid post-1972 post type-post status-publish format-standard hentry category-articles category-scripting category-tutorials">
+                                                <header class="entry-header">
+          <h1 class="entry-title format-icon">Close jQuery UI Dialog by Clicking Outside</h1><div class="entry-meta">This entry was posted in <a class="btn btn-mini btn-tag" href="https://web.archive.org/web/20160329151644/http://www.keithratner.com/talking/articles/" title="View all posts in Articles"> Articles </a><a class="btn btn-mini btn-tag" href="https://web.archive.org/web/20160329151644/http://www.keithratner.com/talking/scripting/" title="View all posts in Scripting"> Scripting </a><a class="btn btn-mini btn-tag" href="https://web.archive.org/web/20160329151644/http://www.keithratner.com/talking/tutorials/" title="View all posts in Tutorials"> Tutorials </a> on <a href="https://web.archive.org/web/20160329151644/http://www.keithratner.com/2015/05/29/" title="10:25 pm" rel="bookmark"><time class="entry-date updated" datetime="2015-05-29T22:25:01+00:00">May 29, 2015</time></a> <span class="by-author">by <span class="author vcard"><a class="url fn n" href="https://web.archive.org/web/20160329151644/http://www.keithratner.com/author/admin/" title="View all posts by admin" rel="author">admin</a></span></span> </div><hr class="featurette-divider __before_content">        </header>
+                  <section class="entry-content ">
+              <h2>jQuery UI Dialogs Remain Visible by Default when Clicking Outside</h2>
+<p>Users may expect that modal dialogs will close when they click outside the dialog region. This behavior is not built in to the jQuery UI Dialog widget. Until such time as this gets implemented in the jQuery UI framework, a few lines of jQuery is all it takes to implement this behavior.</p>
+<h2>The Quick Nuts and Bolts</h2>
+<p>When initializing your dialog, specify the dialogClass option and add the <strong>clickoncloseoutside</strong>* class, thus ensuring that dialogs will not close when clicking outside, maintaining their default behavior. (Note that this will work with non-modal dialogs, though I can’t think of a use case where non-modals would be expected to close when the user clicks outside.):</p>
+<pre>$("#myDialog").dialog({
+  autoOpen: false,
+  buttons: [
+    { text: "OK", click: function() { $( this ).dialog( "close" ); } }
+  ],
+  dialogClass: "<strong>clickoncloseoutside</strong>",
+  modal: true,
+  title: "My Dialog",
+});</pre>
+<p>In keeping with the “Write Less, Do More” jQuery philosophy, with a couple of lines of code, add a click handler to the full window overlay. Within the handler, locate and close all open modal dialogs that have been assigned the <strong>clickoncloseoutside</strong> class:</p>
+<pre>$("body")
+  .on("click", "div.ui-widget-overlay:visible", function() {
+    $(".ui-dialog.<strong>clickoncloseoutside</strong>:visible").find(".ui-dialog-content").dialog("close");
+  });</pre>
+<p><em>*Note that clickoncloseoutside is an arbitrary class name.</em></p>
+<div class="sharedaddy sd-sharing-enabled">
+<div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing">
+<h3 class="sd-title">Share this:</h3>
+<div class="sd-content">
+<ul>
+<li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-1972" class="share-facebook sd-button share-icon no-text" href="https://web.archive.org/web/20160329151644/http://www.keithratner.com/close-jquery-ui-dialog-by-clicking-outside/?share=facebook&amp;nb=1" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li>
+<li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-1972" class="share-twitter sd-button share-icon no-text" href="https://web.archive.org/web/20160329151644/http://www.keithratner.com/close-jquery-ui-dialog-by-clicking-outside/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li>
+<li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-1972" class="share-google-plus-1 sd-button share-icon no-text" href="https://web.archive.org/web/20160329151644/http://www.keithratner.com/close-jquery-ui-dialog-by-clicking-outside/?share=google-plus-1&amp;nb=1" target="_blank" title="Click to share on Google+"><span></span><span class="sharing-screen-reader-text">Click to share on Google+ (Opens in new window)</span></a></li>
+<li class="share-pinterest"><a rel="nofollow" data-shared="sharing-pinterest-1972" class="share-pinterest sd-button share-icon no-text" href="https://web.archive.org/web/20160329151644/http://www.keithratner.com/close-jquery-ui-dialog-by-clicking-outside/?share=pinterest&amp;nb=1" target="_blank" title="Click to share on Pinterest"><span></span><span class="sharing-screen-reader-text">Click to share on Pinterest (Opens in new window)</span></a></li>
+<li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-1972" class="share-linkedin sd-button share-icon no-text" href="https://web.archive.org/web/20160329151644/http://www.keithratner.com/close-jquery-ui-dialog-by-clicking-outside/?share=linkedin&amp;nb=1" target="_blank" title="Click to share on LinkedIn"><span></span><span class="sharing-screen-reader-text">Click to share on LinkedIn (Opens in new window)</span></a></li>
+<li class="share-email share-service-visible"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon no-text" href="https://web.archive.org/web/20160329151644/http://www.keithratner.com/close-jquery-ui-dialog-by-clicking-outside/?share=email&amp;nb=1" target="_blank" title="Click to email this to a friend"><span></span><span class="sharing-screen-reader-text">Click to email this to a friend (Opens in new window)</span></a></li>
+<li class="share-end"></li>
+</ul>
+</div>
+</div>
+</div>
+                        </section><!-- .entry-content -->
+                                            </article>
+                                
+                            
+                        
+                    
+<div id="comments" class="comments-area">
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/web/20160329151644/http://www.keithratner.com/close-jquery-ui-dialog-by-clicking-outside/#respond" style="display:none;">Cancel reply</a></small></h3>				<form action="https://web.archive.org/web/20160329151644/http://www.keithratner.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required="true" required="required"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-describedby="email-notes" aria-required="true" required="required"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1972" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="4d2feb7f16"></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p style="display: none;"></p>				<input type="hidden" id="ak_js" name="ak_js" value="1549500263651"></form>
+					</div><!-- #respond -->
+		</div><!-- #comments .comments-area -->
+        
+          <hr class="featurette-divider __after_loop">
+        <nav id="nav-below" class="navigation" role="navigation">
+
+              <h3 class="assistive-text">
+                Post navigation              </h3>
+
+              <ul class="pager">
+                                  <li class="previous">
+                    <span class="nav-previous">
+                      <a href="https://web.archive.org/web/20160329151644/http://www.keithratner.com/angular-demo/" rel="prev"><span class="meta-nav">←</span> Angular Demo</a>                    </span>
+                  </li>
+                                              </ul>
+
+          </nav><!-- #nav-below .navigation -->
+
+        
+        
+                </div>
