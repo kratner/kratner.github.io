@@ -1032,9 +1032,8 @@ h4 {
     max-height: 800px;
     opacity: 1;
     overflow: visible;
-    padding: 0.5em 3em;
-    margin: 0.5em -1em 0.5em -1.2em;
-    width: 102%;
+    padding: 0.5em 3em 0.5em 1.5em;
+    margin: 0.25em -0.5em 0.5em -0.5em;
     background-color: rgba(5, 18, 29, 0.5); }
 
 .hidedescription {
