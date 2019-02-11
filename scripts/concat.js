@@ -125,7 +125,10 @@
 
 ((window, document, Controls) => {
     Controls.cacheElements = () => {
-        Controls.$el = {bg_video_switch: $('[data-ctl=bgvideoswitch]')};
+        Controls.$el = {
+            bg_video_switch: $('[data-ctl=bgvideoswitch]'),
+            user_auth: $('[data-ctl=userauth')
+        };
     };
 })(window, document, (window.Controls = window.Controls || {}));
 'use strict';
@@ -265,6 +268,12 @@
                 UIElements.$el.background.video_element,
                 UIElements.$el.background.video_source
             );
+        });
+        Controls.$el.user_auth.on('click', evt => {
+            /*
+             * TODO: icon-user-check when authenticated
+             */
+            console.log('show profile menu/login form, etc.');
         });
     };
 })(window, (window.Events = window.Events || {}));
@@ -440,7 +449,7 @@
             objALinkElement.cssClass = element.class;
             objALinkElement.href = href;
             aLinkElement = Templates._ALinkElement(objALinkElement);
-            closeDescriptionLink = `<span class="hidedescription" title="Close">${closeIcon}</span>`;
+            closeDescriptionLink = `<span class="ctl hidedescription" title="Close">${closeIcon}</span>`;
             linkDescription =
                 dataDescription === ''
                     ? ''

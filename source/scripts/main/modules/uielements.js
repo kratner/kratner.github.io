@@ -99,7 +99,7 @@
             objALinkElement.cssClass = element.class;
             objALinkElement.href = href;
             aLinkElement = Templates._ALinkElement(objALinkElement);
-            closeDescriptionLink = `<span class="hidedescription" title="Close">${closeIcon}</span>`;
+            closeDescriptionLink = `<span class="ctl hidedescription" title="Close">${closeIcon}</span>`;
             linkDescription =
                 dataDescription === ''
                     ? ''

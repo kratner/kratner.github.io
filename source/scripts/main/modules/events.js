@@ -47,5 +47,11 @@
                 UIElements.$el.background.video_source
             );
         });
+        Controls.$el.user_auth.on('click', evt => {
+            /*
+             * TODO: icon-user-check when authenticated
+             */
+            console.log('show profile menu/login form, etc.');
+        });
     };
 })(window, (window.Events = window.Events || {}));
