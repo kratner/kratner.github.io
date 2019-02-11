@@ -22,17 +22,21 @@
 }
 .linkdescription {
   // display: none;
+  background-color: $theme_light_underlay;
   color: $theme_light_caption;
   font-size: 0.8em;
   text-align: left;
   //width: 85%;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0em 3em 0em 1.5em;
+  margin: 0em -0.5em 0em -0.5em;
+  //margin-left: auto;
+  //margin-right: auto;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
+  transition-timing-function: ease-in-out;
   transition: all 0.75s;
-  padding: 0;
+  //padding: 0;
   //border-left: 1px solid;
   //border-right: 1px solid;
   border-bottom: 1px solid;
@@ -44,7 +48,6 @@
     padding: 0.5em 3em 0.5em 1.5em;
     margin: 0.25em -0.5em 0.5em -0.5em;
     //width: 102%;
-    background-color: $theme_light_underlay;
   }
 }
 .hidedescription {
@@ -97,12 +100,14 @@
   background: 50% 50% / cover;
 }
 
+/*
 .header {
   text-align: center;
   font-size: 175%;
   //color: #fff;
   text-shadow: 0 2px 2px #000;
 }
+*/
 
 body {
   //background-image: url("../img/stars3.jpg");
@@ -122,7 +127,7 @@ body {
   background-color: $underlay_color;
   text-align: center;
   //color: #fff;
-  text-shadow: 1px 1px 6px rgba(0, 0, 0, 1);
+  @include text-shadow(1px, 1px, 1px, #000);
   margin-left: auto;
   margin-right: auto;
   padding: 0;
@@ -198,4 +203,16 @@ hr {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+.nav {
+  background-color: $theme_light_underlay;
+  color: $theme_light_caption;
+  @include text-shadow(1px, 1px, 1px, #000);
+  height: 1.5em;
+  padding: 0.1em 0.5em;
+  .ctl,
+  .copyright {
+    float: right;
+    margin-left: 0.5em;
+  }
 }

@@ -1017,24 +1017,24 @@ h4 {
   padding: 0.1em; }
 
 .linkdescription {
+  background-color: rgba(5, 18, 29, 0.5);
   color: #00ffff;
   font-size: 0.8em;
   text-align: left;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0em 3em 0em 1.5em;
+  margin: 0em -0.5em 0em -0.5em;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
+  transition-timing-function: ease-in-out;
   transition: all 0.75s;
-  padding: 0;
   border-bottom: 1px solid; }
   .linkdescription.reveal {
     max-height: 800px;
     opacity: 1;
     overflow: visible;
     padding: 0.5em 3em 0.5em 1.5em;
-    margin: 0.25em -0.5em 0.5em -0.5em;
-    background-color: rgba(5, 18, 29, 0.5); }
+    margin: 0.25em -0.5em 0.5em -0.5em; }
 
 .hidedescription {
   color: #f4b98e;
@@ -1077,11 +1077,14 @@ h4 {
 .slide:before {
   background: 50% 50% / cover; }
 
+/*
 .header {
   text-align: center;
   font-size: 175%;
-  text-shadow: 0 2px 2px #000; }
-
+  //color: #fff;
+  text-shadow: 0 2px 2px #000;
+}
+*/
 body {
   margin: 0;
   padding: 0;
@@ -1096,7 +1099,7 @@ body {
 .front {
   background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
-  text-shadow: 1px 1px 6px black;
+  text-shadow: 1px 1px 1px #000;
   margin-left: auto;
   margin-right: auto;
   padding: 0; }
@@ -1158,6 +1161,17 @@ hr {
   min-width: 100%;
   min-height: 100%;
   transform: translate(-50%, -50%); }
+
+.nav {
+  background-color: rgba(5, 18, 29, 0.5);
+  color: #00ffff;
+  text-shadow: 1px 1px 1px #000;
+  height: 1.5em;
+  padding: 0.1em 0.5em; }
+  .nav .ctl,
+  .nav .copyright {
+    float: right;
+    margin-left: 0.5em; }
 
 /*
 @keyframes rotate {
