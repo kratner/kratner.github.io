@@ -1,6 +1,6 @@
 'use strict';
 
-/*global Router, Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
+/* global $,Router, Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
 (function (window, document) {
     'use strict';
 
