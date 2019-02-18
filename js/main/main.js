@@ -265,7 +265,10 @@
             /*
              * TODO: icon-user-check when authenticated
              */
-            console.log('show profile menu/login form, etc.');
+            UIElements.showLoginForm(UIElements.$el.modalUnderlay);
+        });
+        UIElements.$el.modalUnderlay.on('click', function (evt) {
+            UIElements.$el.modalUnderlay.removeClass('visible');
         });
     };
 })(window, window.Events = window.Events || {});
@@ -331,6 +334,9 @@
     Templates._ProgressBar = function (indeterminate) {
         return indeterminate ? '<div class="mdprogressbar">\n        <div class="line"></div>\n        <div class="subline inc"></div>\n        <div class="subline dec"></div>\n        </div>' : '';
     };
+    Templates._ModalUnderlay = function () {
+        return '<div class="modal-underlay"></div>';
+    };
 })(window, window.Templates = window.Templates || {});
 /*
  * Refer to templates.js module
@@ -342,6 +348,7 @@
 (function (window, UIElements) {
     UIElements.cacheElements = function () {
         UIElements.$el = {
+            body: $('body'),
             background: {
                 video_element: $('.video-background__video'),
                 video_source: $('.video-background__video > source')
@@ -351,6 +358,7 @@
             },
             link: $('.gtag'),
             linksContainer: $('#links-container'),
+            modalUnderlay: $('.modal-underlay'),
             socialLinksContainer: $('#social-links-container'),
             descriptiveLink: $('.descriptive'),
             linkDescription: $('.linkdescription'),
@@ -431,5 +439,10 @@
             linkElement = '<' + htmlListItemTag + '>' + aLinkElement + linkDescription + '</' + htmlListItemTag + '>';
             $container.append(linkElement);
         });
+    };
+    UIElements.showLoginForm = function ($modalUnderlay) {
+        var modal = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+        $modalUnderlay.addClass('visible');
     };
 })(window, window.UIElements = window.UIElements || {});

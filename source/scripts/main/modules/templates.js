@@ -33,4 +33,5 @@
         </div>`
             : '';
     };
+    Templates._ModalUnderlay = () => '<div class="modal-underlay"></div>';
 })(window, (window.Templates = window.Templates || {}));

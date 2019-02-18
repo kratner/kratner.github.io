@@ -8,6 +8,7 @@
 ((window, UIElements) => {
     UIElements.cacheElements = () => {
         UIElements.$el = {
+            body: $('body'),
             background: {
                 video_element: $('.video-background__video'),
                 video_source: $('.video-background__video > source')
@@ -17,6 +18,7 @@
             },
             link: $('.gtag'),
             linksContainer: $('#links-container'),
+            modalUnderlay: $('.modal-underlay'),
             socialLinksContainer: $('#social-links-container'),
             descriptiveLink: $('.descriptive'),
             linkDescription: $('.linkdescription'),
@@ -107,5 +109,8 @@
             linkElement = `<${htmlListItemTag}>${aLinkElement}${linkDescription}</${htmlListItemTag}>`;
             $container.append(linkElement);
         });
+    };
+    UIElements.showLoginForm = ($modalUnderlay, modal = true) => {
+        $modalUnderlay.addClass('visible');
     };
 })(window, (window.UIElements = window.UIElements || {}));

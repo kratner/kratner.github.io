@@ -51,7 +51,10 @@
             /*
              * TODO: icon-user-check when authenticated
              */
-            console.log('show profile menu/login form, etc.');
+            UIElements.showLoginForm(UIElements.$el.modalUnderlay);
+        });
+        UIElements.$el.modalUnderlay.on('click', evt => {
+            UIElements.$el.modalUnderlay.removeClass('visible');
         });
     };
 })(window, (window.Events = window.Events || {}));

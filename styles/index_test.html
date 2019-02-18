@@ -95,7 +95,12 @@
       <h1>Style Guide</h1>
       <h2>User Forms</h2>
       <div class="app-controls">
-        <p><span id="login-form"><a href="/admin" title="Login" target="_blank">Login</a></span></p>
+        <span data-ctl="userauth" class="ctl icon-user" title="Login"></span>
+        <p>
+          <span id="login-form">
+            <a href="/admin" title="Login" target="_blank">Login</a>
+          </span>
+        </p>
       </div>
       <div class="login-form">
         <div class="form-component">
@@ -150,22 +155,40 @@
         <div class="form-component-title">Check Box</div>
         <div class="form-component">
           <label for="styleguide-select-list">Check</label>
-          <input type="checkbox" name="styleguide-checkbox" ></input>
+          <input type="checkbox" name="styleguide-checkbox" />
         </div>
         <div class="form-component-title">Radio Input</div>
         <div class="form-component">
           <label for="styleguide-radio-input-first-option">First Option</label>
-          <input type="radio" name="styleguide-radio-input" id="first-option" value="first_option" checked>
+          <input
+            type="radio"
+            name="styleguide-radio-input"
+            id="first-option"
+            value="first_option"
+            checked
+          />
           <label for="styleguide-radio-input-second-option">Second Option</label>
-          <input type="radio" name="styleguide-radio-input" id="second-option" value="second-option">
+          <input
+            type="radio"
+            name="styleguide-radio-input"
+            id="second-option"
+            value="second-option"
+          />
           <label for="styleguide-radio-input-third-option">Third Option</label>
-          <input type="radio" name="styleguide-radio-input" id="third-option" value="third-option">
+          <input
+            type="radio"
+            name="styleguide-radio-input"
+            id="third-option"
+            value="third-option"
+          />
         </div>
       </div>
     </div>
     <footer class="footer"><span class="copyright">©2018</span></footer>
     <!-- end styleguide.html -->
     <!-- edited 12/22/2018 5:22 PM - KR -->
+
+    <div class="modal-underlay"></div>
 
     <script src="//localhost:35729/livereload.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
