@@ -117,7 +117,8 @@
     Controls.cacheElements = function () {
         Controls.$el = {
             bg_video_switch: $('[data-ctl=bgvideoswitch]'),
-            user_auth: $('[data-ctl=userauth')
+            user_auth: $('[data-ctl=userauth'),
+            close_login_form: $('.login-form [data-ctl=close]')
         };
     };
 })(window, document, window.Controls = window.Controls || {});
@@ -267,8 +268,8 @@
              */
             UIElements.showLoginForm(UIElements.$el.modalUnderlay);
         });
-        UIElements.$el.modalUnderlay.on('click', function (evt) {
-            UIElements.$el.modalUnderlay.removeClass('visible');
+        Controls.$el.close_login_form.on('click', function (evt) {
+            UIElements.closeLoginForm(UIElements.$el.modalUnderlay);
         });
     };
 })(window, window.Events = window.Events || {});
@@ -444,5 +445,8 @@
         var modal = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
         $modalUnderlay.addClass('visible');
+    };
+    UIElements.closeLoginForm = function ($modalUnderlay) {
+        $modalUnderlay.removeClass('visible');
     };
 })(window, window.UIElements = window.UIElements || {});

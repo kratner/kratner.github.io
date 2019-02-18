@@ -113,4 +113,7 @@
     UIElements.showLoginForm = ($modalUnderlay, modal = true) => {
         $modalUnderlay.addClass('visible');
     };
+    UIElements.closeLoginForm = $modalUnderlay => {
+        $modalUnderlay.removeClass('visible');
+    };
 })(window, (window.UIElements = window.UIElements || {}));

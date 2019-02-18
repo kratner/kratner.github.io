@@ -53,8 +53,8 @@
              */
             UIElements.showLoginForm(UIElements.$el.modalUnderlay);
         });
-        UIElements.$el.modalUnderlay.on('click', evt => {
-            UIElements.$el.modalUnderlay.removeClass('visible');
+        Controls.$el.close_login_form.on('click', evt => {
+            UIElements.closeLoginForm(UIElements.$el.modalUnderlay);
         });
     };
 })(window, (window.Events = window.Events || {}));

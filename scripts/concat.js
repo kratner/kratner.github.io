@@ -127,7 +127,8 @@
     Controls.cacheElements = () => {
         Controls.$el = {
             bg_video_switch: $('[data-ctl=bgvideoswitch]'),
-            user_auth: $('[data-ctl=userauth')
+            user_auth: $('[data-ctl=userauth'),
+            close_login_form: $('.login-form [data-ctl=close]')
         };
     };
 })(window, document, (window.Controls = window.Controls || {}));
@@ -275,8 +276,8 @@
              */
             UIElements.showLoginForm(UIElements.$el.modalUnderlay);
         });
-        UIElements.$el.modalUnderlay.on('click', evt => {
-            UIElements.$el.modalUnderlay.removeClass('visible');
+        Controls.$el.close_login_form.on('click', evt => {
+            UIElements.closeLoginForm(UIElements.$el.modalUnderlay);
         });
     };
 })(window, (window.Events = window.Events || {}));
@@ -466,5 +467,8 @@
     };
     UIElements.showLoginForm = ($modalUnderlay, modal = true) => {
         $modalUnderlay.addClass('visible');
+    };
+    UIElements.closeLoginForm = $modalUnderlay => {
+        $modalUnderlay.removeClass('visible');
     };
 })(window, (window.UIElements = window.UIElements || {}));
