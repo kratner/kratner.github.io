@@ -1,4 +1,5 @@
 /*global firebase, Actions */
+
 'use strict';
 
 ((window, document, Data) => {

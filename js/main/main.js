@@ -192,6 +192,7 @@
     };
 })(window, document, window.Core = window.Core || {});
 /*global firebase, Actions */
+
 'use strict';
 
 (function (window, document, Data) {

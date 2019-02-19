@@ -197,6 +197,7 @@
     };
 })(window, document, (window.Core = window.Core || {}));
 /*global firebase, Actions */
+
 'use strict';
 
 ((window, document, Data) => {
