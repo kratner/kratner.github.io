@@ -4,8 +4,15 @@
     Controls.cacheElements = () => {
         Controls.$el = {
             bg_video_switch: $('[data-ctl=bgvideoswitch]'),
-            user_auth: $('[data-ctl=userauth'),
-            close_login_form: $('.login-form [data-ctl=close]')
+            authorize_user: $('.active[data-ctl=userauth'),
+            open_login_form: $('[data-ctl=loginform'),
+            close_login_form: $(
+                '.login-form [data-ctl=close]'
+            )
         };
     };
-})(window, document, (window.Controls = window.Controls || {}));
+})(
+    window,
+    document,
+    (window.Controls = window.Controls || {})
+);

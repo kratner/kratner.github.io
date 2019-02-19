@@ -127,11 +127,18 @@
     Controls.cacheElements = () => {
         Controls.$el = {
             bg_video_switch: $('[data-ctl=bgvideoswitch]'),
-            user_auth: $('[data-ctl=userauth'),
-            close_login_form: $('.login-form [data-ctl=close]')
+            authorize_user: $('.active[data-ctl=userauth'),
+            open_login_form: $('[data-ctl=loginform'),
+            close_login_form: $(
+                '.login-form [data-ctl=close]'
+            )
         };
     };
-})(window, document, (window.Controls = window.Controls || {}));
+})(
+    window,
+    document,
+    (window.Controls = window.Controls || {})
+);
 'use strict';
 
 ((window, document, Core) => {
@@ -196,7 +203,7 @@
         return model;
     };
 })(window, document, (window.Core = window.Core || {}));
-/*global firebase, Actions */
+/*global firebase, firebaseui, Actions */
 
 'use strict';
 
@@ -204,9 +211,11 @@
     Data.initializeFirebase = () => {
         // Initialize Firebase
         let config = {
-            apiKey: 'AIzaSyBErwJPIqN7K-gfcUMisC594dZEHcjnzkY',
+            apiKey:
+                'AIzaSyBErwJPIqN7K-gfcUMisC594dZEHcjnzkY',
             authDomain: 'kratner-firebase.firebaseapp.com',
-            databaseURL: 'https://kratner-firebase.firebaseio.com',
+            databaseURL:
+                'https://kratner-firebase.firebaseio.com',
             projectId: 'kratner-firebase',
             storageBucket: '',
             messagingSenderId: '386299743486'
@@ -217,12 +226,17 @@
             settings = {timestampsInSnapshots: true};
         firestore.settings(settings);
         Data.firestore = firestore;
-        Data.getCollection = id => Data.firestore.collection(id).get();
+        Data.getCollection = id =>
+            Data.firestore.collection(id).get();
+        Data.ui = new firebaseui.auth.AuthUI(
+            firebase.auth()
+        );
     };
     Data.getLinks = () => Data.getCollection('links');
-    Data.getVideoSources = () => Data.getCollection('video_sources');
+    Data.getVideoSources = () =>
+        Data.getCollection('video_sources');
 })(window, document, (window.Data = window.Data || {}));
-/*global UIElements, Analytics, Actions, Collections, Controls*/
+/*global UIElements, Analytics, Actions, Collections, Controls, Data, firebase*/
 'use strict';
 
 ((window, Events) => {
@@ -271,14 +285,29 @@
                 UIElements.$el.background.video_source
             );
         });
-        Controls.$el.user_auth.on('click', evt => {
+        Controls.$el.open_login_form.on('click', evt => {
             /*
              * TODO: icon-user-check when authenticated
              */
-            UIElements.showLoginForm(UIElements.$el.modalUnderlay);
+            UIElements.showLoginForm(
+                UIElements.$el.modalUnderlay
+            );
         });
         Controls.$el.close_login_form.on('click', evt => {
-            UIElements.closeLoginForm(UIElements.$el.modalUnderlay);
+            UIElements.closeLoginForm(
+                UIElements.$el.modalUnderlay
+            );
+        });
+        Controls.$el.authorize_user.on('click', evt => {
+            Data.ui.start(
+                UIElements.$el.firebaseUILoginFormContainer,
+                {
+                    signInOptions: [
+                        firebase.auth.EmailAuthProvider
+                            .PROVIDER_ID
+                    ]
+                }
+            );
         });
     };
 })(window, (window.Events = window.Events || {}));
@@ -358,7 +387,7 @@
  * Refer to templates.js module
  * for string literals and information
  */
-/*global $, Templates */
+/*global $, Templates, Data, firebase */
 'use strict';
 
 ((window, UIElements) => {
@@ -366,8 +395,12 @@
         UIElements.$el = {
             body: $('body'),
             background: {
-                video_element: $('.video-background__video'),
-                video_source: $('.video-background__video > source')
+                video_element: $(
+                    '.video-background__video'
+                ),
+                video_source: $(
+                    '.video-background__video > source'
+                )
             },
             footer: {
                 copyright: $('.copyright')
@@ -375,19 +408,32 @@
             link: $('.gtag'),
             linksContainer: $('#links-container'),
             modalUnderlay: $('.modal-underlay'),
-            socialLinksContainer: $('#social-links-container'),
+            socialLinksContainer: $(
+                '#social-links-container'
+            ),
             descriptiveLink: $('.descriptive'),
             linkDescription: $('.linkdescription'),
             hideDescription: $('.hidedescription'),
-            spinner: $('#spinner')
+            spinner: $('#spinner'),
+            firebaseUILoginFormContainer:
+                '#firebaseui-auth-container'
         };
     };
-    UIElements.showProgressBar = ($container, indeterminate = true) => {
-        $container.html('').append(Templates._ProgressBar(indeterminate));
+    UIElements.showProgressBar = (
+        $container,
+        indeterminate = true
+    ) => {
+        $container
+            .html('')
+            .append(Templates._ProgressBar(indeterminate));
     };
     UIElements.showSpinner = ($container, show = true) => {
-        let spinner = show ? Templates._IconElement('spinner9') : '';
-        $container.html(`<div id="spinner">${spinner}</div>`);
+        let spinner = show
+            ? Templates._IconElement('spinner9')
+            : '';
+        $container.html(
+            `<div id="spinner">${spinner}</div>`
+        );
     };
     UIElements.displayLinks = (
         links,
@@ -404,8 +450,12 @@
         $el.html('');
         if (hasPadding) {
             let cssPaddingClass = 'link-padding';
-            $el.append(Templates._PaddedDiv(cssPaddingClass));
-            $container = hasPadding ? $el.find(`.${cssPaddingClass}`) : $el;
+            $el.append(
+                Templates._PaddedDiv(cssPaddingClass)
+            );
+            $container = hasPadding
+                ? $el.find(`.${cssPaddingClass}`)
+                : $el;
         } else {
             $container = $el;
         }
@@ -415,10 +465,16 @@
             let icon =
                     typeof element.icon === 'undefined'
                         ? ''
-                        : Templates._IconElement(element.icon),
-                text = typeof element.text === 'undefined' ? '' : element.text,
+                        : Templates._IconElement(
+                              element.icon
+                          ),
+                text =
+                    typeof element.text === 'undefined'
+                        ? ''
+                        : element.text,
                 dataDescription =
-                    typeof element.description === 'undefined'
+                    typeof element.description ===
+                    'undefined'
                         ? ''
                         : element.description,
                 href = '',
@@ -431,12 +487,17 @@
                 aLinkElement = '',
                 linkElement = '',
                 linkDescription = '',
-                closeIcon = Templates._IconElement('cancel-circle'),
+                closeIcon = Templates._IconElement(
+                    'cancel-circle'
+                ),
                 closeDescriptionLink = '',
                 dataDescriptionLink = '';
             if (linkFromDataDescription) {
                 if (dataDescription === '') {
-                    href = element.href === '' ? '' : `${element.href}`;
+                    href =
+                        element.href === ''
+                            ? ''
+                            : `${element.href}`;
                 } else {
                     href = '';
                     dataDescriptionLink =
@@ -448,15 +509,22 @@
                                 href: element.href,
                                 title: element.title,
                                 target: element.target,
-                                text: Templates._IconElement('share')
+                                text: Templates._IconElement(
+                                      'share'
+                                  )
                             });
                 }
             } else {
-                href = element.href === '' ? '' : `${element.href}`;
+                href =
+                    element.href === ''
+                        ? ''
+                        : `${element.href}`;
             }
             objALinkElement.cssClass = element.class;
             objALinkElement.href = href;
-            aLinkElement = Templates._ALinkElement(objALinkElement);
+            aLinkElement = Templates._ALinkElement(
+                objALinkElement
+            );
             closeDescriptionLink = `<span class="ctl hidedescription" title="Close">${closeIcon}</span>`;
             linkDescription =
                 dataDescription === ''
@@ -466,10 +534,21 @@
             $container.append(linkElement);
         });
     };
-    UIElements.showLoginForm = ($modalUnderlay, modal = true) => {
+    UIElements.showLoginForm = (
+        $modalUnderlay,
+        modal = true
+    ) => {
         $modalUnderlay.addClass('visible');
     };
     UIElements.closeLoginForm = $modalUnderlay => {
         $modalUnderlay.removeClass('visible');
+    };
+    UIElements.showFirebaseUILoginForm = $container => {
+        Data.ui.start($container, {
+            signInOptions: [
+                firebase.auth.EmailAuthProvider.PROVIDER_ID
+            ]
+            // Other config options...
+        });
     };
 })(window, (window.UIElements = window.UIElements || {}));

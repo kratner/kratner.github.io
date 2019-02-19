@@ -2,7 +2,7 @@
  * Refer to templates.js module
  * for string literals and information
  */
-/*global $, Templates */
+/*global $, Templates, Data, firebase */
 'use strict';
 
 ((window, UIElements) => {
@@ -10,8 +10,12 @@
         UIElements.$el = {
             body: $('body'),
             background: {
-                video_element: $('.video-background__video'),
-                video_source: $('.video-background__video > source')
+                video_element: $(
+                    '.video-background__video'
+                ),
+                video_source: $(
+                    '.video-background__video > source'
+                )
             },
             footer: {
                 copyright: $('.copyright')
@@ -19,19 +23,32 @@
             link: $('.gtag'),
             linksContainer: $('#links-container'),
             modalUnderlay: $('.modal-underlay'),
-            socialLinksContainer: $('#social-links-container'),
+            socialLinksContainer: $(
+                '#social-links-container'
+            ),
             descriptiveLink: $('.descriptive'),
             linkDescription: $('.linkdescription'),
             hideDescription: $('.hidedescription'),
-            spinner: $('#spinner')
+            spinner: $('#spinner'),
+            firebaseUILoginFormContainer:
+                '#firebaseui-auth-container'
         };
     };
-    UIElements.showProgressBar = ($container, indeterminate = true) => {
-        $container.html('').append(Templates._ProgressBar(indeterminate));
+    UIElements.showProgressBar = (
+        $container,
+        indeterminate = true
+    ) => {
+        $container
+            .html('')
+            .append(Templates._ProgressBar(indeterminate));
     };
     UIElements.showSpinner = ($container, show = true) => {
-        let spinner = show ? Templates._IconElement('spinner9') : '';
-        $container.html(`<div id="spinner">${spinner}</div>`);
+        let spinner = show
+            ? Templates._IconElement('spinner9')
+            : '';
+        $container.html(
+            `<div id="spinner">${spinner}</div>`
+        );
     };
     UIElements.displayLinks = (
         links,
@@ -48,8 +65,12 @@
         $el.html('');
         if (hasPadding) {
             let cssPaddingClass = 'link-padding';
-            $el.append(Templates._PaddedDiv(cssPaddingClass));
-            $container = hasPadding ? $el.find(`.${cssPaddingClass}`) : $el;
+            $el.append(
+                Templates._PaddedDiv(cssPaddingClass)
+            );
+            $container = hasPadding
+                ? $el.find(`.${cssPaddingClass}`)
+                : $el;
         } else {
             $container = $el;
         }
@@ -59,10 +80,16 @@
             let icon =
                     typeof element.icon === 'undefined'
                         ? ''
-                        : Templates._IconElement(element.icon),
-                text = typeof element.text === 'undefined' ? '' : element.text,
+                        : Templates._IconElement(
+                              element.icon
+                          ),
+                text =
+                    typeof element.text === 'undefined'
+                        ? ''
+                        : element.text,
                 dataDescription =
-                    typeof element.description === 'undefined'
+                    typeof element.description ===
+                    'undefined'
                         ? ''
                         : element.description,
                 href = '',
@@ -75,12 +102,17 @@
                 aLinkElement = '',
                 linkElement = '',
                 linkDescription = '',
-                closeIcon = Templates._IconElement('cancel-circle'),
+                closeIcon = Templates._IconElement(
+                    'cancel-circle'
+                ),
                 closeDescriptionLink = '',
                 dataDescriptionLink = '';
             if (linkFromDataDescription) {
                 if (dataDescription === '') {
-                    href = element.href === '' ? '' : `${element.href}`;
+                    href =
+                        element.href === ''
+                            ? ''
+                            : `${element.href}`;
                 } else {
                     href = '';
                     dataDescriptionLink =
@@ -92,15 +124,22 @@
                                 href: element.href,
                                 title: element.title,
                                 target: element.target,
-                                text: Templates._IconElement('share')
+                                text: Templates._IconElement(
+                                      'share'
+                                  )
                             });
                 }
             } else {
-                href = element.href === '' ? '' : `${element.href}`;
+                href =
+                    element.href === ''
+                        ? ''
+                        : `${element.href}`;
             }
             objALinkElement.cssClass = element.class;
             objALinkElement.href = href;
-            aLinkElement = Templates._ALinkElement(objALinkElement);
+            aLinkElement = Templates._ALinkElement(
+                objALinkElement
+            );
             closeDescriptionLink = `<span class="ctl hidedescription" title="Close">${closeIcon}</span>`;
             linkDescription =
                 dataDescription === ''
@@ -110,10 +149,21 @@
             $container.append(linkElement);
         });
     };
-    UIElements.showLoginForm = ($modalUnderlay, modal = true) => {
+    UIElements.showLoginForm = (
+        $modalUnderlay,
+        modal = true
+    ) => {
         $modalUnderlay.addClass('visible');
     };
     UIElements.closeLoginForm = $modalUnderlay => {
         $modalUnderlay.removeClass('visible');
+    };
+    UIElements.showFirebaseUILoginForm = $container => {
+        Data.ui.start($container, {
+            signInOptions: [
+                firebase.auth.EmailAuthProvider.PROVIDER_ID
+            ]
+            // Other config options...
+        });
     };
 })(window, (window.UIElements = window.UIElements || {}));

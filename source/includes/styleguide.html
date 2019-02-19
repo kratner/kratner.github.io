@@ -3,29 +3,59 @@
   <h1>Style Guide</h1>
   <h2>User Forms</h2>
   <div class="app-controls">
-    <span data-ctl="userauth" class="ctl icon-user" title="Login"></span>
+    <span
+      data-ctl="userauth"
+      class="ctl icon-user active"
+      title="Authorize User"
+    ></span>
+  </div>
+  <div id="firebaseui-auth-container"></div>
+  <div class="app-controls">
+    <span
+      data-ctl="loginform"
+      class="ctl icon-user"
+      title="Open Login Form"
+    ></span>
     <p>
       <span id="login-form">
-        <a href="/admin" title="Login" target="_blank">Login</a>
+        <a href="/admin" title="Login" target="_blank">
+          Login
+        </a>
       </span>
     </p>
   </div>
   <div class="login-form">
     <div class="form-component">
-      <label for="login-form-text-field-username">Username</label>
-      <input type="text" name="login-form-text-field-username" />
+      <label for="login-form-text-field-username">
+        Username
+      </label>
+      <input
+        type="text"
+        name="login-form-text-field-username"
+      />
     </div>
     <div class="form-component">
-      <label for="login-form-text-field-password">Password</label>
-      <input type="text" name="login-form-text-field-password" />
+      <label for="login-form-text-field-password">
+        Password
+      </label>
+      <input
+        type="text"
+        name="login-form-text-field-password"
+      />
     </div>
   </div>
   <h2>Form Elements</h2>
   <div class="form-container">
     <div class="form-component-title">Input Button</div>
     <div class="form-component">
-      <label for="styleguide-input-button">Input Button</label>
-      <input type="button" name="styleguide-input-button" value="Button" />
+      <label for="styleguide-input-button">
+        Input Button
+      </label>
+      <input
+        type="button"
+        name="styleguide-input-button"
+        value="Button"
+      />
     </div>
     <div class="form-component-title">Text Field</div>
     <div class="form-component">
@@ -34,8 +64,13 @@
     </div>
     <div class="form-component-title">Password Field</div>
     <div class="form-component">
-      <label for="styleguide-password-field">Password</label>
-      <input type="password" name="styleguide-password-field" />
+      <label for="styleguide-password-field">
+        Password
+      </label>
+      <input
+        type="password"
+        name="styleguide-password-field"
+      />
     </div>
     <div class="form-component-title">Text Area</div>
     <div class="form-component">
@@ -51,10 +86,16 @@
         <option value="third-option">Third Option</option>
       </select>
     </div>
-    <div class="form-component-title">Multi-Select List</div>
+    <div class="form-component-title">
+      Multi-Select List
+    </div>
     <div class="form-component">
       <label for="styleguide-select-list">Select</label>
-      <select name="styleguide-select-list" size="3" multiple>
+      <select
+        name="styleguide-select-list"
+        size="3"
+        multiple
+      >
         <option value="first-option">First Option</option>
         <option value="second-option">Second Option</option>
         <option value="third-option">Third Option</option>
@@ -67,7 +108,9 @@
     </div>
     <div class="form-component-title">Radio Input</div>
     <div class="form-component">
-      <label for="styleguide-radio-input-first-option">First Option</label>
+      <label for="styleguide-radio-input-first-option">
+        First Option
+      </label>
       <input
         type="radio"
         name="styleguide-radio-input"
@@ -75,14 +118,18 @@
         value="first_option"
         checked
       />
-      <label for="styleguide-radio-input-second-option">Second Option</label>
+      <label for="styleguide-radio-input-second-option">
+        Second Option
+      </label>
       <input
         type="radio"
         name="styleguide-radio-input"
         id="second-option"
         value="second-option"
       />
-      <label for="styleguide-radio-input-third-option">Third Option</label>
+      <label for="styleguide-radio-input-third-option">
+        Third Option
+      </label>
       <input
         type="radio"
         name="styleguide-radio-input"
@@ -92,6 +139,8 @@
     </div>
   </div>
 </div>
-<footer class="footer"><span class="copyright">©2018</span></footer>
+<footer class="footer">
+  <span class="copyright">©2018</span>
+</footer>
 <!-- end styleguide.html -->
 <!-- edited 12/22/2018 5:22 PM - KR -->

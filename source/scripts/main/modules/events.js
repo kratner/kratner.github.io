@@ -1,4 +1,4 @@
-/*global UIElements, Analytics, Actions, Collections, Controls*/
+/*global UIElements, Analytics, Actions, Collections, Controls, Data, firebase*/
 'use strict';
 
 ((window, Events) => {
@@ -47,14 +47,29 @@
                 UIElements.$el.background.video_source
             );
         });
-        Controls.$el.user_auth.on('click', evt => {
+        Controls.$el.open_login_form.on('click', evt => {
             /*
              * TODO: icon-user-check when authenticated
              */
-            UIElements.showLoginForm(UIElements.$el.modalUnderlay);
+            UIElements.showLoginForm(
+                UIElements.$el.modalUnderlay
+            );
         });
         Controls.$el.close_login_form.on('click', evt => {
-            UIElements.closeLoginForm(UIElements.$el.modalUnderlay);
+            UIElements.closeLoginForm(
+                UIElements.$el.modalUnderlay
+            );
+        });
+        Controls.$el.authorize_user.on('click', evt => {
+            Data.ui.start(
+                UIElements.$el.firebaseUILoginFormContainer,
+                {
+                    signInOptions: [
+                        firebase.auth.EmailAuthProvider
+                            .PROVIDER_ID
+                    ]
+                }
+            );
         });
     };
 })(window, (window.Events = window.Events || {}));

@@ -117,7 +117,8 @@
     Controls.cacheElements = function () {
         Controls.$el = {
             bg_video_switch: $('[data-ctl=bgvideoswitch]'),
-            user_auth: $('[data-ctl=userauth'),
+            authorize_user: $('.active[data-ctl=userauth'),
+            open_login_form: $('[data-ctl=loginform'),
             close_login_form: $('.login-form [data-ctl=close]')
         };
     };
@@ -191,7 +192,7 @@
         return model;
     };
 })(window, document, window.Core = window.Core || {});
-/*global firebase, Actions */
+/*global firebase, firebaseui, Actions */
 
 'use strict';
 
@@ -215,6 +216,7 @@
         Data.getCollection = function (id) {
             return Data.firestore.collection(id).get();
         };
+        Data.ui = new firebaseui.auth.AuthUI(firebase.auth());
     };
     Data.getLinks = function () {
         return Data.getCollection('links');
@@ -223,7 +225,7 @@
         return Data.getCollection('video_sources');
     };
 })(window, document, window.Data = window.Data || {});
-/*global UIElements, Analytics, Actions, Collections, Controls*/
+/*global UIElements, Analytics, Actions, Collections, Controls, Data, firebase*/
 'use strict';
 
 (function (window, Events) {
@@ -263,7 +265,7 @@
         Controls.$el.bg_video_switch.on('click', function (evt) {
             Actions.methods.switchBackgroundVideo(Collections.paths.video_sources, UIElements.$el.background.video_element, UIElements.$el.background.video_source);
         });
-        Controls.$el.user_auth.on('click', function (evt) {
+        Controls.$el.open_login_form.on('click', function (evt) {
             /*
              * TODO: icon-user-check when authenticated
              */
@@ -271,6 +273,11 @@
         });
         Controls.$el.close_login_form.on('click', function (evt) {
             UIElements.closeLoginForm(UIElements.$el.modalUnderlay);
+        });
+        Controls.$el.authorize_user.on('click', function (evt) {
+            Data.ui.start(UIElements.$el.firebaseUILoginFormContainer, {
+                signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID]
+            });
         });
     };
 })(window, window.Events = window.Events || {});
@@ -344,7 +351,7 @@
  * Refer to templates.js module
  * for string literals and information
  */
-/*global $, Templates */
+/*global $, Templates, Data, firebase */
 'use strict';
 
 (function (window, UIElements) {
@@ -365,7 +372,8 @@
             descriptiveLink: $('.descriptive'),
             linkDescription: $('.linkdescription'),
             hideDescription: $('.hidedescription'),
-            spinner: $('#spinner')
+            spinner: $('#spinner'),
+            firebaseUILoginFormContainer: '#firebaseui-auth-container'
         };
     };
     UIElements.showProgressBar = function ($container) {
@@ -449,5 +457,11 @@
     };
     UIElements.closeLoginForm = function ($modalUnderlay) {
         $modalUnderlay.removeClass('visible');
+    };
+    UIElements.showFirebaseUILoginForm = function ($container) {
+        Data.ui.start($container, {
+            signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID]
+            // Other config options...
+        });
     };
 })(window, window.UIElements = window.UIElements || {});
