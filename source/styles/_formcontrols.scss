@@ -73,3 +73,23 @@
     }
   }
 }
+[data-ctl='firebase-auth'] {
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.5s;
+  &.active {
+    max-height: 800px;
+    opacity: 1;
+  }
+}
+[data-ctl='show-firebase-auth'] {
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.5s;
+  &.active {
+    max-height: 800px;
+    opacity: 1;
+  }
+}

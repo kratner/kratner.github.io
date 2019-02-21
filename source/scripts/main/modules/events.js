@@ -61,6 +61,13 @@
             );
         });
         Controls.$el.authorize_user.on('click', evt => {
+            Controls.$el.show_firebase_auth_form.removeClass(
+                'active'
+            );
+            Controls.$el.firebase_auth_form.addClass(
+                'active'
+            );
+            /*
             Data.ui.start(
                 UIElements.$el.firebaseUILoginFormContainer,
                 {
@@ -70,6 +77,7 @@
                     ]
                 }
             );
+            */
         });
     };
 })(window, (window.Events = window.Events || {}));

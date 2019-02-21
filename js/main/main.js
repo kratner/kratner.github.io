@@ -1,6 +1,6 @@
 'use strict';
 
-/* global $,Router, Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
+/* global $,Router, Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions, firebase*/
 (function (window, document) {
     'use strict';
 
@@ -46,6 +46,22 @@
             UIElements.displayLinks(Collections.links.social_links, UIElements.$el.socialLinksContainer, false, true);
             UIElements.cacheElements();
             Events.bindEvents();
+        });
+        if (Data.ui.isPendingRedirect()) {
+            Data.ui.start(UIElements.$el.firebaseUILoginFormContainer, {
+                signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID]
+            });
+        }
+        Data.ui.start(UIElements.$el.firebaseUILoginFormContainer, {
+            callbacks: {
+                uiShown: function uiShown() {
+                    // The widget is rendered.
+                    // Hide the loader.
+                    // document.getElementById('loader').style.display = 'none';
+                    UIElements.showFirebaseUILoginFormTrigger(Controls.$el.show_firebase_auth_form);
+                }
+            },
+            signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID]
         });
     };
     $(document).ready(init);
@@ -119,7 +135,9 @@
             bg_video_switch: $('[data-ctl=bgvideoswitch]'),
             authorize_user: $('.active[data-ctl=userauth'),
             open_login_form: $('[data-ctl=loginform'),
-            close_login_form: $('.login-form [data-ctl=close]')
+            close_login_form: $('.login-form [data-ctl=close]'),
+            show_firebase_auth_form: $('[data-ctl=show-firebase-auth]'),
+            firebase_auth_form: $('[data-ctl=firebase-auth')
         };
     };
 })(window, document, window.Controls = window.Controls || {});
@@ -275,9 +293,19 @@
             UIElements.closeLoginForm(UIElements.$el.modalUnderlay);
         });
         Controls.$el.authorize_user.on('click', function (evt) {
-            Data.ui.start(UIElements.$el.firebaseUILoginFormContainer, {
-                signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID]
-            });
+            Controls.$el.show_firebase_auth_form.removeClass('active');
+            Controls.$el.firebase_auth_form.addClass('active');
+            /*
+            Data.ui.start(
+                UIElements.$el.firebaseUILoginFormContainer,
+                {
+                    signInOptions: [
+                        firebase.auth.EmailAuthProvider
+                            .PROVIDER_ID
+                    ]
+                }
+            );
+            */
         });
     };
 })(window, window.Events = window.Events || {});
@@ -384,8 +412,12 @@
     UIElements.showSpinner = function ($container) {
         var show = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
-        var spinner = show ? Templates._IconElement('spinner9') : '';
-        $container.html('<div id="spinner">' + spinner + '</div>');
+        if (show) {
+            var spinner = show ? Templates._IconElement('spinner9') : '';
+            $container.html('<div class="spinner">' + spinner + '</div>');
+        } else {
+            $container.html('');
+        }
     };
     UIElements.displayLinks = function (links, $el) {
         var hasPadding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
@@ -458,10 +490,14 @@
     UIElements.closeLoginForm = function ($modalUnderlay) {
         $modalUnderlay.removeClass('visible');
     };
+    UIElements.showFirebaseUILoginFormTrigger = function ($container) {
+        var showElement = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+        showElement ? $container.addClass('active') : $container.removeClass('active');
+    };
     UIElements.showFirebaseUILoginForm = function ($container) {
-        Data.ui.start($container, {
-            signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID]
-            // Other config options...
-        });
+        var showElement = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+        showElement ? $container.addClass('active') : $container.removeClass('active');
     };
 })(window, window.UIElements = window.UIElements || {});

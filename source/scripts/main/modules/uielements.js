@@ -43,12 +43,16 @@
             .append(Templates._ProgressBar(indeterminate));
     };
     UIElements.showSpinner = ($container, show = true) => {
-        let spinner = show
-            ? Templates._IconElement('spinner9')
-            : '';
-        $container.html(
-            `<div id="spinner">${spinner}</div>`
-        );
+        if (show) {
+            let spinner = show
+                ? Templates._IconElement('spinner9')
+                : '';
+            $container.html(
+                `<div class="spinner">${spinner}</div>`
+            );
+        } else {
+            $container.html('');
+        }
     };
     UIElements.displayLinks = (
         links,
@@ -158,12 +162,20 @@
     UIElements.closeLoginForm = $modalUnderlay => {
         $modalUnderlay.removeClass('visible');
     };
-    UIElements.showFirebaseUILoginForm = $container => {
-        Data.ui.start($container, {
-            signInOptions: [
-                firebase.auth.EmailAuthProvider.PROVIDER_ID
-            ]
-            // Other config options...
-        });
+    UIElements.showFirebaseUILoginFormTrigger = (
+        $container,
+        showElement = true
+    ) => {
+        showElement
+            ? $container.addClass('active')
+            : $container.removeClass('active');
+    };
+    UIElements.showFirebaseUILoginForm = (
+        $container,
+        showElement = true
+    ) => {
+        showElement
+            ? $container.addClass('active')
+            : $container.removeClass('active');
     };
 })(window, (window.UIElements = window.UIElements || {}));

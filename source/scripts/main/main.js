@@ -1,4 +1,4 @@
-/* global $,Router, Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions*/
+/* global $,Router, Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions, firebase*/
 ((window, document) => {
     'use strict';
     let init = () => {
@@ -10,14 +10,19 @@
         Events.bindEvents();
 
         //UIElements.showSpinner(UIElements.$el.spinner);
-        UIElements.showSpinner(UIElements.$el.linksContainer);
+        UIElements.showSpinner(
+            UIElements.$el.linksContainer
+        );
         //UIElements.showProgressBar(UIElements.$el.linksContainer);
         //UIElements.showProgressBar(UIElements.$el.socialLinksContainer);
 
         Data.getVideoSources()
             .then(Actions.methods.parseVideoSources)
             .catch(error => {
-                console.log('Error getting video source array: ', error);
+                console.log(
+                    'Error getting video source array: ',
+                    error
+                );
             })
             .then(sources => {
                 Collections.paths.video_sources = sources;
@@ -32,12 +37,17 @@
                 */
             });
 
-        Actions.methods.displayCopyrightYear(UIElements.$el.footer.copyright);
+        Actions.methods.displayCopyrightYear(
+            UIElements.$el.footer.copyright
+        );
 
         Data.getLinks()
             .then(Actions.methods.parseLinks)
             .catch(error => {
-                console.log('Error getting links array: ', error);
+                console.log(
+                    'Error getting links array: ',
+                    error
+                );
             })
             .then(links => {
                 Collections.links.project_links = links.filter(
@@ -59,6 +69,37 @@
                 UIElements.cacheElements();
                 Events.bindEvents();
             });
+        if (Data.ui.isPendingRedirect()) {
+            Data.ui.start(
+                UIElements.$el.firebaseUILoginFormContainer,
+                {
+                    signInOptions: [
+                        firebase.auth.EmailAuthProvider
+                            .PROVIDER_ID
+                    ]
+                }
+            );
+        }
+        Data.ui.start(
+            UIElements.$el.firebaseUILoginFormContainer,
+            {
+                callbacks: {
+                    uiShown: () => {
+                        // The widget is rendered.
+                        // Hide the loader.
+                        // document.getElementById('loader').style.display = 'none';
+                        UIElements.showFirebaseUILoginFormTrigger(
+                            Controls.$el
+                                .show_firebase_auth_form
+                        );
+                    }
+                },
+                signInOptions: [
+                    firebase.auth.EmailAuthProvider
+                        .PROVIDER_ID
+                ]
+            }
+        );
     };
     $(document).ready(init);
 })(window, document);

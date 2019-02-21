@@ -108,14 +108,17 @@
     <div class="container theme-light">
       <h1>Style Guide</h1>
       <h2>User Forms</h2>
-      <div class="app-controls">
+      <div class="app-controls" data-ctl="show-firebase-auth">
         <span
           data-ctl="userauth"
           class="ctl icon-user active"
           title="Authorize User"
         ></span>
       </div>
-      <div id="firebaseui-auth-container"></div>
+      <div
+        data-ctl="firebase-auth"
+        id="firebaseui-auth-container"
+      ></div>
       <div class="app-controls">
         <span
           data-ctl="loginform"

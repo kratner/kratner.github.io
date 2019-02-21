@@ -1148,7 +1148,7 @@ hr {
   .social-links ul li {
     display: inline; }
 
-#spinner {
+.spinner {
   text-align: center;
   font-size: 2em;
   padding: 0.5em 0;
@@ -1347,3 +1347,21 @@ hr {
       color: black;
       text-decoration: none;
       cursor: pointer; }
+
+[data-ctl='firebase-auth'] {
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.5s; }
+  [data-ctl='firebase-auth'].active {
+    max-height: 800px;
+    opacity: 1; }
+
+[data-ctl='show-firebase-auth'] {
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.5s; }
+  [data-ctl='show-firebase-auth'].active {
+    max-height: 800px;
+    opacity: 1; }
