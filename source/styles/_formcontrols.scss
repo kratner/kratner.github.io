@@ -93,3 +93,37 @@
     opacity: 1;
   }
 }
+
+.firebaseui-container.mdl-card {
+  background-color: $theme_light_underlay;
+  .firebaseui-label {
+    color: $theme_light_caption;
+  }
+  .mdl-textfield--floating-label {
+    .mdl-textfield__label {
+      color: $theme_light_caption;
+    }
+    &.is-dirty {
+      .mdl-textfield__label {
+        color: $theme_light_body;
+      }
+    }
+  }
+  .firebaseui-textfield {
+    &.mdl-textfield {
+      .firebaseui-input {
+        border-color: $theme_light_body;
+      }
+    }
+  }
+  .mdl-button--primary {
+    &.mdl-button--primary {
+      color: #0ff;
+    }
+  }
+  .mdl-button--raised {
+    &.mdl-button--colored {
+      color: $theme_light_body;
+    }
+  }
+}

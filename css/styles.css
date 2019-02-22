@@ -1365,3 +1365,18 @@ hr {
   [data-ctl='show-firebase-auth'].active {
     max-height: 800px;
     opacity: 1; }
+
+.firebaseui-container.mdl-card {
+  background-color: rgba(5, 18, 29, 0.5); }
+  .firebaseui-container.mdl-card .firebaseui-label {
+    color: #00ffff; }
+  .firebaseui-container.mdl-card .mdl-textfield--floating-label .mdl-textfield__label {
+    color: #00ffff; }
+  .firebaseui-container.mdl-card .mdl-textfield--floating-label.is-dirty .mdl-textfield__label {
+    color: #f4b98e; }
+  .firebaseui-container.mdl-card .firebaseui-textfield.mdl-textfield .firebaseui-input {
+    border-color: #f4b98e; }
+  .firebaseui-container.mdl-card .mdl-button--primary.mdl-button--primary {
+    color: #0ff; }
+  .firebaseui-container.mdl-card .mdl-button--raised.mdl-button--colored {
+    color: #f4b98e; }
