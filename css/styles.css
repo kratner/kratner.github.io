@@ -1367,7 +1367,7 @@ hr {
     opacity: 1; }
 
 .firebaseui-container.mdl-card {
-  background-color: rgba(5, 18, 29, 0.5); }
+  background-color: rgba(5, 18, 29, 0.75); }
   .firebaseui-container.mdl-card .firebaseui-label {
     color: #00ffff; }
   .firebaseui-container.mdl-card .mdl-textfield--floating-label .mdl-textfield__label {
@@ -1376,6 +1376,8 @@ hr {
     color: #f4b98e; }
   .firebaseui-container.mdl-card .firebaseui-textfield.mdl-textfield .firebaseui-input {
     border-color: #f4b98e; }
+  .firebaseui-container.mdl-card .firebaseui-title {
+    color: #00ffff; }
   .firebaseui-container.mdl-card .mdl-button--primary.mdl-button--primary {
     color: #0ff; }
   .firebaseui-container.mdl-card .mdl-button--raised.mdl-button--colored {

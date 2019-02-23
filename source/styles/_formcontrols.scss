@@ -95,7 +95,7 @@
 }
 
 .firebaseui-container.mdl-card {
-  background-color: $theme_light_underlay;
+  background-color: $theme_light_underlay_high_opacity;
   .firebaseui-label {
     color: $theme_light_caption;
   }
@@ -115,6 +115,9 @@
         border-color: $theme_light_body;
       }
     }
+  }
+  .firebaseui-title {
+    color: $theme_light_caption;
   }
   .mdl-button--primary {
     &.mdl-button--primary {

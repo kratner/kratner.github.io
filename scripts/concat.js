@@ -89,6 +89,9 @@
                 UIElements.$el.firebaseUILoginFormContainer,
                 {
                     callbacks: {
+                        signInFailure: () => {
+                            console.log('Sign-In Failure');
+                        },
                         uiShown: () => {
                             // The widget is rendered.
                             // Hide the loader.

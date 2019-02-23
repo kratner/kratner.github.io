@@ -55,6 +55,9 @@
         if (UIElements.elementStringInPage(UIElements.$el.firebaseUILoginFormContainer)) {
             Data.ui.start(UIElements.$el.firebaseUILoginFormContainer, {
                 callbacks: {
+                    signInFailure: function signInFailure() {
+                        console.log('Sign-In Failure');
+                    },
                     uiShown: function uiShown() {
                         // The widget is rendered.
                         // Hide the loader.
