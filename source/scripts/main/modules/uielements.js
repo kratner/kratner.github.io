@@ -178,4 +178,5 @@
             ? $container.addClass('active')
             : $container.removeClass('active');
     };
+    UIElements.elementStringInPage = el => $(el).length > 0;
 })(window, (window.UIElements = window.UIElements || {}));

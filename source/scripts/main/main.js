@@ -80,26 +80,32 @@
                 }
             );
         }
-        Data.ui.start(
-            UIElements.$el.firebaseUILoginFormContainer,
-            {
-                callbacks: {
-                    uiShown: () => {
-                        // The widget is rendered.
-                        // Hide the loader.
-                        // document.getElementById('loader').style.display = 'none';
-                        UIElements.showFirebaseUILoginFormTrigger(
-                            Controls.$el
-                                .show_firebase_auth_form
-                        );
-                    }
-                },
-                signInOptions: [
-                    firebase.auth.EmailAuthProvider
-                        .PROVIDER_ID
-                ]
-            }
-        );
+        if (
+            UIElements.elementStringInPage(
+                UIElements.$el.firebaseUILoginFormContainer
+            )
+        ) {
+            Data.ui.start(
+                UIElements.$el.firebaseUILoginFormContainer,
+                {
+                    callbacks: {
+                        uiShown: () => {
+                            // The widget is rendered.
+                            // Hide the loader.
+                            // document.getElementById('loader').style.display = 'none';
+                            UIElements.showFirebaseUILoginFormTrigger(
+                                Controls.$el
+                                    .show_firebase_auth_form
+                            );
+                        }
+                    },
+                    signInOptions: [
+                        firebase.auth.EmailAuthProvider
+                            .PROVIDER_ID
+                    ]
+                }
+            );
+        }
     };
     $(document).ready(init);
 })(window, document);
