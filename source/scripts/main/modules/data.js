@@ -2,7 +2,7 @@
 
 'use strict';
 
-((window, document, Data) => {
+((window, document, Data, Core) => {
     Data.initializeFirebase = () => {
         // Initialize Firebase
         let config = {
@@ -30,4 +30,9 @@
     Data.getLinks = () => Data.getCollection('links');
     Data.getVideoSources = () =>
         Data.getCollection('video_sources');
-})(window, document, (window.Data = window.Data || {}));
+})(
+    window,
+    document,
+    (window.Data = window.Data || {}),
+    (window.Core = window.Core || {})
+);

@@ -1,4 +1,4 @@
-/* global $,Router, Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions, firebase*/
+/* global $, Router, Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions, WPGraphQL, firebase*/
 ((window, document) => {
     'use strict';
     let init = () => {
@@ -109,6 +109,13 @@
                 }
             );
         }
+        WPGraphQL.getWPGraphQLPages()
+            .then(res => res.json())
+            .then(res => {
+                console.log(res.data);
+                //console.dir(res);
+                //console.log('done');
+            });
     };
     $(document).ready(init);
 })(window, document);

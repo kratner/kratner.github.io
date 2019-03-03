@@ -1,4 +1,4 @@
-/* global $,Router, Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions, firebase*/
+/* global $, Router, Data, UIElements, Collections, Controls, Core, Analytics, Events, Actions, WPGraphQL, firebase*/
 ((window, document) => {
     'use strict';
     let init = () => {
@@ -109,6 +109,13 @@
                 }
             );
         }
+        WPGraphQL.getWPGraphQLPages()
+            .then(res => res.json())
+            .then(res => {
+                console.log(res.data);
+                //console.dir(res);
+                //console.log('done');
+            });
     };
     $(document).ready(init);
 })(window, document);
@@ -261,7 +268,7 @@
 
 'use strict';
 
-((window, document, Data) => {
+((window, document, Data, Core) => {
     Data.initializeFirebase = () => {
         // Initialize Firebase
         let config = {
@@ -289,7 +296,12 @@
     Data.getLinks = () => Data.getCollection('links');
     Data.getVideoSources = () =>
         Data.getCollection('video_sources');
-})(window, document, (window.Data = window.Data || {}));
+})(
+    window,
+    document,
+    (window.Data = window.Data || {}),
+    (window.Core = window.Core || {})
+);
 /*global UIElements, Analytics, Actions, Collections, Controls, Data, firebase*/
 'use strict';
 
@@ -627,3 +639,39 @@
     };
     UIElements.elementStringInPage = el => $(el).length > 0;
 })(window, (window.UIElements = window.UIElements || {}));
+/*global WPGraphQL */
+
+'use strict';
+
+((window, WPGraphQL) => {
+    WPGraphQL.queries = {
+        pages: `{
+            pages {
+              nodes {
+                id
+                title
+                date
+              }
+            }
+          }
+          `
+    };
+    WPGraphQL.sendQuery = (conn, query) => {
+        return fetch(conn, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                query: query
+            })
+        });
+    };
+    WPGraphQL.connections = {
+        wpgraphql: 'https://keithratner.live/graphql'
+    };
+    WPGraphQL.getWPGraphQLPages = () => {
+        return WPGraphQL.sendQuery(
+            WPGraphQL.connections.wpgraphql,
+            WPGraphQL.queries.pages
+        );
+    };
+})(window, (window.WPGraphQL = window.WPGraphQL || {}));
