@@ -116,7 +116,7 @@
                 //console.dir(res);
                 //console.log('done');
             });
-        console.log('testing live reload');
+        console.log('testing live reload 2');
     };
     $(document).ready(init);
 })(window, document);

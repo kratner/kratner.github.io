@@ -60,17 +60,12 @@ module.exports = grunt => {
         },
 
         connect: {
-            server: {
-                options: {
-                    open: true,
-                    port: 9001
-                }
-            },
             dev: {
                 options: {
+                    base: '.',
                     livereload: true,
                     open: true,
-                    port: 9002
+                    port: 9001
                 }
             }
         },
