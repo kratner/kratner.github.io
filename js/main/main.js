@@ -75,6 +75,7 @@
             //console.dir(res);
             //console.log('done');
         });
+        console.log('testing live reload');
     };
     $(document).ready(init);
 })(window, document);
