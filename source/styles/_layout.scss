@@ -216,3 +216,14 @@ hr {
     margin-left: 0.5em;
   }
 }
+.svg-sprites {
+  height: 0;
+  width: 0;
+}
+.kr-monogram {
+  text-align: center;
+}
+use.sprite__monogram {
+  fill: $theme_light_body;
+  filter: url('#drop-shadow');
+}

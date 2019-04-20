@@ -2481,6 +2481,17 @@ hr {
     float: right;
     margin-left: 0.5em; }
 
+.svg-sprites {
+  height: 0;
+  width: 0; }
+
+.kr-monogram {
+  text-align: center; }
+
+use.sprite__monogram {
+  fill: #f4b98e;
+  filter: url("#drop-shadow"); }
+
 /*
 @keyframes rotate {
 	0% { transform: rotate(0deg) scale(1.25); }

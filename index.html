@@ -105,7 +105,7 @@
     </div>
     <!-- end video-background.html -->
 
-    <!-- begin maincontent.html -->
+    <!-- begin nav.html -->
     <div class="nav">
       <span class="copyright">©2018</span>
       <span
@@ -114,22 +114,73 @@
         title="Switch Video Background"
       ></span>
       <!--
-      <span class="app-controls" data-ctl="show-firebase-auth">
-        <span
-          data-ctl="userauth"
-          class="ctl icon-user active"
-          title="Authorize User"
-        ></span>
-      </span>
-      <div
-        data-ctl="firebase-auth"
-        id="firebaseui-auth-container"
-      ></div>
-    -->
-      <!-- 
-        <span data-ctl="userauth" class="ctl icon-user" title="Login"></span> 
+        <span class="app-controls" data-ctl="show-firebase-auth">
+          <span
+            data-ctl="userauth"
+            class="ctl icon-user active"
+            title="Authorize User"
+          ></span>
+        </span>
+        <div
+          data-ctl="firebase-auth"
+          id="firebaseui-auth-container"
+        ></div>
       -->
+      <!-- 
+          <span data-ctl="userauth" class="ctl icon-user" title="Login"></span> 
+        -->
     </div>
+    <!-- end nav.html -->
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <!--
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    -->
+    <div class="kr-monogram">
+      <svg class="icon">
+        <use class="sprite__monogram" xlink:href="#monogram" />
+      </svg>
+    </div>
+    <div class="svg-sprites">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        <defs>
+          <filter id="drop-shadow">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="1" />
+            <feOffset dx="1" dy="1" result="offsetblur" />
+            <feFlood flood-color="rgba(0,0,0,1)" />
+            <feComposite in2="offsetblur" operator="in" />
+            <feMerge>
+              <feMergeNode />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          <symbol id="monogram" viewBox="560 1790 200 200">
+            <polygon
+              id="glyph_x5F__x5F_right"
+              points="674.331,1891.881 746,1939.049 682.765,1891.277
+                711.96,1859.64 657.285,1862.205 698.104,1864.282 "
+            />
+            <polygon
+              id="glyph_x5F__x5F_middle"
+              points="693.824,1963.297
+                638.749,1861.327 693.824,1804.035 649.28,1861.851 "
+            />
+            <polygon
+              id="glyph_x5F__x5F_left"
+              points="600.744,1977.16
+                660.771,1913.468 591.762,1860.794 631.498,1860.705
+                574.999,1858.154 653.576,1915.606 "
+            />
+          </symbol>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- begin maincontent.html -->
     <div class="splash-container theme-light">
       <div class="front">
         <div class="brand-title"><h1>Keith Ratner</h1></div>
