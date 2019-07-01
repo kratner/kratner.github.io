@@ -112,7 +112,7 @@
         WPGraphQL.getWPGraphQLPages()
             .then(res => res.json())
             .then(res => {
-                console.log(res.data);
+                console.log(res.data.pages.nodes);
                 //console.dir(res);
                 //console.log('done');
             });
