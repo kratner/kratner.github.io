@@ -4,7 +4,7 @@
   "description": "Keith Ratner's GitHub Front-End",
   "main": "index.js",
   "dependencies": {
-    "firebase": "^5.11.1",
+    "firebase": "^7.14.0",
     "lodash": "^4.17.13",
     "snyk": "^1.290.1"
   },
