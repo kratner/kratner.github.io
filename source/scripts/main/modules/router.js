@@ -5,7 +5,7 @@
         const ref = document.referrer,
             isValidUrl = string => {
                 try {
-                    let newUrl = new URL(string);
+                    new URL(string);
                     return true;
                 } catch (err) {
                     return false;

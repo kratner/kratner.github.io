@@ -2,7 +2,7 @@
 
 'use strict';
 
-((window, document, Data, Core) => {
+((window, document, Data) => {
     Data.initializeFirebase = () => {
         // Initialize Firebase
         let config = {
@@ -33,6 +33,5 @@
 })(
     window,
     document,
-    (window.Data = window.Data || {}),
-    (window.Core = window.Core || {})
+    (window.Data = window.Data || {})
 );
